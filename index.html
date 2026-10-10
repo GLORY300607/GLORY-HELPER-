@@ -1,2 +1,172 @@
-<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLORY HELPER | AI Assistant</title>
+  <meta name="theme-color" content="#080b14">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #f5f7ff;
+      background:
+        radial-gradient(ellipse at 50% 0%, #182956 0%, transparent 55%),
+        #080b14;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 7%;
+      border-bottom: 1px solid #ffffff15;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .brand span { color: #8b9cff; }
+
+    .status {
+      color: #8ef0bc;
+      font-size: 12px;
+    }
+
+    .hero {
+      min-height: 78vh;
+      padding: 70px 22px 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .content { max-width: 700px; }
+
+    .pill {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 1px solid #5968b8;
+      border-radius: 30px;
+      color: #bdc8ff;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      margin: 25px 0 18px;
+      font-size: clamp(42px, 9vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: #9aa9ff;
+    }
+
+    .description {
+      max-width: 540px;
+      margin: 0 auto;
+      color: #a6aec5;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .launch {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 25px;
+      border: 0;
+      border-radius: 12px;
+      background: #8293ff;
+      color: #080b14;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .hint {
+      margin-top: 15px;
+      color: #77819c;
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 22px;
+      border-top: 1px solid #ffffff15;
+      color: #77819c;
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="brand">GLORY <span>HELPER</span></div>
+    <div class="status">● AI ASSISTANT</div>
+  </nav>
+
+  <main class="hero">
+    <div class="content">
+      <div class="pill">YOUR PERSONAL AI ASSISTANT</div>
+
+      <h1>Meet your new<br><span>AI companion.</span></h1>
+
+      <p class="description">
+        Welcome to GLORY HELPER. Ask questions, explore ideas,
+        get help with tasks, and start a conversation with your
+        AI assistant.
+      </p>
+
+      <button class="launch" onclick="openChat()">
+        Chat with GLORY ↗
+      </button>
+
+      <p class="hint">
+        Your assistant is ready. Start a conversation anytime.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    GLORY HELPER · Built with ambition.
+  </footer>
+
+  <script>
+    function openChat() {
+      const selectors = [
+        'button.bpFab',
+        '#bp-web-widget-container button',
+        'button[class*="fab"]',
+        'button[class*="Fab"]'
+      ];
+
+      for (const selector of selectors) {
+        const button = document.querySelector(selector);
+        if (button) {
+          button.click();
+          return;
+        }
+      }
+
+      alert('Tap the chat icon in the bottom-right corner to start chatting.');
+    }
+  </script>
+
+  <!-- Keep your existing Botpress integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
+</body>
+</html>
+
