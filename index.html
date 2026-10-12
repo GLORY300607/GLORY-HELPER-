@@ -170,3 +170,109 @@
 </body>
 </html>
 
+<style>
+:root {
+  --glory-green: #39ff88;
+  --glory-bg: #050807;
+  --glory-glass: rgba(15, 30, 22, 0.78);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 15% 5%,
+      rgba(0, 255, 120, 0.13), transparent 38%),
+    radial-gradient(ellipse at 90% 80%,
+      rgba(0, 170, 100, 0.10), transparent 35%),
+    var(--glory-bg) !important;
+  color: #f3fff7;
+}
+
+/* Premium glass cards */
+.glory-card,
+.feature-card,
+.service-card {
+  background: var(--glory-glass);
+  border: 1px solid rgba(57, 255, 136, 0.25);
+  border-radius: 22px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: transform 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.glory-card:hover,
+.feature-card:hover,
+.service-card:hover {
+  transform: perspective(900px)
+             translateY(-7px) rotateX(2deg);
+  border-color: var(--glory-green);
+  box-shadow: 0 15px 38px rgba(57, 255, 136, 0.13);
+}
+
+/* Neon buttons */
+button,
+.glory-button,
+.cta-button {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.glory-button,
+.cta-button {
+  background: linear-gradient(135deg, #39ff88, #00bd70);
+  color: #031109;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 14px;
+  font-weight: 800;
+  box-shadow: 0 0 22px rgba(57,255,136,0.18);
+}
+
+.glory-button:hover,
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(57,255,136,0.38);
+}
+
+/* Glowing text */
+.glory-neon {
+  color: var(--glory-green);
+  text-shadow: 0 0 18px rgba(57,255,136,0.38);
+}
+
+/* Soft animated background lighting */
+@keyframes gloryGlow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.glory-glow {
+  animation: gloryGlow 4s ease-in-out infinite;
+}
+
+/* Keyboard accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--glory-green);
+  outline-offset: 4px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+
