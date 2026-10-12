@@ -4,260 +4,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070b12">
+<meta name="theme-color" content="#070b0a">
 <title>GLORY HELPER AI</title>
-
 <style>
-:root {
-  --bg: #070b12;
-  --panel: #101722;
-  --green: #39ff9c;
-  --blue: #42b9ff;
-  --text: #f2f7ff;
-  --muted: #9ba9bc;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, #12332d 0%, transparent 48%),
-    var(--bg);
-  color: var(--text);
-  font-family: Inter, system-ui, Arial, sans-serif;
-  min-height: 100vh;
-}
-button { font: inherit; cursor: pointer; }
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 17px 5%;
-  border-bottom: 1px solid #ffffff12;
-  background: #070b12c9;
-}
-.brand { display: flex; align-items: center; gap: 11px; }
-.logo {
-  width: 42px; height: 42px; border-radius: 14px;
-  display: grid; place-items: center;
-  color: var(--green); font-size: 23px; font-weight: 900;
-  background: linear-gradient(135deg,#143b32,#101d30);
-  border: 1px solid #39ff9c66;
-  box-shadow: 0 0 22px #39ff9c20;
-}
-.brand h1 { font-size: 16px; margin: 0; letter-spacing: 1px; }
-.brand small { color: var(--muted); font-size: 11px; }
-.status {
-  font-size: 11px; color: var(--green);
-  border: 1px solid #39ff9c45; border-radius: 20px;
-  padding: 7px 10px;
-}
-main { max-width: 1000px; margin: auto; padding: 36px 18px 30px; }
-.hero { text-align: center; padding: 12px 0 25px; }
-.orb {
-  width: 105px; height: 105px; margin: 0 auto 23px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 25%,#c2ffe4,#39ff9c 20%,#087d80 48%,#151a54 75%);
-  box-shadow: 0 0 35px #39ff9c45, 0 0 80px #3968ff22;
-  animation: float 4s ease-in-out infinite;
-  position: relative;
-}
-.orb:after {
-  content: ""; position: absolute; inset: -9px;
-  border: 1px solid #39ff9c50; border-radius: 50%;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-8px) rotate(8deg); }
-}
-.hero h2 { font-size: clamp(30px,6vw,51px); margin: 0 0 12px; }
-.gradient {
-  background: linear-gradient(90deg,var(--green),var(--blue),#c8a4ff);
-  -webkit-background-clip: text; background-clip: text;
-  color: transparent;
-}
-.hero p { color: var(--muted); line-height: 1.7; max-width: 570px; margin: auto; }
-.cards {
-  display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
-  gap: 12px; margin: 28px 0;
-}
-.card {
-  text-align: left; padding: 17px 14px; min-height: 105px;
-  border: 1px solid #ffffff12; border-radius: 17px;
-  background: linear-gradient(145deg,#151f2d,#0c121c);
-  color: var(--text); transition: .2s;
-}
-.card:hover { border-color: #39ff9c70; transform: translateY(-3px); }
-.card .emoji { font-size: 22px; display: block; margin-bottom: 12px; }
-.card strong { display: block; font-size: 13px; }
-.card small { display: block; color: var(--muted); margin-top: 5px; font-size: 11px; }
-.chat-panel {
-  background: #0b111b; border: 1px solid #ffffff18;
-  border-radius: 22px; overflow: hidden;
-  box-shadow: 0 20px 65px #0005;
-}
-.chat-heading {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 18px; border-bottom: 1px solid #ffffff12;
-}
-.chat-heading strong { font-size: 14px; }
-.chat-heading span { color: var(--muted); font-size: 11px; }
-#newChat {
-  color: var(--green); background: #39ff9c0d;
-  border: 1px solid #39ff9c44; border-radius: 10px;
-  padding: 9px 12px; font-size: 12px;
-}
-#webchat { min-height: 510px; height: min(68vh,700px); }
-.notice {
-  margin: 12px 0 0; text-align: center;
-  color: var(--muted); font-size: 11px; line-height: 1.6;
-}
-footer {
-  padding: 27px 12px 12px; text-align: center;
-  color: var(--muted); font-size: 11px; line-height: 2;
-}
-footer strong { color: var(--green); letter-spacing: 1px; }
-@media(max-width:600px) {
-  header { padding: 13px 15px; }
-  main { padding: 27px 12px; }
-  .cards { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
-  .card { min-height: 94px; padding: 13px; }
-  #webchat { min-height: 480px; height: 65vh; }
-  .hero h2 { font-size: 32px; }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#070b0a;color:#effff6;min-height:100vh}
+header{padding:18px 6%;border-bottom:1px solid #1b3529;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:20px;font-weight:bold}.brand span{color:#00ffa3}
+.status{font-size:12px;color:#80ffc5}
+main{max-width:850px;margin:auto;padding:35px 18px}
+.hero{text-align:center;padding:20px 0 28px}
+.orb{height:90px;width:90px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#00ffa3 25%,#087c64 55%,#803cff);box-shadow:0 0 35px #00ffa344}
+h1{font-size:clamp(30px,6vw,48px);margin-bottom:12px}
+h1 span{color:#00ffa3}
+.hero p{color:#a6b9ae;line-height:1.6;font-size:14px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.feature{border:1px solid #1d382b;background:#0c1510;border-radius:14px;padding:16px}
+.feature b{display:block;margin-bottom:8px}.feature p{font-size:13px;line-height:1.5;color:#9db1a5}
+.chat{border:1px solid #234534;background:#0b120e;border-radius:18px;overflow:hidden}
+.chathead{padding:15px;border-bottom:1px solid #1c3025;font-weight:bold}
+#messages{height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:90%;padding:12px 14px;border-radius:13px;font-size:14px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+.bot{background:#15251b;align-self:flex-start;border:1px solid #25432f}
+.user{background:#006c49;align-self:flex-end}
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid #1c3025}
+input{min-width:0;flex:1;padding:14px;border-radius:12px;border:1px solid #294636;background:#101b14;color:white;outline:none;font-size:14px}
+input:focus{border-color:#00ffa3}
+button{border:0;border-radius:12px;padding:0 18px;background:#00ffa3;color:#04150d;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.5}
+.note{text-align:center;color:#758a7d;font-size:11px;margin-top:10px;line-height:1.6}
+footer{text-align:center;padding:24px 12px;color:#84978b;font-size:12px;line-height:1.8}
+footer strong{color:#00ffa3}
+@media(max-width:420px){main{padding:25px 12px}.features{gap:8px}.feature{padding:12px}#messages{height:320px}}
 </style>
 </head>
-
 <body>
 <header>
-  <div class="brand">
-    <div class="logo">G</div>
-    <div>
-      <h1>GLORY HELPER</h1>
-      <small>AI ASSISTANT</small>
-    </div>
-  </div>
-  <div class="status">● AI CHAT</div>
+  <div class="brand">GLORY <span>HELPER</span></div>
+  <div class="status">● READY TO CHAT</div>
 </header>
 
 <main>
   <section class="hero">
     <div class="orb"></div>
-    <h2>Your ideas.<br><span class="gradient">Without limits.</span></h2>
-    <p>
-      Welcome to Glory Helper AI. Ask questions, explore ideas,
-      learn new things, write content and get help with your work.
-    </p>
+    <h1>Your ideas, <span>amplified.</span></h1>
+    <p>Your everyday assistant for questions, writing, coding and ideas.</p>
   </section>
 
-  <section class="cards" aria-label="Suggested prompts">
-    <button class="card" data-prompt="Help me research a topic and explain it simply.">
-      <span class="emoji">🌐</span>
-      <strong>Explore</strong>
-      <small>Research and learn</small>
-    </button>
-    <button class="card" data-prompt="Help me write clean code and explain how it works.">
-      <span class="emoji">💻</span>
-      <strong>Write code</strong>
-      <small>Build your ideas</small>
-    </button>
-    <button class="card" data-prompt="Give me five creative ideas for a new project.">
-      <span class="emoji">💡</span>
-      <strong>Get ideas</strong>
-      <small>Think creatively</small>
-    </button>
-    <button class="card" data-prompt="Explain how weather forecasts work and where to find current weather.">
-      <span class="emoji">☁️</span>
-      <strong>Discover</strong>
-      <small>Understand anything</small>
-    </button>
+  <section class="features">
+    <div class="feature"><b>🌐 Explore & Learn</b><p>Ask questions and learn about different topics.</p></div>
+    <div class="feature"><b>💻 Write Code</b><p>Explore programming concepts and examples.</p></div>
+    <div class="feature"><b>✍️ Writing Help</b><p>Draft messages, stories and useful content.</p></div>
+    <div class="feature"><b>💡 Get Ideas</b><p>Brainstorm projects and solve everyday problems.</p></div>
   </section>
 
-  <section class="chat-panel">
-    <div class="chat-heading">
-      <div>
-        <strong>✦ Glory AI Chat</strong><br>
-        <span>Your AI conversation</span>
-      </div>
-      <button id="newChat">↻ New chat</button>
+  <section class="chat">
+    <div class="chathead">✦ GLORY HELPER Chat</div>
+    <div id="messages" aria-live="polite">
+      <div class="msg bot">Hey! 👋 Welcome to GLORY HELPER AI. I'm ready to help with questions, writing, coding and ideas. What would you like to explore?</div>
     </div>
-    <div id="webchat"></div>
+    <form class="composer" id="chatForm">
+      <input id="userInput" type="text" placeholder="Message GLORY HELPER..." autocomplete="off" required>
+      <button id="sendBtn" type="submit">Send</button>
+    </form>
   </section>
+  <p class="note">No customer account or visitor ID required.</p>
 
-  <p class="notice">
-    AI responses may sometimes be incorrect. Verify important information.
-  </p>
+  <footer>
+    <strong>GLORY HELPER</strong> · Powered by Ambition<br>
+    Created by <strong>Manthan Bhardwaj</strong><br>
+    © 2026 GLORY HELPER AI
+  </footer>
 </main>
 
-<footer>
-  <strong>GLORY HELPER</strong> · Powered by Ambition<br>
-  Created by Manthan Bhardwaj
-</footer>
-
-<!-- BOT PRESS WEBCHAT -->
-<!-- Replace both placeholder values with your actual Botpress IDs. -->
-<script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
 <script>
-  const BOT_ID = "YOUR_BOTPRESS_BOT_ID";
-  const CLIENT_ID = "YOUR_BOTPRESS_CLIENT_ID";
+const form = document.getElementById("chatForm");
+const input = document.getElementById("userInput");
+const messages = document.getElementById("messages");
 
-  const configured =
-    BOT_ID !== "YOUR_BOTPRESS_BOT_ID" &&
-    CLIENT_ID !== "YOUR_BOTPRESS_CLIENT_ID";
+function addMessage(text, type) {
+  const el = document.createElement("div");
+  el.className = "msg " + type;
+  el.textContent = text;
+  messages.appendChild(el);
+  messages.scrollTop = messages.scrollHeight;
+  return el;
+}
 
-  if (configured) {
-    window.botpress.init({
-      botId: BOT_ID,
-      clientId: CLIENT_ID,
-      selector: "#webchat",
-      configuration: {
-        version: "v2",
-        composerPlaceholder: "Ask Glory Helper anything...",
-        botName: "Glory Helper AI",
-        themeMode: "dark",
-        color: "#39ff9c",
-        radius: 18,
-        variant: "solid",
-        fontFamily: "inter",
-        showPoweredBy: false
-      }
-    });
-  } else {
-    document.getElementById("webchat").innerHTML =
-      '<div style="padding:35px 20px;text-align:center;color:#9ba9bc;line-height:1.8">' +
-      '<div style="font-size:35px">✦</div>' +
-      '<h3 style="color:#f2f7ff">Connect your AI</h3>' +
-      'Add your Botpress Bot ID and Client ID in the code to activate conversations.' +
-      '</div>';
-  }
+function getReply(text) {
+  const q = text.toLowerCase().trim();
 
-  document.querySelectorAll("[data-prompt]").forEach(button => {
-    button.addEventListener("click", () => {
-      const prompt = button.dataset.prompt;
-      if (!configured) {
-        alert("First connect your Botpress Bot ID and Client ID.");
-        return;
-      }
-      if (window.botpress && window.botpress.open) {
-        window.botpress.open();
-      }
-      // The suggested prompt is displayed for easy copying.
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(prompt).then(() => {
-          alert("Suggested question copied! Paste it into the chat.");
-        }).catch(() => alert("Ask this in the chat: " + prompt));
-      } else {
-        alert("Ask this in the chat: " + prompt);
-      }
-    });
-  });
+  if (/\b(hi|hello|hey|namaste|hii)\b/.test(q))
+    return "Hey! 👋 Welcome to GLORY HELPER AI. What can I help you with today?";
 
-  document.getElementById("newChat").addEventListener("click", () => {
-    if (window.botpress && window.botpress.open) {
-      window.botpress.open();
-    }
-    alert("Start a new conversation in the chat. Your bot's settings determine conversation history.");
-  });
+  if (q.includes("who made you") || q.includes("who created you") ||
+      q.includes("your owner") || q.includes("founder") ||
+      q.includes("who owns you"))
+    return "GLORY HELPER AI was created by Manthan Bhardwaj. The project is called GLORY HELPER and is powered by ambition.";
+
+  if (q.includes("your name") || q.includes("who are you"))
+    return "I'm GLORY HELPER, an assistant interface created by Manthan Bhardwaj.";
+
+  if (q.includes("time") || q.includes("date"))
+    return "Today's date and time depend on your device. Please check your phone's clock for the current local time.";
+
+  if (q.includes("weather"))
+    return "I can't retrieve live weather in this standalone version yet. Check a weather service for current conditions and forecasts.";
+
+  if (q.includes("joke"))
+    return "Why do programmers prefer dark mode? Because light attracts bugs! 😄";
+
+  if (q.includes("help"))
+    return "I can respond to a few built-in questions in this version. For full AI conversations, this page needs to be connected to an AI service.";
+
+  return "Thanks for your message! 💚 This version has a working chat interface and a few built-in responses, but it isn't connected to a full AI model yet. To answer general questions like ChatGPT, it needs a real AI service. No visitor ID is required.";
+}
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  addMessage(text, "user");
+  input.value = "";
+  const reply = getReply(text);
+  addMessage(reply, "bot");
+  input.focus();
+});
 </script>
 </body>
 </html>
