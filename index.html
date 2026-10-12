@@ -240,10 +240,28 @@
     }
   </script>
 
-  <!-- Existing Botpress integration preserved -->
+    <!-- Botpress Integration -->
   <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
-</body>
+  <script>
+    window.botpressWebChat.init({
+      "composerPlaceholder": "Message GLORY HELPER...",
+      "botConversationDescription": "AI Assistant",
+      "botId": "20261010170637-QPPVPPQ0",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v5.0",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "20261010170637-QPPVPPQ0",
+      "lazyLoading": false,
+      "showPoweredBy": false,
+      "hideWidget": true
+    });
+
+    window.addEventListener('load', () => {
+      if (window.botpressWebChat) {
+        window.botpressWebChat.open();
+      }
+    });
+  </script>
+
 </html>
 
 
