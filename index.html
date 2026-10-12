@@ -2,135 +2,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070b0a">
-<title>GLORY HELPER AI</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#070b0a;color:#effff6;min-height:100vh}
-header{padding:18px 6%;border-bottom:1px solid #1b3529;display:flex;justify-content:space-between;align-items:center}
-.brand{font-size:20px;font-weight:bold}.brand span{color:#00ffa3}
-.status{font-size:12px;color:#80ffc5}
-main{max-width:850px;margin:auto;padding:35px 18px}
-.hero{text-align:center;padding:20px 0 28px}
-.orb{height:90px;width:90px;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#00ffa3 25%,#087c64 55%,#803cff);box-shadow:0 0 35px #00ffa344}
-h1{font-size:clamp(30px,6vw,48px);margin-bottom:12px}
-h1 span{color:#00ffa3}
-.hero p{color:#a6b9ae;line-height:1.6;font-size:14px}
-.features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
-.feature{border:1px solid #1d382b;background:#0c1510;border-radius:14px;padding:16px}
-.feature b{display:block;margin-bottom:8px}.feature p{font-size:13px;line-height:1.5;color:#9db1a5}
-.chat{border:1px solid #234534;background:#0b120e;border-radius:18px;overflow:hidden}
-.chathead{padding:15px;border-bottom:1px solid #1c3025;font-weight:bold}
-#messages{height:300px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-.msg{max-width:90%;padding:12px 14px;border-radius:13px;font-size:14px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
-.bot{background:#15251b;align-self:flex-start;border:1px solid #25432f}
-.user{background:#006c49;align-self:flex-end}
-.composer{display:flex;gap:8px;padding:12px;border-top:1px solid #1c3025}
-input{min-width:0;flex:1;padding:14px;border-radius:12px;border:1px solid #294636;background:#101b14;color:white;outline:none;font-size:14px}
-input:focus{border-color:#00ffa3}
-button{border:0;border-radius:12px;padding:0 18px;background:#00ffa3;color:#04150d;font-weight:bold;cursor:pointer}
-button:disabled{opacity:.5}
-.note{text-align:center;color:#758a7d;font-size:11px;margin-top:10px;line-height:1.6}
-footer{text-align:center;padding:24px 12px;color:#84978b;font-size:12px;line-height:1.8}
-footer strong{color:#00ffa3}
-@media(max-width:420px){main{padding:25px 12px}.features{gap:8px}.feature{padding:12px}#messages{height:320px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050807">
+  <title>GLORY HELPER AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #050807;
+      color: #f4fff8;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 22px 16px;
+      text-align: center;
+      border-bottom: 1px solid #153b2b;
+      background: #080e0b;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #39ff88;
+      font-size: 28px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #16b85e;
+    }
+
+    header p {
+      color: #a5b8ad;
+      font-size: 13px;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 850px;
+      margin: auto;
+      padding: 45px 20px;
+      text-align: center;
+    }
+
+    .orb {
+      width: 105px;
+      height: 105px;
+      margin: 10px auto 28px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at 35% 30%,
+        #b5ffd0,
+        #18e879 30%,
+        #075d39 65%,
+        #101a15
+      );
+      box-shadow: 0 0 25px #12e875,
+                  0 0 65px #087e4a;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px #12e875; }
+      to { box-shadow: 0 0 45px #12e875,
+                          0 0 80px #087e4a; }
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+
+    .intro {
+      color: #a8b9af;
+      line-height: 1.7;
+      max-width: 550px;
+      margin: 0 auto 30px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 25px auto;
+      max-width: 540px;
+    }
+
+    .feature {
+      padding: 20px 10px;
+      background: #0b1510;
+      border: 1px solid #194b32;
+      border-radius: 14px;
+      color: #d8fbe5;
+    }
+
+    .feature strong {
+      display: block;
+      color: #46ff97;
+      margin-bottom: 8px;
+    }
+
+    .hint {
+      color: #8da698;
+      font-size: 13px;
+      margin-top: 25px;
+    }
+
+    footer {
+      padding: 18px 10px;
+      text-align: center;
+      color: #819589;
+      border-top: 1px solid #153b2b;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    footer a {
+      color: #43ed8b;
+      text-decoration: none;
+    }
+
+    @media (max-width: 400px) {
+      header h1 { font-size: 23px; }
+      h2 { font-size: 22px; }
+      main { padding: 30px 14px; }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-  <div class="brand">GLORY <span>HELPER</span></div>
-  <div class="status">● READY TO CHAT</div>
-</header>
+  <header>
+    <h1>GLORY HELPER</h1>
+    <p>Your AI-powered digital assistant</p>
+  </header>
 
-<main>
-  <section class="hero">
+  <main>
     <div class="orb"></div>
-    <h1>Your ideas, <span>amplified.</span></h1>
-    <p>Your everyday assistant for questions, writing, coding and ideas.</p>
-  </section>
 
-  <section class="features">
-    <div class="feature"><b>🌐 Explore & Learn</b><p>Ask questions and learn about different topics.</p></div>
-    <div class="feature"><b>💻 Write Code</b><p>Explore programming concepts and examples.</p></div>
-    <div class="feature"><b>✍️ Writing Help</b><p>Draft messages, stories and useful content.</p></div>
-    <div class="feature"><b>💡 Get Ideas</b><p>Brainstorm projects and solve everyday problems.</p></div>
-  </section>
+    <h2>How can I help you today?</h2>
 
-  <section class="chat">
-    <div class="chathead">✦ GLORY HELPER Chat</div>
-    <div id="messages" aria-live="polite">
-      <div class="msg bot">Hey! 👋 Welcome to GLORY HELPER AI. I'm ready to help with questions, writing, coding and ideas. What would you like to explore?</div>
+    <p class="intro">
+      Ask questions, explore ideas, get help with writing,
+      understand code, and discover useful information.
+      Start a conversation with GLORY HELPER.
+    </p>
+
+    <div class="features">
+      <div class="feature">
+        <strong>Explore</strong>
+        Get answers to your questions
+      </div>
+
+      <div class="feature">
+        <strong>Write</strong>
+        Create and improve content
+      </div>
+
+      <div class="feature">
+        <strong>Code</strong>
+        Learn and debug programming
+      </div>
+
+      <div class="feature">
+        <strong>Discover</strong>
+        Explore ideas and solutions
+      </div>
     </div>
-    <form class="composer" id="chatForm">
-      <input id="userInput" type="text" placeholder="Message GLORY HELPER..." autocomplete="off" required>
-      <button id="sendBtn" type="submit">Send</button>
-    </form>
-  </section>
-  <p class="note">No customer account or visitor ID required.</p>
+
+    <p class="hint">
+      Open the chat window to start asking questions.
+    </p>
+  </main>
 
   <footer>
-    <strong>GLORY HELPER</strong> · Powered by Ambition<br>
-    Created by <strong>Manthan Bhardwaj</strong><br>
-    © 2026 GLORY HELPER AI
+    GLORY HELPER · Powered by Ambition<br>
+    Created by Manthan Bhardwaj
   </footer>
-</main>
 
-<script>
-const form = document.getElementById("chatForm");
-const input = document.getElementById("userInput");
-const messages = document.getElementById("messages");
-
-function addMessage(text, type) {
-  const el = document.createElement("div");
-  el.className = "msg " + type;
-  el.textContent = text;
-  messages.appendChild(el);
-  messages.scrollTop = messages.scrollHeight;
-  return el;
-}
-
-function getReply(text) {
-  const q = text.toLowerCase().trim();
-
-  if (/\b(hi|hello|hey|namaste|hii)\b/.test(q))
-    return "Hey! 👋 Welcome to GLORY HELPER AI. What can I help you with today?";
-
-  if (q.includes("who made you") || q.includes("who created you") ||
-      q.includes("your owner") || q.includes("founder") ||
-      q.includes("who owns you"))
-    return "GLORY HELPER AI was created by Manthan Bhardwaj. The project is called GLORY HELPER and is powered by ambition.";
-
-  if (q.includes("your name") || q.includes("who are you"))
-    return "I'm GLORY HELPER, an assistant interface created by Manthan Bhardwaj.";
-
-  if (q.includes("time") || q.includes("date"))
-    return "Today's date and time depend on your device. Please check your phone's clock for the current local time.";
-
-  if (q.includes("weather"))
-    return "I can't retrieve live weather in this standalone version yet. Check a weather service for current conditions and forecasts.";
-
-  if (q.includes("joke"))
-    return "Why do programmers prefer dark mode? Because light attracts bugs! 😄";
-
-  if (q.includes("help"))
-    return "I can respond to a few built-in questions in this version. For full AI conversations, this page needs to be connected to an AI service.";
-
-  return "Thanks for your message! 💚 This version has a working chat interface and a few built-in responses, but it isn't connected to a full AI model yet. To answer general questions like ChatGPT, it needs a real AI service. No visitor ID is required.";
-}
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  const text = input.value.trim();
-  if (!text) return;
-  addMessage(text, "user");
-  input.value = "";
-  const reply = getReply(text);
-  addMessage(reply, "bot");
-  input.focus();
-});
-</script>
+  <!-- Existing Botpress chat connection -->
+  <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+  <script
+    defer
+    src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js">
+  </script>
 </body>
 </html>
+
 
