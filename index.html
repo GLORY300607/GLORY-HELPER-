@@ -1,197 +1,636 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050807">
   <title>GLORY HELPER AI</title>
 
   <style>
+    :root {
+      --bg: #080b16;
+      --panel: #111727;
+      --panel2: #182238;
+      --text: #f5f7ff;
+      --muted: #9aa5c5;
+      --border: rgba(255,255,255,.12);
+      --primary: #6c63ff;
+      --secondary: #00d9ff;
+      --user: linear-gradient(135deg,#655cff,#168cff);
+      --bot: #19243a;
+    }
+
+    body.light {
+      --bg: #eef2ff;
+      --panel: #ffffff;
+      --panel2: #e8edff;
+      --text: #172033;
+      --muted: #667085;
+      --border: rgba(20,30,60,.14);
+      --bot: #e8edff;
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      background: #050807;
-      color: #f4fff8;
-      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0,217,255,.15), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(108,99,255,.2), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+    }
+
+    .app {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 270px;
+      padding: 20px;
+      background: rgba(10,15,30,.8);
+      border-right: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    body.light .sidebar {
+      background: rgba(255,255,255,.8);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      background: linear-gradient(135deg,var(--secondary),var(--primary));
+      box-shadow: 0 0 25px rgba(0,217,255,.4);
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .new-chat,
+    .side-button {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      color: var(--text);
+      background: var(--panel2);
+      cursor: pointer;
+      text-align: left;
+      transition: .2s;
+    }
+
+    .new-chat {
+      background: linear-gradient(135deg,var(--primary),#267fff);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      border: none;
+    }
+
+    .new-chat:hover,
+    .side-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.15);
+    }
+
+    .side-title {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 12px;
+    }
+
+    .history {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      padding: 11px;
+      margin: 7px 0;
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .history-item:hover {
+      background: var(--panel2);
+      color: var(--text);
+    }
+
+    .sidebar-bottom {
+      display: grid;
+      gap: 9px;
+    }
+
+    .main {
+      flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
     }
 
-    header {
-      padding: 22px 16px;
-      text-align: center;
-      border-bottom: 1px solid #153b2b;
-      background: #080e0b;
+    .topbar {
+      height: 72px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,15,30,.3);
+      backdrop-filter: blur(15px);
     }
 
-    header h1 {
-      margin: 0;
-      color: #39ff88;
-      font-size: 28px;
-      letter-spacing: 2px;
-      text-shadow: 0 0 15px #16b85e;
+    .topbar h2 {
+      font-size: 20px;
     }
 
-    header p {
-      color: #a5b8ad;
+    .status {
+      color: #4dff9a;
       font-size: 13px;
     }
 
-    main {
+    #chat {
       flex: 1;
-      width: 100%;
+      padding: 28px;
+      overflow-y: auto;
+    }
+
+    .welcome {
+      max-width: 720px;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .welcome h2 {
+      font-size: 35px;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg,var(--secondary),#a68bff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .suggestions {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .suggestion {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: left;
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .suggestion:hover {
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .message-row {
+      display: flex;
+      gap: 12px;
+      margin: 20px auto;
+      max-width: 850px;
+      align-items: flex-start;
+    }
+
+    .message-row.user {
+      justify-content: flex-end;
+    }
+
+    .avatar {
+      min-width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-weight: bold;
+      background: linear-gradient(135deg,var(--secondary),var(--primary));
+      color: white;
+    }
+
+    .user .avatar {
+      order: 2;
+      background: linear-gradient(135deg,#ff7b7b,#ffb347);
+    }
+
+    .bubble {
+      max-width: 75%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      background: var(--bot);
+      border: 1px solid var(--border);
+    }
+
+    .user .bubble {
+      background: var(--user);
+      color: white;
+      border: none;
+    }
+
+    .message-actions {
+      margin-top: 8px;
+      display: flex;
+      gap: 7px;
+    }
+
+    .message-actions button {
+      border: none;
+      padding: 5px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    .message-actions button:hover {
+      background: var(--panel2);
+      color: var(--text);
+    }
+
+    .typing {
+      display: none;
+      max-width: 850px;
+      margin: 0 auto 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .input-area {
+      padding: 18px 25px 22px;
+      border-top: 1px solid var(--border);
+      background: rgba(10,15,30,.45);
+    }
+
+    .input-box {
       max-width: 850px;
       margin: auto;
-      padding: 45px 20px;
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+    }
+
+    textarea {
+      flex: 1;
+      resize: none;
+      border: none;
+      outline: none;
+      padding: 12px;
+      min-height: 46px;
+      max-height: 130px;
+      color: var(--text);
+      background: transparent;
+      font-size: 15px;
+    }
+
+    textarea::placeholder {
+      color: var(--muted);
+    }
+
+    .send {
+      width: 48px;
+      height: 46px;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      cursor: pointer;
+      font-size: 19px;
+    }
+
+    .disclaimer {
       text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 9px;
     }
 
-    .orb {
-      width: 105px;
-      height: 105px;
-      margin: 10px auto 28px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at 35% 30%,
-        #b5ffd0,
-        #18e879 30%,
-        #075d39 65%,
-        #101a15
-      );
-      box-shadow: 0 0 25px #12e875,
-                  0 0 65px #087e4a;
-      animation: glow 3s ease-in-out infinite alternate;
-    }
+    @media(max-width: 750px) {
+      .sidebar {
+        display: none;
+      }
 
-    @keyframes glow {
-      from { box-shadow: 0 0 20px #12e875; }
-      to { box-shadow: 0 0 45px #12e875,
-                          0 0 80px #087e4a; }
-    }
+      .topbar {
+        padding: 0 15px;
+      }
 
-    h2 {
-      font-size: 26px;
-      margin-bottom: 12px;
-    }
+      #chat {
+        padding: 15px;
+      }
 
-    .intro {
-      color: #a8b9af;
-      line-height: 1.7;
-      max-width: 550px;
-      margin: 0 auto 30px;
-    }
+      .welcome {
+        margin: 25px auto;
+      }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin: 25px auto;
-      max-width: 540px;
-    }
+      .welcome h2 {
+        font-size: 28px;
+      }
 
-    .feature {
-      padding: 20px 10px;
-      background: #0b1510;
-      border: 1px solid #194b32;
-      border-radius: 14px;
-      color: #d8fbe5;
-    }
+      .suggestions {
+        grid-template-columns: 1fr;
+      }
 
-    .feature strong {
-      display: block;
-      color: #46ff97;
-      margin-bottom: 8px;
-    }
+      .bubble {
+        max-width: 88%;
+      }
 
-    .hint {
-      color: #8da698;
-      font-size: 13px;
-      margin-top: 25px;
-    }
-
-    footer {
-      padding: 18px 10px;
-      text-align: center;
-      color: #819589;
-      border-top: 1px solid #153b2b;
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    footer a {
-      color: #43ed8b;
-      text-decoration: none;
-    }
-
-    @media (max-width: 400px) {
-      header h1 { font-size: 23px; }
-      h2 { font-size: 22px; }
-      main { padding: 30px 14px; }
+      .input-area {
+        padding: 12px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>GLORY HELPER</h1>
-    <p>Your AI-powered digital assistant</p>
-  </header>
+  <div class="app">
 
-  <main>
-    <div class="orb"></div>
-
-    <h2>How can I help you today?🦋</h2>
-<p class="mirror-quote">
-  “I want to be in a room full of mirrors, because I want to be surrounded by winners.”🪐
-</p>
-    <p class="intro">
-      Ask questions, explore ideas, get help with writing,
-      understand code, and discover useful information.
-      Start a conversation with GLORY HELPER.
-    </p>
-
-    <div class="features">
-      <div class="feature">
-        <strong>Explore</strong>
-        Get answers to your questions
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">G</div>
+        <div>
+          <h1>GLORY HELPER</h1>
+          <span>Personal AI assistant</span>
+        </div>
       </div>
 
-      <div class="feature">
-        <strong>Write</strong>
-        Create and improve content
+      <button class="new-chat" onclick="newChat()">＋ New chat</button>
+
+      <div class="side-title">Recent chats</div>
+      <div class="history" id="history"></div>
+
+      <div class="sidebar-bottom">
+        <button class="side-button" onclick="toggleTheme()">☀️ Change theme</button>
+        <button class="side-button" onclick="clearChat()">🗑 Clear chat</button>
       </div>
+    </aside>
 
-      <div class="feature">
-        <strong>Code</strong>
-        Learn and debug programming
+    <main class="main">
+      <header class="topbar">
+        <h2>GLORY HELPER</h2>
+        <div class="status">● Online</div>
+      </header>
+
+      <section id="chat">
+        <div class="welcome" id="welcome">
+          <h2>How can I help you today?</h2>
+          <p>
+            Ask questions, prepare for interviews, learn new skills,
+            write content, or build your next project.
+          </p>
+
+          <div class="suggestions">
+            <div class="suggestion" onclick="useSuggestion('Help me prepare for my UK student visa interview')">
+              🎓 Prepare for my UK visa interview
+            </div>
+            <div class="suggestion" onclick="useSuggestion('Give me a business idea')">
+              💼 Give me a business idea
+            </div>
+            <div class="suggestion" onclick="useSuggestion('Teach me JavaScript')">
+              💻 Teach me JavaScript
+            </div>
+            <div class="suggestion" onclick="useSuggestion('Improve my English sentence')">
+              ✍️ Improve my English
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="typing" id="typing">Glory is thinking...</div>
+
+      <div class="input-area">
+        <form class="input-box" onsubmit="sendMessage(event)">
+          <textarea id="input" placeholder="Message GLORY HELPER..." rows="1"></textarea>
+          <button class="send" type="submit">➤</button>
+        </form>
+        <div class="disclaimer">
+          GLORY HELPER can make mistakes. Verify important information.
+        </div>
       </div>
+    </main>
+  </div>
 
-      <div class="feature">
-        <strong>Discover</strong>
-        Explore ideas and solutions
-      </div>
-    </div>
+  <script>
+    const chat = document.getElementById("chat");
+    const input = document.getElementById("input");
+    const typing = document.getElementById("typing");
+    const historyBox = document.getElementById("history");
 
-    <p class="hint">
-      Open the chat window to start asking questions.
-    </p>
-  </main>
+    let messages = JSON.parse(localStorage.getItem("gloryMessages")) || [];
 
-  <footer>
-    GLORY HELPER · Powered by Ambition<br>
-    Created by Manthan Bhardwaj
-  </footer>
+    function saveMessages() {
+      localStorage.setItem("gloryMessages", JSON.stringify(messages));
+    }
 
-  <!-- Existing Botpress chat connection -->
-  <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-  <script
-    defer
-    src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js">
+    function addMessage(text, sender, save = true) {
+      document.getElementById("welcome")?.remove();
+
+      const row = document.createElement("div");
+      row.className = "message-row " + sender;
+
+      const avatar = document.createElement("div");
+      avatar.className = "avatar";
+      avatar.textContent = sender === "user" ? "U" : "G";
+
+      const content = document.createElement("div");
+
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;
+
+      content.appendChild(bubble);
+
+      if (sender === "bot") {
+        const actions = document.createElement("div");
+        actions.className = "message-actions";
+
+        const copy = document.createElement("button");
+        copy.textContent = "Copy";
+        copy.onclick = () => {
+          navigator.clipboard.writeText(text);
+          copy.textContent = "Copied";
+          setTimeout(() => copy.textContent = "Copy", 1200);
+        };
+
+        actions.appendChild(copy);
+        content.appendChild(actions);
+      }
+
+      row.appendChild(avatar);
+      row.appendChild(content);
+      chat.appendChild(row);
+      chat.scrollTop = chat.scrollHeight;
+
+      if (save) {
+        messages.push({ text, sender });
+        saveMessages();
+        updateHistory();
+      }
+    }
+
+    function getReply(text) {
+      const lower = text.toLowerCase();
+
+      if (lower.includes("visa") || lower.includes("uk interview")) {
+        return "For your UK student visa interview, explain clearly why you chose the UK, your university, your course, your funding plan, your accommodation, and your future career plan. Speak naturally and answer honestly.";
+      }
+
+      if (lower.includes("business idea")) {
+        return "A strong idea is a local digital-services platform for small businesses. You could offer website creation, social media management, Google Business Profile setup, and simple advertising packages.";
+      }
+
+      if (lower.includes("javascript")) {
+        return "JavaScript makes websites interactive. Start with variables, functions, conditions, arrays, objects, DOM manipulation, and events. For example: document.querySelector('button').onclick = () => alert('Hello!');";
+      }
+
+      if (lower.includes("english")) {
+        return "Send me your sentence and I will correct the grammar, explain the mistake, and give you a more natural version.";
+      }
+
+      if (lower.includes("who are you")) {
+        return "I’m GLORY HELPER, an artificial intelligence assistant created and managed by Manthan Bhardwaj.";
+      }
+
+      return "That is an interesting question. I can help you understand it step by step. For real AI answers, connect this interface to your own secure backend API.";
+    }
+
+    function sendMessage(event) {
+      event.preventDefault();
+
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage(text, "user");
+      input.value = "";
+      input.style.height = "46px";
+
+      typing.style.display = "block";
+
+      setTimeout(() => {
+        typing.style.display = "none";
+        addMessage(getReply(text), "bot");
+      }, 900);
+    }
+
+    function useSuggestion(text) {
+      input.value = text;
+      input.focus();
+    }
+
+    function newChat() {
+      messages = [];
+      saveMessages();
+      chat.innerHTML = `
+        <div class="welcome" id="welcome">
+          <h2>How can I help you today?</h2>
+          <p>Start a fresh conversation with GLORY HELPER.</p>
+        </div>
+      `;
+      updateHistory();
+    }
+
+    function clearChat() {
+      if (confirm("Clear this conversation?")) {
+        newChat();
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("light");
+      localStorage.setItem(
+        "gloryTheme",
+        document.body.classList.contains("light") ? "light" : "dark"
+      );
+    }
+
+    function updateHistory() {
+      historyBox.innerHTML = "";
+
+      const userMessages = messages.filter(item => item.sender === "user");
+
+      userMessages.slice(-8).reverse().forEach(item => {
+        const div = document.createElement("div");
+        div.className = "history-item";
+        div.textContent = item.text;
+        div.onclick = () => {
+          input.value = item.text;
+          input.focus();
+        };
+        historyBox.appendChild(div);
+      });
+    }
+
+    input.addEventListener("input", () => {
+      input.style.height = "46px";
+      input.style.height = Math.min(input.scrollHeight, 130) + "px";
+    });
+
+    input.addEventListener("keydown", event => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        document.querySelector(".input-box").requestSubmit();
+      }
+    });
+
+    if (localStorage.getItem("gloryTheme") === "light") {
+      document.body.classList.add("light");
+    }
+
+    messages.forEach(item => addMessage(item.text, item.sender, false));
+    updateHistory();
   </script>
 </body>
 </html>
