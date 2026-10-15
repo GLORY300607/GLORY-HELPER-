@@ -1,248 +1,294 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d1f">
-<meta name="description" content="GLORY HELPER - Your intelligent AI assistant">
-<title>GLORY HELPER AI</title>
-<style>
-:root{--background:#070b18;--panel:#10182b;--panel-light:#17223a;--text:#f4f7ff;--muted:#9ca9c9;--border:rgba(255,255,255,.12);--primary:#6c63ff;--secondary:#00d9ff;--success:#35e58a;--shadow:0 20px 60px rgba(0,0,0,.28);--bot:#17233b}
-body.light{--background:#eef3ff;--panel:#fff;--panel-light:#e8edff;--text:#16213a;--muted:#60708f;--border:rgba(20,35,70,.14);--shadow:0 20px 60px rgba(40,60,120,.12);--bot:#e8edff}
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}body{min-height:100vh;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(0,217,255,.16),transparent 28%),radial-gradient(circle at 100% 100%,rgba(108,99,255,.22),transparent 34%),var(--background);transition:background .3s,color .3s}button,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;min-height:100vh;padding:22px 18px;display:flex;flex-direction:column;gap:18px;background:rgba(8,13,31,.82);border-right:1px solid var(--border);backdrop-filter:blur(20px)}body.light .sidebar{background:rgba(255,255,255,.82)}.brand{display:flex;align-items:center;gap:12px;padding:4px 6px 16px}.logo{width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;border-radius:16px;color:#fff;font-size:25px;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary));box-shadow:0 0 28px rgba(0,217,255,.4)}.brand h1{font-size:18px;letter-spacing:1px}.brand p{margin-top:4px;color:var(--muted);font-size:12px}.new-chat{width:100%;padding:14px;border:0;border-radius:13px;color:#fff;background:linear-gradient(135deg,var(--primary),#278bff);cursor:pointer;font-weight:bold;transition:.2s}.menu-title{margin-top:12px;color:var(--muted);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}.side-button{width:100%;padding:13px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:12px;background:var(--panel-light);transition:.2s}.new-chat:hover,.side-button:hover,.quick-button:hover{transform:translateY(-2px);filter:brightness(1.1)}.sidebar-bottom{display:grid;gap:10px;margin-top:auto}.creator-mini{padding:14px;color:var(--muted);font-size:12px;line-height:1.6;border:1px solid var(--border);border-radius:13px;background:var(--panel)}.creator-mini strong{color:var(--secondary)}.main{min-width:0;flex:1;display:flex;flex-direction:column;min-height:100vh}.topbar{min-height:72px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);background:rgba(8,13,31,.28);backdrop-filter:blur(15px)}body.light .topbar{background:rgba(255,255,255,.35)}.topbar h2{font-size:20px}.online{display:flex;align-items:center;gap:7px;color:var(--success);font-size:12px}.online-dot{width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success)}.content{width:min(100%,1050px);margin:0 auto;padding:34px 25px 20px;text-align:center;flex:1}.hero-logo{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border:1px solid rgba(0,217,255,.4);border-radius:25px;color:#fff;font-size:40px;font-weight:bold;background:linear-gradient(135deg,#00bde8,#6c63ff);box-shadow:0 0 42px rgba(0,217,255,.25)}.content h3{font-size:clamp(28px,5vw,45px);background:linear-gradient(90deg,var(--secondary),#a993ff);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{max-width:650px;margin:13px auto 0;color:var(--muted);line-height:1.7}.quick-grid{max-width:900px;margin:26px auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.quick-button{padding:16px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:15px;background:var(--panel);transition:.2s}.quick-button span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.5}.chat-area{width:min(100%,850px);min-height:0;margin:0 auto 20px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:left}body.light .chat-area{background:transparent}.chat-messages{display:flex;flex-direction:column;gap:12px}.message-row{display:flex;gap:9px;align-items:flex-start}.message-row.user{justify-content:flex-end}.avatar{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;color:#fff;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary))}.message-row.user .avatar{order:2;background:linear-gradient(135deg,#655cff,#168cff)}.bubble{max-width:85%;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--bot);color:var(--text);line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.message-row.user .bubble{background:linear-gradient(135deg,#655cff,#168cff);color:white;border:0}.typing{display:none;color:var(--muted);font-size:12px;padding:12px 0 0}.input-area{width:min(100%,850px);margin:0 auto 22px}.input-box{display:flex;gap:10px;padding:9px;border:1px solid var(--border);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}textarea{flex:1;min-width:0;resize:none;outline:none;border:0;padding:12px;min-height:46px;max-height:130px;color:var(--text);background:transparent;font-size:15px;line-height:1.4}textarea::placeholder{color:var(--muted)}.send{width:48px;height:46px;flex-shrink:0;border:0;border-radius:12px;color:white;background:linear-gradient(135deg,var(--primary),var(--secondary));font-size:19px}.disclaimer{text-align:center;color:var(--muted);font-size:11px;margin-top:9px}.creator{margin:10px auto 0;padding:18px 10px 8px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.8}.creator strong{color:var(--secondary);font-size:14px}.creator a{color:#9d8cff;text-decoration:none}.creator a:hover{text-decoration:underline}.empty-note{padding:12px;text-align:center;color:var(--muted);font-size:12px}
-@media(max-width:760px){.app{display:block}.sidebar{width:100%;min-height:auto;padding:12px 14px;display:block;border-right:0;border-bottom:1px solid var(--border)}.brand{padding:0}.brand .logo{width:42px;height:42px}.new-chat,.menu-title,.side-button,.sidebar-bottom{display:none}.topbar{min-height:60px;padding:0 16px}.topbar h2{font-size:17px}.content{padding:25px 14px 15px}.quick-grid{grid-template-columns:1fr;margin:22px auto}.hero-logo{width:64px;height:64px;font-size:33px;border-radius:21px}.chat-area{padding:0}.input-area{padding:0 2px}.bubble{max-width:88%}.creator{padding-bottom:15px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <title>GLORY HELPER AI</title>
 
-/* Hide the extra Botpress floating launcher; the page's own message box is used instead. */
-.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
-  
-/* ===== GLORY HELPER HISTORICAL THEME ROTATION ===== */
+  <style>
+    * { box-sizing: border-box; }
 
-body {
-  --empire-light-a: rgba(204, 151, 72, 0.23);
-  --empire-light-b: rgba(115, 79, 145, 0.20);
+    :root {
+      --paper: #f7f5ef;
+      --ink: #191916;
+      --muted: #77766f;
+      --line: #e5e1d7;
+      --accent: #45483d;
+    }
 
-  background-image:
-    radial-gradient(
-      ellipse at 15% 20%,
-      var(--empire-light-a),
-      transparent 48%
-    ),
-    radial-gradient(
-      ellipse at 85% 80%,
-      var(--empire-light-b),
-      transparent 45%
-    ),
-    linear-gradient(135deg, #080b16, #171321, #0b101c) !important;
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Inter, Arial, sans-serif;
+    }
 
-  background-size: 100% 100%;
-  transition: background-color 1s ease;
-}
+    .page {
+      width: min(100% - 40px, 1100px);
+      margin: auto;
+    }
 
-/* Keep the atmosphere behind the existing interface */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      ellipse at 20% 25%,
-      var(--empire-light-a),
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 80% 75%,
-      var(--empire-light-b),
-      transparent 48%
-    );
-  opacity: 1;
-  transition: opacity 1s ease;
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
 
-/* Keep the actual website content above the lighting */
-body > * {
-  position: relative;
-}
+    .brand {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
 
-/* 1. MAURYAN EMPIRE */
-body.empire-mauryan {
-  --empire-light-a: rgba(204, 151, 72, 0.24);
-  --empire-light-b: rgba(115, 79, 145, 0.20);
-}
+    .status {
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-/* 2. ROMAN EMPIRE */
-body.empire-roman {
-  --empire-light-a: rgba(165, 56, 76, 0.25);
-  --empire-light-b: rgba(204, 155, 74, 0.20);
-}
+    .status span {
+      color: #427a54;
+      margin-right: 6px;
+    }
 
-/* 3. ANCIENT EGYPT */
-body.empire-egyptian {
-  --empire-light-a: rgba(35, 137, 168, 0.26);
-  --empire-light-b: rgba(216, 166, 56, 0.23);
-}
+    main {
+      padding: 68px 0 36px;
+      text-align: center;
+    }
 
-/* 4. ANCIENT GREECE */
-body.empire-greek {
-  --empire-light-a: rgba(84, 127, 190, 0.25);
-  --empire-light-b: rgba(194, 198, 207, 0.17);
-}
+    .eyebrow {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
 
-/* 5. MUGHAL EMPIRE */
-body.empire-mughal {
-  --empire-light-a: rgba(36, 137, 98, 0.25);
-  --empire-light-b: rgba(158, 73, 112, 0.22);
-}
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(42px, 7vw, 76px);
+      letter-spacing: -2.8px;
+      line-height: 1.05;
+      margin: 22px 0;
+    }
 
-/* 6. MEDIEVAL KINGDOM */
-body.empire-medieval {
-  --empire-light-a: rgba(163, 118, 48, 0.24);
-  --empire-light-b: rgba(100, 60, 143, 0.25);
-}
+    .quote {
+      max-width: 540px;
+      margin: 0 auto 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.7;
+      color: #55544d;
+    }
 
-/* 7. BYZANTINE EMPIRE */
-body.empire-byzantine {
-  --empire-light-a: rgba(123, 63, 164, 0.27);
-  --empire-light-b: rgba(194, 142, 53, 0.22);
-}
+    .intro {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto;
+    }
 
-/* 8. PERSIAN EMPIRE */
-body.empire-persian {
-  --empire-light-a: rgba(46, 103, 182, 0.27);
-  --empire-light-b: rgba(197, 143, 57, 0.22);
-}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 40px 0;
+      text-align: left;
+    }
 
-/* 9. IMPERIAL CHINA */
-body.empire-chinese {
-  --empire-light-a: rgba(183, 45, 48, 0.26);
-  --empire-light-b: rgba(211, 157, 54, 0.23);
-}
+    .feature {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.45);
+      border-radius: 16px;
+      padding: 20px;
+    }
 
-/* 10. FEUDAL JAPAN */
-body.empire-japanese {
-  --empire-light-a: rgba(46, 77, 151, 0.27);
-  --empire-light-b: rgba(152, 161, 185, 0.18);
-}
+    .feature small {
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
 
-/* Respect reduced-motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  body,
-  body::before {
-    transition: none !important;
-  }
-}
+    .feature h3 {
+      font-family: Georgia, serif;
+      font-size: 19px;
+      font-weight: 400;
+      margin: 14px 0 7px;
+    }
 
-</style>
-<!-- Existing Botpress integration preserved. Do not remove these scripts. -->
-<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
+    .feature p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .chat-heading {
+      text-align: left;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-heading h2 {
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+    .chat-heading p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 6px 0 0;
+    }
+
+    .chat-shell {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffefa;
+      text-align: left;
+      min-height: 520px;
+    }
+
+    /* Botpress must be configured for Embedded mode
+       with webchat-container as its container ID. */
+    #webchat-container {
+      width: 100%;
+      height: 520px;
+      min-height: 520px;
+      position: relative;
+    }
+
+    #webchat-container .bpWebchat {
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 38px;
+      padding: 25px 0 32px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    footer a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    @media (max-width: 650px) {
+      .page { width: min(100% - 28px, 1100px); }
+      header { padding: 20px 0; }
+      main { padding-top: 48px; }
+      h1 { letter-spacing: -1.7px; }
+      .features { grid-template-columns: 1fr; gap: 10px; }
+      .feature { padding: 17px; }
+      .chat-shell { border-radius: 13px; }
+      #webchat-container { height: 500px; min-height: 500px; }
+      .chat-heading { padding: 18px; }
+    }
+  </style>
+
+  <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+  <script
+    src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js"
+    defer>
+  </script>
 </head>
+
 <body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand"><div class="logo">G</div><div><h1>GLORY HELPER</h1><p>Intelligent AI assistant</p></div></div>
-    <button class="new-chat" type="button" onclick="newChat()">＋ New conversation</button>
-    <div class="menu-title">Workspace</div>
-    <button class="side-button" type="button" onclick="scrollToChat()">💬 Open chat</button>
-    <button class="side-button" type="button" onclick="toggleTheme()">🌙 Change theme</button>
-    <div class="sidebar-bottom"><div class="creator-mini">Created and managed by<br><strong>Manthan Bhardwaj</strong></div></div>
-  </aside>
-  <main class="main">
-    <header class="topbar"><h2>GLORY HELPER</h2><div class="online"><span class="online-dot"></span><span id="status">Connecting to Botpress…</span></div></header>
-    <section class="content">
-      <div class="hero-logo" aria-hidden="true">G</div>
-      <h3>How can I help you today?</h3>
-      <p class="subtitle">Ask questions, learn English, prepare for interviews, explore ideas, or get clear explanations from GLORY HELPER.</p>
-      <div class="quick-grid">
-        <button class="quick-button" type="button" onclick="sendQuickMessage('Explain this topic in simple English')">📚 Learn something<span>Get a simple step-by-step explanation</span></button>
-        <button class="quick-button" type="button" onclick="sendQuickMessage('Help me improve my English speaking')">🗣️ Improve English<span>Practice useful English conversations</span></button>
-        <button class="quick-button" type="button" onclick="sendQuickMessage('Give me a useful business idea')">💡 Get an idea<span>Explore business and technology ideas</span></button>
-      </div>
-      <div class="chat-area" id="chat-area">
-        <div class="chat-messages" id="chat-messages"><div class="empty-note" id="empty-note">GLORY HELPER replies will appear here.</div></div>
-        <div class="typing" id="typing">GLORY HELPER is thinking…</div>
-      </div>
-      <div class="input-area">
-        <form class="input-box" id="message-form" onsubmit="sendMessage(event)">
-          <textarea id="message-input" rows="1" placeholder="Message GLORY HELPER…" aria-label="Message GLORY HELPER"></textarea>
-          <button class="send" type="submit" aria-label="Send message">➤</button>
-        </form>
-        <p class="disclaimer">AI can make mistakes. Please verify important information.</p>
-      </div>
-      <footer class="creator"><strong>GLORY HELPER</strong><br>Powered by Ambition<br>Created and managed by <strong>Manthan Bhardwaj</strong><br>Email: <a href="mailto:Manthanb745@gmail.com">Manthanb745@gmail.com</a> · 2026</footer>
-    </section>
-  </main>
-</div>
-<script>
-const messageInput=document.getElementById('message-input');
-const messagesBox=document.getElementById('chat-messages');
-const typing=document.getElementById('typing');
-const statusEl=document.getElementById('status');
-let botpressReady=false;
-let pendingMessage='';
-let messages=[];
-try{const saved=JSON.parse(localStorage.getItem('gloryMessages')||'[]');if(Array.isArray(saved))messages=saved.filter(m=>m&&typeof m.text==='string'&&m.sender==='bot');}catch(e){messages=[];}
-function saveMessages(){try{localStorage.setItem('gloryMessages',JSON.stringify(messages.slice(-100)));}catch(e){}}
-function addMessage(text,sender,save=true){if(sender==='user'||!text||!text.trim())return;document.getElementById('empty-note')?.remove();const row=document.createElement('div');row.className='message-row '+sender;const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=sender==='user'?'You':'G';const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=text;row.appendChild(avatar);row.appendChild(bubble);messagesBox.appendChild(row);messagesBox.scrollTop=messagesBox.scrollHeight;if(save){messages.push({text,sender});saveMessages();}}
-function showSavedMessages(){messagesBox.innerHTML='';if(!messages.length){const note=document.createElement('div');note.className='empty-note';note.id='empty-note';note.textContent='GLORY HELPER replies will appear here.';messagesBox.appendChild(note);return;}messages.forEach(m=>addMessage(m.text,m.sender,false));}
-function sendToBot(text){if(!window.botpress||typeof window.botpress.sendMessage!=='function'){typing.style.display='none';statusEl.textContent='Botpress is loading';addMessage('The Botpress chat interface is not ready yet. Please wait a few seconds and try again. If this continues, check the Botpress configuration script.','bot');return;}try{if(!botpressReady){pendingMessage=text;typing.style.display='block';statusEl.textContent='Waiting for Botpress…';if(typeof window.botpress.open==='function')window.botpress.open();return;}if(typeof window.botpress.open==='function')window.botpress.open();const result=window.botpress.sendMessage(text);if(result&&typeof result.catch==='function')result.catch(()=>{typing.style.display='none';addMessage('I could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';statusEl.textContent='Botpress connection issue';addMessage('Could not send the message. Please check the Botpress Webchat setup.','bot');}}
-function sendMessage(event){event.preventDefault();const text=messageInput.value.trim();if(!text)return;messageInput.value='';messageInput.style.height='46px';typing.style.display='block';sendToBot(text);}
-function sendQuickMessage(text){messageInput.value=text;messageInput.focus();messageInput.style.height='auto';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';scrollToChat();sendMessage(new Event('submit',{cancelable:true,preventDefault(){}}));}
-function scrollToChat(){document.getElementById('chat-area').scrollIntoView({behavior:'smooth',block:'center'});messageInput.focus({preventScroll:true});}
-function newChat(){messages=[];saveMessages();showSavedMessages();typing.style.display='none';try{if(window.botpress&&typeof window.botpress.restartConversation==='function'&&botpressReady){const r=window.botpress.restartConversation();if(r&&typeof r.catch==='function')r.catch(()=>{});}}catch(e){}scrollToChat();}
-function toggleTheme(){document.body.classList.toggle('light');try{localStorage.setItem('glory-theme',document.body.classList.contains('light')?'light':'dark');}catch(e){}}
-function hideBotpressLauncher(){
-  const launcherStyle='.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}';
-  const visited=new WeakSet();
-  function scan(root){
-    if(!root||visited.has(root))return;visited.add(root);
-    try{root.querySelectorAll('.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]').forEach(el=>{el.style.setProperty('display','none','important');el.style.setProperty('visibility','hidden','important');el.style.setProperty('pointer-events','none','important');});
-      root.querySelectorAll('*').forEach(el=>{if(el.shadowRoot)scan(el.shadowRoot);});
-      if(root instanceof ShadowRoot&&!root.querySelector('style[data-glory-hide-fab]')){const style=document.createElement('style');style.setAttribute('data-glory-hide-fab','true');style.textContent=launcherStyle;root.appendChild(style);}
-    }catch(e){}
-  }
-  scan(document);
-}
-function extractText(event){const candidates=[event?.payload?.text,event?.message?.payload?.text,event?.message?.text,event?.payload?.markdown,event?.text];return candidates.find(x=>typeof x==='string'&&x.trim())||'';}
-function registerBotpress(){if(!window.botpress||typeof window.botpress.on!=='function'){statusEl.textContent='Connecting to Botpress…';return false;}try{window.botpress.on('webchat:initialized',()=>{statusEl.textContent='Botpress connected';});window.botpress.on('webchat:ready',()=>{botpressReady=true;statusEl.textContent='AI assistant ready';if(pendingMessage){const text=pendingMessage;pendingMessage='';try{const r=window.botpress.sendMessage(text);if(r&&typeof r.catch==='function')r.catch(()=>{typing.style.display='none';addMessage('Could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';}}});window.botpress.on('message',(event)=>{const text=extractText(event);if(!text)return;const direction=event?.direction||event?.message?.direction||event?.payload?.direction;const isBot=direction==='incoming'||direction==='bot'||event?.from==='bot'||event?.message?.from==='bot'||event?.user?.role==='bot';if(isBot){typing.style.display='none';addMessage(text,'bot');}});window.botpress.on('error',()=>{statusEl.textContent='Botpress error';typing.style.display='none';});return true;}catch(e){statusEl.textContent='Check Botpress setup';return false;}}
-try{if(localStorage.getItem('glory-theme')==='light')document.body.classList.add('light');}catch(e){}
-showSavedMessages();
-hideBotpressLauncher();
-const launcherObserver=new MutationObserver(()=>hideBotpressLauncher());launcherObserver.observe(document.documentElement,{childList:true,subtree:true});
-let bpAttempts=0;const bpTimer=setInterval(()=>{hideBotpressLauncher();bpAttempts++;if(registerBotpress()||bpAttempts>=30){clearInterval(bpTimer);if(bpAttempts>=30&&!botpressReady)statusEl.textContent='Check Botpress setup';}},500);
-messageInput.addEventListener('input',()=>{messageInput.style.height='46px';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';});
-messageInput.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();document.getElementById('message-form').requestSubmit();}});
-  
-/* ===== AUTOMATIC HISTORICAL LIGHTING ROTATION ===== */
-(function startEmpireRotation() {
-  const empireThemes = [
-    "empire-mauryan",
-    "empire-roman",
-    "empire-egyptian",
-    "empire-greek",
-    "empire-mughal",
-    "empire-medieval",
-    "empire-byzantine",
-    "empire-persian",
-    "empire-chinese",
-    "empire-japanese"
-  ];
+  <div class="page">
+    <header>
+      <div class="brand">GLORY HELPER <span>AI</span></div>
+      <div class="status"><span>●</span> GLORY AI ASSISTANT</div>
+    </header>
 
-  let activeEmpire = 10;
+    <main>
+      <div class="eyebrow">A little more than an assistant</div>
 
-  function changeEmpireTheme() {
-    document.body.classList.remove(...empireThemes);
-    document.body.classList.add(empireThemes[activeEmpire]);
-    activeEmpire = (activeEmpire + 1) % empireThemes.length;
-  }
+      <h1>Think clearly.<br>Build boldly.</h1>
 
-  changeEmpireTheme();
-  window.setInterval(changeEmpireTheme, 2000);
-})();
-</script>
+      <p class="quote">
+        “Let others chase glory. I shall become its definition.”
+      </p>
+
+      <p class="intro">
+        A space to explore ideas, solve problems, write, learn,
+        and turn ambition into action.
+      </p>
+
+      <section class="features">
+        <article class="feature">
+          <small>01 / EXPLORE</small>
+          <h3>Find new perspectives</h3>
+          <p>Explore questions, knowledge, and possibilities.</p>
+        </article>
+
+        <article class="feature">
+          <small>02 / CREATE</small>
+          <h3>Make ideas real</h3>
+          <p>Work on writing, code, plans, and creative projects.</p>
+        </article>
+
+        <article class="feature">
+          <small>03 / DISCOVER</small>
+          <h3>Keep learning</h3>
+          <p>Break down difficult topics into clearer steps.</p>
+        </article>
+      </section>
+
+      <section class="chat-shell">
+        <div class="chat-heading">
+          <div>
+            <h2>Talk to GLORY</h2>
+            <p>Your conversation stays here on this page.</p>
+          </div>
+          <div class="status">AI CHAT</div>
+        </div>
+
+        <div id="webchat-container">
+          <!-- Botpress embedded chat appears here when configured. -->
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <strong>GLORY HELPER</strong> · Powered by ambition
+        <br>Created by Manthan Bhardwaj
+      </div>
+      <div>
+        <a href="mailto:Manthanb745@gmail.com">
+          Manthanb745@gmail.com
+        </a>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
+
 
 
