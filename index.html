@@ -15,6 +15,125 @@ body.light{--background:#eef3ff;--panel:#fff;--panel-light:#e8edff;--text:#16213
 
 /* Hide the extra Botpress floating launcher; the page's own message box is used instead. */
 .bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+  
+/* ===== GLORY HELPER HISTORICAL THEME ROTATION ===== */
+
+body {
+  --empire-light-a: rgba(204, 151, 72, 0.23);
+  --empire-light-b: rgba(115, 79, 145, 0.20);
+
+  background-image:
+    radial-gradient(
+      ellipse at 15% 20%,
+      var(--empire-light-a),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 85% 80%,
+      var(--empire-light-b),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #080b16, #171321, #0b101c) !important;
+
+  background-size: 100% 100%;
+  transition: background-color 1s ease;
+}
+
+/* Keep the atmosphere behind the existing interface */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 20% 25%,
+      var(--empire-light-a),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 75%,
+      var(--empire-light-b),
+      transparent 48%
+    );
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+/* Keep the actual website content above the lighting */
+body > * {
+  position: relative;
+}
+
+/* 1. MAURYAN EMPIRE */
+body.empire-mauryan {
+  --empire-light-a: rgba(204, 151, 72, 0.24);
+  --empire-light-b: rgba(115, 79, 145, 0.20);
+}
+
+/* 2. ROMAN EMPIRE */
+body.empire-roman {
+  --empire-light-a: rgba(165, 56, 76, 0.25);
+  --empire-light-b: rgba(204, 155, 74, 0.20);
+}
+
+/* 3. ANCIENT EGYPT */
+body.empire-egyptian {
+  --empire-light-a: rgba(35, 137, 168, 0.26);
+  --empire-light-b: rgba(216, 166, 56, 0.23);
+}
+
+/* 4. ANCIENT GREECE */
+body.empire-greek {
+  --empire-light-a: rgba(84, 127, 190, 0.25);
+  --empire-light-b: rgba(194, 198, 207, 0.17);
+}
+
+/* 5. MUGHAL EMPIRE */
+body.empire-mughal {
+  --empire-light-a: rgba(36, 137, 98, 0.25);
+  --empire-light-b: rgba(158, 73, 112, 0.22);
+}
+
+/* 6. MEDIEVAL KINGDOM */
+body.empire-medieval {
+  --empire-light-a: rgba(163, 118, 48, 0.24);
+  --empire-light-b: rgba(100, 60, 143, 0.25);
+}
+
+/* 7. BYZANTINE EMPIRE */
+body.empire-byzantine {
+  --empire-light-a: rgba(123, 63, 164, 0.27);
+  --empire-light-b: rgba(194, 142, 53, 0.22);
+}
+
+/* 8. PERSIAN EMPIRE */
+body.empire-persian {
+  --empire-light-a: rgba(46, 103, 182, 0.27);
+  --empire-light-b: rgba(197, 143, 57, 0.22);
+}
+
+/* 9. IMPERIAL CHINA */
+body.empire-chinese {
+  --empire-light-a: rgba(183, 45, 48, 0.26);
+  --empire-light-b: rgba(211, 157, 54, 0.23);
+}
+
+/* 10. FEUDAL JAPAN */
+body.empire-japanese {
+  --empire-light-a: rgba(46, 77, 151, 0.27);
+  --empire-light-b: rgba(152, 161, 185, 0.18);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  body,
+  body::before {
+    transition: none !important;
+  }
+}
+
 </style>
 <!-- Existing Botpress integration preserved. Do not remove these scripts. -->
 <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
