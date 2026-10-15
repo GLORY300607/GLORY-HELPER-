@@ -214,6 +214,33 @@ const launcherObserver=new MutationObserver(()=>hideBotpressLauncher());launcher
 let bpAttempts=0;const bpTimer=setInterval(()=>{hideBotpressLauncher();bpAttempts++;if(registerBotpress()||bpAttempts>=30){clearInterval(bpTimer);if(bpAttempts>=30&&!botpressReady)statusEl.textContent='Check Botpress setup';}},500);
 messageInput.addEventListener('input',()=>{messageInput.style.height='46px';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';});
 messageInput.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();document.getElementById('message-form').requestSubmit();}});
+  
+/* ===== AUTOMATIC HISTORICAL LIGHTING ROTATION ===== */
+(function startEmpireRotation() {
+  const empireThemes = [
+    "empire-mauryan",
+    "empire-roman",
+    "empire-egyptian",
+    "empire-greek",
+    "empire-mughal",
+    "empire-medieval",
+    "empire-byzantine",
+    "empire-persian",
+    "empire-chinese",
+    "empire-japanese"
+  ];
+
+  let activeEmpire = 0;
+
+  function changeEmpireTheme() {
+    document.body.classList.remove(...empireThemes);
+    document.body.classList.add(empireThemes[activeEmpire]);
+    activeEmpire = (activeEmpire + 1) % empireThemes.length;
+  }
+
+  changeEmpireTheme();
+  window.setInterval(changeEmpireTheme, 2000);
+})();
 </script>
 </body>
 </html>
