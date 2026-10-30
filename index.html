@@ -1,256 +1,1222 @@
 
-<!-- GLORY HELPER: COMPARISON & OFFICIAL RESEARCH UPGRADE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>GLORY HELPER | International Interview Preparation</title>
+
 <style>
-.gh-research{background:#111;border:1px solid #92774466;border-radius:14px;padding:20px;margin:18px 0;color:#f5f0e7}
-.gh-research h2,.gh-research h3{color:#e5c889}
-.gh-research label{display:block;color:#d8c9aa;margin:12px 0 5px;font-size:13px}
-.gh-research input,.gh-research select,.gh-research textarea{width:100%;padding:12px;background:#090909;border:1px solid #625137;border-radius:8px;color:white}
-.gh-research button{padding:11px 16px;background:#b89553;color:#100e09;border:0;border-radius:8px;font-weight:bold;margin:10px 5px 5px 0}
-.gh-research .gh-secondary{background:transparent;color:#e5c889;border:1px solid #927744}
-.gh-point{padding:12px;margin:9px 0;background:#1b1812;border-left:3px solid #c9a45c;border-radius:5px}
-.gh-answer{white-space:pre-wrap;line-height:1.85;background:#090909;padding:17px;border:1px solid #92774466;border-radius:9px;margin-top:12px}
-.gh-source{display:block;color:#e5c889;margin:9px 0;overflow-wrap:anywhere}
-.gh-muted{color:#aaa49a;font-size:12px}
+:root{
+  --bg:#090909;
+  --panel:#12110f;
+  --panel2:#191713;
+  --gold:#d5ae62;
+  --gold-light:#f0d49a;
+  --text:#f5f0e7;
+  --muted:#aaa294;
+  --border:rgba(213,174,98,.22);
+  --green:#73c894;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+header{
+  min-height:72px;
+  padding:14px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  border-bottom:1px solid var(--border);
+  background:#0b0b0a;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-mark{
+  width:42px;height:42px;
+  border:1px solid var(--gold);
+  border-radius:8px;
+  display:grid;place-items:center;
+  color:var(--gold-light);
+  font:27px Georgia,serif;
+  box-shadow:0 0 16px rgba(213,174,98,.12);
+}
+.brand-name{font:20px Georgia,serif;letter-spacing:2px}
+.brand-sub{
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--gold);
+  margin-top:4px;
+}
+.status{color:var(--muted);font-size:11px}
+.status-dot{
+  display:inline-block;width:7px;height:7px;
+  border-radius:50%;background:#777;margin-right:6px;
+}
+.status.connected .status-dot{
+  background:var(--green);
+  box-shadow:0 0 9px rgba(115,200,148,.6);
+}
+
+main{width:min(1120px,92%);margin:auto;padding:35px 0 55px}
+h1,h2,h3{font-family:Georgia,serif;font-weight:400}
+h1{font-size:clamp(31px,5vw,47px);line-height:1.15}
+h2{font-size:clamp(25px,4vw,34px)}
+h3{font-size:21px}
+p{line-height:1.65}
+.eyebrow{
+  color:var(--gold);font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.gold-text{color:var(--gold-light)}
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:23px;
+  box-shadow:0 10px 35px rgba(0,0,0,.16);
+}
+.primary-btn{
+  border:0;
+  background:linear-gradient(110deg,#b78b43,#efd49b);
+  color:#17120a;font-weight:700;
+  padding:14px 20px;border-radius:8px;
+}
+.primary-btn:hover{filter:brightness(1.08)}
+.secondary-btn{
+  border:1px solid var(--border);
+  background:transparent;color:var(--gold-light);
+  padding:10px 14px;border-radius:8px;
+}
+.secondary-btn:hover{
+  background:rgba(213,174,98,.08);
+  border-color:var(--gold);
+}
+.danger-btn{
+  border:1px solid rgba(229,141,141,.35);
+  background:transparent;color:#e9a0a0;
+  padding:9px 12px;border-radius:7px;
+}
+.field{margin-top:17px}
+.field label{
+  display:block;color:var(--gold-light);
+  font-size:12px;margin-bottom:8px;
+}
+.field input,.field select,.field textarea{
+  width:100%;background:#0b0b0a;
+  border:1px solid #3a3429;color:var(--text);
+  border-radius:8px;padding:13px;outline:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(213,174,98,.08);
+}
+.field select option{background:#111}
+.error{color:#ff9999;font-size:12px;margin-top:10px}
+
+.setup{max-width:660px;margin:25px auto}
+.setup .panel{margin-top:25px}
+.quote{
+  text-align:center;color:#b7a27d;
+  font:italic 15px Georgia,serif;
+  margin-top:25px;line-height:1.6;
+}
+
+.top-row{
+  display:flex;justify-content:space-between;
+  align-items:flex-start;gap:15px;flex-wrap:wrap;
+}
+.profile-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:12px;margin-top:22px;
+}
+.profile-item{
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:9px;padding:14px;min-width:0;
+}
+.profile-item small{
+  display:block;color:var(--muted);
+  font-size:11px;margin-bottom:8px;
+}
+.profile-item strong{font-size:13px;overflow-wrap:anywhere}
+
+.section-heading{
+  margin:34px 0 15px;
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;flex-wrap:wrap;
+}
+.section-heading h2{font-size:24px}
+.section-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:13px;
+}
+.section-card{
+  background:var(--panel);color:var(--text);
+  text-align:left;padding:18px;
+  border:1px solid var(--border);
+  border-radius:11px;transition:.2s;min-height:135px;
+}
+.section-card:hover{
+  border-color:var(--gold);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(213,174,98,.07);
+}
+.section-number{
+  color:var(--gold);font-size:11px;
+  letter-spacing:2px;margin-bottom:11px;
+}
+.section-card strong{
+  display:block;font:18px Georgia,serif;margin-bottom:8px;
+}
+.section-card p{color:var(--muted);font-size:12px}
+
+.action-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+}
+.action-card{
+  background:var(--panel2);border:1px solid var(--border);
+  padding:17px;border-radius:10px;
+}
+.action-card:hover{
+  border-color:var(--gold);
+  background:#211d15;
+  box-shadow:0 8px 24px rgba(213,174,98,.06);
+}
+.action-card strong{display:block;margin:8px 0}
+.action-card p{color:var(--muted);font-size:12px}
+.icon{font-size:21px;color:var(--gold)}
+
+.view{margin-top:25px}
+.view-header{
+  display:flex;align-items:center;
+  justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin-bottom:20px;
+}
+.question-list{display:grid;gap:10px;margin-top:18px}
+.question-item{
+  width:100%;text-align:left;
+  background:#171613;color:var(--text);
+  border:1px solid var(--border);
+  border-radius:9px;padding:15px;
+  line-height:1.5;
+}
+.question-item:hover{border-color:var(--gold)}
+.question-item span{
+  color:var(--gold);font-size:11px;
+  display:block;margin-bottom:5px;
+}
+.search-box{
+  width:100%;background:#0b0b0a;
+  border:1px solid #3a3429;color:var(--text);
+  border-radius:8px;padding:13px;outline:none;
+}
+.search-box:focus{border-color:var(--gold)}
+
+.chat-panel{
+  margin-top:25px;padding:0;overflow:hidden;
+  background:#100f0d;
+  border-color:rgba(213,174,98,.3);
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.chat-heading{
+  padding:17px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:wrap;
+  background:linear-gradient(110deg,#17140e,#100f0d);
+}
+.chat-heading strong{font:19px Georgia,serif;color:var(--gold-light)}
+.messages{
+  height:410px;overflow-y:auto;padding:20px;
+  display:flex;flex-direction:column;gap:14px;
+  background:#0a0a09;
+  scrollbar-color:#57452b #0a0a09;
+}
+.message{
+  max-width:90%;padding:13px 15px;
+  border-radius:11px;line-height:1.6;
+  font-size:14px;white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.message.user{
+  align-self:flex-end;
+  background:linear-gradient(135deg,#49391e,#302719);
+  border:1px solid #947342;
+  color:#fff4dc;
+}
+.message.bot{
+  align-self:flex-start;
+  background:#191713;
+  border:1px solid rgba(213,174,98,.27);
+  color:#f5f0e7;
+}
+.message.system{
+  align-self:center;color:var(--muted);
+  font-size:11px;background:transparent;
+  padding:5px;text-align:center;
+}
+.chat-input-area{
+  padding:14px;border-top:1px solid var(--border);
+  display:flex;gap:9px;background:#12110f;
+}
+.chat-input-area textarea{
+  flex:1;min-width:0;resize:none;
+  min-height:48px;max-height:120px;
+  padding:13px;background:#090909;
+  border:1px solid #4a3b25;color:var(--text);
+  border-radius:8px;outline:none;
+}
+.chat-input-area textarea:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(213,174,98,.08);
+}
+.send-btn{
+  width:53px;border:0;border-radius:8px;
+  background:linear-gradient(135deg,#b78b43,#efd49b);
+  color:#17120a;font-size:19px;font-weight:bold;
+}
+.send-btn:hover{filter:brightness(1.1)}
+.chat-note{
+  padding:10px 16px;color:var(--muted);
+  font-size:10px;background:#12110f;
+}
+footer{
+  border-top:1px solid var(--border);
+  padding:25px 5%;text-align:center;
+  color:var(--muted);font-size:11px;line-height:1.9;
+  background:#0b0b0a;
+}
+footer strong{
+  color:var(--gold);letter-spacing:2px;
+}
+.back-link{
+  color:var(--gold-light);background:none;
+  border:0;font-size:13px;margin-bottom:18px;
+}
+.empty-state{
+  color:var(--muted);padding:22px;
+  text-align:center;border:1px dashed var(--border);
+  border-radius:9px;
+}
+
+@media(max-width:800px){
+  .profile-grid{grid-template-columns:repeat(2,1fr)}
+  .section-grid{grid-template-columns:repeat(2,1fr)}
+  .action-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  header{padding:12px 4%}
+  .brand-name{font-size:17px}
+  .status{font-size:10px}
+  main{width:92%;padding-top:25px}
+  .panel{padding:17px}
+  .section-grid{grid-template-columns:1fr}
+  .action-grid{grid-template-columns:1fr}
+  .profile-grid{grid-template-columns:1fr 1fr}
+  .messages{height:370px;padding:13px}
+  .message{max-width:96%;font-size:13px}
+  .chat-input-area{padding:10px}
+}
 </style>
+</head>
 
-<section class="gh-research">
-  <h2>GLORY HELPER — Official Research & Comparison Centre</h2>
-  <p>Compare universities using relevant evidence, then build a detailed interview answer from the same comparison points.</p>
+<body>
 
-  <label>Choose your question</label>
-  <select id="ghQuestion" onchange="ghLoadQuestion()">
-    <option value="uk">Why did you choose the UK instead of your home country?</option>
-    <option value="university">Why this university instead of other universities?</option>
-    <option value="country">Why this country instead of other countries?</option>
-    <option value="course">Why did you choose this course?</option>
-    <option value="career">What career opportunities does your course offer?</option>
-  </select>
+<header>
+  <div class="brand">
+    <div class="brand-mark">G</div>
+    <div>
+      <div class="brand-name">GLORY HELPER</div>
+      <div class="brand-sub">POWERED BY AMBITION</div>
+    </div>
+  </div>
+  <div class="status" id="connectionStatus">
+    <span class="status-dot"></span>
+    Connecting assistant...
+  </div>
+</header>
 
-  <div id="ghPoints"></div>
+<main>
 
-  <hr style="border-color:#625137">
+<section id="setupScreen" class="setup">
+  <div class="eyebrow">Your international journey</div>
+  <h1>Your future begins with preparation.</h1>
+  <p class="muted" style="margin-top:13px">
+    Create your student profile and receive personalised international university interview preparation.
+  </p>
 
-  <h3>University details</h3>
-  <label>Your selected university</label>
-  <input id="ghUniversity1" placeholder="Enter your selected university">
+  <div class="panel">
+    <div class="eyebrow">Student registration</div>
+    <h2 style="font-size:25px">Tell us about yourself</h2>
 
-  <label>University you compared it with</label>
-  <input id="ghUniversity2" placeholder="Enter another university">
+    <form id="studentForm">
+      <div class="field">
+        <label for="studentName">Student Full Name</label>
+        <input id="studentName" required maxlength="80" placeholder="Enter your full name">
+      </div>
 
-  <label>Other university (optional)</label>
-  <input id="ghUniversity3" placeholder="Enter another university">
+      <div class="field">
+        <label for="destination">Destination Country</label>
+        <select id="destination" required>
+          <option value="">Select destination country</option>
+          <option>United Kingdom</option>
+          <option>United States</option>
+          <option>Canada</option>
+          <option>Australia</option>
+          <option>New Zealand</option>
+          <option>Ireland</option>
+          <option>Germany</option>
+          <option>France</option>
+          <option>Other</option>
+        </select>
+      </div>
 
-  <h3>Research evidence</h3>
-  <p class="gh-muted">Enter the latest published figure and its actual year. Add the original source link. Do not enter estimated or invented statistics.</p>
+      <div class="field hidden" id="otherCountryField">
+        <label for="otherCountry">Enter Destination Country</label>
+        <input id="otherCountry" placeholder="Enter country name">
+      </div>
 
-  <label>Ranking information, publisher and edition year</label>
-  <textarea id="ghRanking" placeholder="Example: Guardian University Guide, position and edition year. Include the source link."></textarea>
+      <div class="field">
+        <label for="university">University Name</label>
+        <input id="university" required maxlength="150" placeholder="Enter your university name">
+      </div>
 
-  <label>Student satisfaction — percentage and survey year</label>
-  <textarea id="ghSatisfaction" placeholder="Enter the published percentage, survey year and source."></textarea>
+      <div class="field">
+        <label for="course">Full Course Name</label>
+        <input id="course" required maxlength="180" placeholder="Enter your complete course name">
+      </div>
 
-  <label>Graduate employment / outcomes — figure and reporting year</label>
-  <textarea id="ghEmployment" placeholder="Explain what the figure measures, its year and source."></textarea>
+      <div id="formError" class="error"></div>
+      <button class="primary-btn" type="submit" style="width:100%">
+        START PREPARATION →
+      </button>
+    </form>
+  </div>
 
-  <label>Teaching quality and academic support</label>
-  <textarea id="ghTeaching" placeholder="Enter official survey results, ratings or published information with the year."></textarea>
-
-  <label>Course modules and course structure</label>
-  <textarea id="ghModules" placeholder="Use the official module names, course duration and course structure."></textarea>
-
-  <label>Tuition fees and scholarships</label>
-  <textarea id="ghFees" placeholder="Enter official fees, scholarship and academic year."></textarea>
-
-  <label>Facilities, location and student support</label>
-  <textarea id="ghFacilities" placeholder="Enter relevant information from official university sources."></textarea>
-
-  <label>Other comparison evidence</label>
-  <textarea id="ghOther" placeholder="Add any other relevant verified comparison information."></textarea>
-
-  <h3>Official research sources</h3>
-  <a class="gh-source" href="https://www.discoveruni.gov.uk/" target="_blank">Discover Uni — official UK course and student information</a>
-  <a class="gh-source" href="https://www.hesa.ac.uk/" target="_blank">HESA — higher education statistics and datasets</a>
-  <a class="gh-source" href="https://www.officeforstudents.org.uk/" target="_blank">Office for Students — official regulatory information</a>
-  <a class="gh-source" href="https://www.graduateoutcomes.ac.uk/" target="_blank">Graduate Outcomes — graduate employment survey</a>
-  <a class="gh-source" href="https://www.gov.uk/" target="_blank">GOV.UK — official government information</a>
-
-  <p class="gh-muted">The links open original source websites. This static website does not automatically retrieve or verify their latest figures. Always record the source and year beside each figure.</p>
-
-  <button onclick="ghShowComparison()">Prepare point-by-point comparison</button>
-  <div id="ghComparison"></div>
-
-  <hr style="border-color:#625137">
-  <h3>Build the final interview answer</h3>
-  <label>Your personal reason for choosing this option</label>
-  <textarea id="ghReason" placeholder="Explain your genuine reasons in your own words."></textarea>
-
-  <label>Additional details you want included</label>
-  <textarea id="ghPersonal" placeholder="Add your academic background, interests or future goals."></textarea>
-
-  <button onclick="ghBuildAnswer()">Generate 5–6 paragraph answer</button>
-  <div id="ghFinalAnswer"></div>
+  <div class="quote">
+    "Let others chase glory. I shall become its definition."
+  </div>
 </section>
 
+<section id="dashboard" class="hidden">
+
+  <div class="top-row">
+    <div>
+      <div class="eyebrow">Your personal preparation centre</div>
+      <h1 id="welcomeHeading">Welcome!</h1>
+      <p class="muted" style="margin-top:10px">
+        Prepare with confidence. Understand your answers. Be ready for follow-up questions.
+      </p>
+    </div>
+    <button class="secondary-btn" id="editProfileBtn">Edit student profile</button>
+  </div>
+
+  <div class="profile-grid">
+    <div class="profile-item"><small>STUDENT</small><strong id="profileName"></strong></div>
+    <div class="profile-item"><small>DESTINATION</small><strong id="profileCountry"></strong></div>
+    <div class="profile-item"><small>UNIVERSITY</small><strong id="profileUniversity"></strong></div>
+    <div class="profile-item"><small>COURSE</small><strong id="profileCourse"></strong></div>
+  </div>
+
+  <div class="section-heading">
+    <h2>Interview Preparation</h2>
+    <span class="muted small">12 preparation categories</span>
+  </div>
+  <div class="section-grid" id="sectionGrid"></div>
+
+  <div class="section-heading"><h2>Practice Centre</h2></div>
+
+  <div class="action-grid">
+    <button class="action-card" id="mockInterviewBtn" style="text-align:left;color:inherit">
+      <span class="icon">◈</span><strong>Full Mock Interview</strong>
+      <p>Experience a realistic interview with one question at a time and final feedback.</p>
+    </button>
+    <button class="action-card" id="comparisonBtn" style="text-align:left;color:inherit">
+      <span class="icon">⇄</span><strong>University Comparison</strong>
+      <p>Compare your selected university with alternative institutions.</p>
+    </button>
+    <button class="action-card" id="courseBtn" style="text-align:left;color:inherit">
+      <span class="icon">▤</span><strong>Course & Modules</strong>
+      <p>Understand modules, credits, learning outcomes and career relevance.</p>
+    </button>
+    <button class="action-card" id="careerBtn" style="text-align:left;color:inherit">
+      <span class="icon">↗</span><strong>Career Preparation</strong>
+      <p>Explore career paths, job responsibilities, skills and salary evidence.</p>
+    </button>
+    <button class="action-card" id="randomQuestionBtn" style="text-align:left;color:inherit">
+      <span class="icon">✦</span><strong>Random Interview Question</strong>
+      <p>Practise an unexpected question from the question bank.</p>
+    </button>
+    <button class="action-card" id="generalHelpBtn" style="text-align:left;color:inherit">
+      <span class="icon">✧</span><strong>Ask GLORY HELPER</strong>
+      <p>Ask any question about your university or interview preparation.</p>
+    </button>
+  </div>
+
+  <div class="section-heading">
+    <h2>Complete Question Bank</h2>
+    <span class="muted small" id="questionCount"></span>
+  </div>
+  <input id="questionSearch" class="search-box" placeholder="Search interview questions...">
+  <div id="allQuestions" class="question-list"></div>
+
+  <section class="panel chat-panel" id="chatPanel">
+    <div class="chat-heading">
+      <div>
+        <strong>GLORY HELPER Assistant</strong>
+        <div class="muted small" style="margin-top:5px">
+          Your international interview preparation assistant
+        </div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="secondary-btn" id="newChatBtn">New chat</button>
+      </div>
+    </div>
+
+    <div class="messages" id="messages">
+      <div class="message bot">
+        Welcome to GLORY HELPER. Select a preparation category or ask me a question to begin.
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea id="chatInput" rows="1" placeholder="Ask your interview question..."></textarea>
+      <button class="send-btn" id="sendBtn" aria-label="Send message">➤</button>
+    </div>
+    <div class="chat-note">
+      Your responses are provided through your existing GLORY HELPER assistant connection.
+    </div>
+  </section>
+
+  <div class="quote">
+    "Let others chase glory. I shall become its definition."
+  </div>
+</section>
+
+<section id="categoryView" class="hidden view">
+  <button class="back-link" id="backFromCategory">← Back to dashboard</button>
+  <div class="eyebrow">Preparation category</div>
+  <h1 id="categoryTitle"></h1>
+  <p class="muted" id="categoryDescription" style="margin-top:10px"></p>
+  <div class="panel" style="margin-top:22px">
+    <h3>Questions you should prepare</h3>
+    <p class="muted small" style="margin-top:7px">
+      Select a question to practise it with GLORY HELPER.
+    </p>
+    <div id="categoryQuestions" class="question-list"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>GLORY HELPER</strong><br>
+  POWERED BY AMBITION<br>
+  Created and managed by Manthan Bhardwaj<br>
+  Contact: Manthanb745@gmail.com<br>
+  © 2026 GLORY HELPER. All rights reserved.
+</footer>
+
+<!-- ORIGINAL BOTPRESS CONNECTION - UNCHANGED -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
+
 <script>
-const ghQuestionPoints = {
- uk:[
-  "Availability of the exact course in the UK compared with the home country",
-  "Course modules and subject coverage",
-  "Teaching methods and practical learning",
-  "Assessment methods, including assignments and presentations",
-  "Course duration and academic structure",
-  "International learning environment",
-  "Student satisfaction and academic experience",
-  "Graduate employment and career outcomes",
-  "University rankings and recognition",
-  "Academic support and learning facilities",
-  "Tuition fees, living expenses and scholarships",
-  "Student accommodation and location"
- ],
- university:[
-  "Availability of the exact course at each university",
-  "Official modules and subject content",
-  "Course duration and structure",
-  "Teaching and learning approach",
-  "Assessment methods",
-  "Student satisfaction and academic experience",
-  "Graduate employment and outcomes",
-  "University ranking and edition year",
-  "Academic support and learning facilities",
-  "Industry connections and practical opportunities",
-  "Campus location and transport",
-  "Tuition fees and scholarships"
- ],
- country:[
-  "Availability of the selected course",
-  "Education system and qualification structure",
-  "Teaching and assessment methods",
-  "Course duration",
-  "International recognition of qualifications",
-  "International student environment",
-  "Student support and academic resources",
-  "Tuition fees and cost of living",
-  "Scholarships and financial support",
-  "Accommodation and transport",
-  "Relevant student visa requirements"
- ],
- course:[
-  "Connection with previous education",
-  "Personal interest in the subject",
-  "Official course content",
-  "Individual course modules",
-  "Knowledge and understanding gained",
-  "Practical and transferable skills",
-  "Teaching and assessment methods",
-  "Industry and career relevance",
-  "Professional development opportunities"
- ],
- career:[
-  "Course-related entry-level job roles",
-  "Actual duties and responsibilities",
-  "Skills developed through the course",
-  "Relevant industries and employers",
-  "Current job-market information",
-  "Published salary information and reporting year",
-  "Career progression",
-  "Further qualifications or professional requirements"
+/* ==========================================
+   GLORY HELPER - STUDENT INTERVIEW ASSISTANT
+   Original Botpress connection retained.
+   Dark King theme integrated.
+========================================== */
+
+const STORAGE_KEY = "glory_helper_student_profile_v2";
+
+let student = null;
+let botpressReady = false;
+let botpressEventsRegistered = false;
+let pendingMessages = [];
+let mockInterviewActive = false;
+let mockQuestionNumber = 0;
+let darkKingThemeApplied = false;
+
+const categories = [
+{
+ title:"Personal Introduction",
+ description:"Prepare to introduce yourself and explain your personal background.",
+ questions:[
+ "Tell me about yourself.","Can you introduce yourself?","Where are you from?",
+ "Tell me about your family background.","What are your main strengths?",
+ "What are your weaknesses?","How would your friends describe you?",
+ "What are your hobbies and interests?","What motivates you to study abroad?",
+ "Why should we believe you are a genuine student?"
  ]
-};
+},
+{
+ title:"Academic Background",
+ description:"Explain your previous education, academic choices and achievements.",
+ questions:[
+ "Tell me about your previous academic qualifications.","Which subjects did you study?",
+ "Why did you choose your previous academic stream?",
+ "What was your favourite subject and why?",
+ "How are your previous studies related to your chosen course?",
+ "What were your academic results?","Why were your marks lower in a particular subject?",
+ "What skills did you develop during your previous studies?",
+ "How will your academic background help you at university?",
+ "What have you learned from your previous education?"
+ ]
+},
+{
+ title:"Study Gaps & Academic History",
+ description:"Be prepared to explain any study gaps, changes or academic difficulties honestly.",
+ questions:[
+ "Do you have any study gaps?","What were you doing during your study gap?",
+ "Why did you take a break from your education?",
+ "How did you use your time productively?",
+ "Did you undertake any courses or training during the gap?",
+ "Why did you change your previous academic direction?",
+ "Have you ever failed or repeated a subject?",
+ "How will you manage university-level academic pressure?",
+ "What have you learned from your academic challenges?"
+ ]
+},
+{
+ title:"Why This Country?",
+ description:"Understand your destination country's education system and compare it with relevant alternatives.",
+ questions:[
+ "Why have you chosen this country for higher education?",
+ "Why did you choose this country instead of India?",
+ "Why not study in another country?","Did you consider other countries?",
+ "Which countries did you compare?",
+ "What makes this country's education system suitable for you?",
+ "How is the teaching approach different?",
+ "What do you know about the country's education system?",
+ "What international exposure do you expect?",
+ "How will studying in this country benefit your future?",
+ "What are the disadvantages of studying abroad?",
+ "Why not complete the same course in your home country?"
+ ]
+},
+{
+ title:"Why This University?",
+ description:"Understand your university choice, alternatives, course structure and facilities.",
+ questions:[
+ "Why did you choose this university?","How many universities did you research?",
+ "Which other universities did you consider?","Why did you reject those universities?",
+ "Why is your chosen university better suited to your goals?",
+ "What do you know about the university's history?",
+ "Where is your university located?","Why did you choose this particular campus?",
+ "What facilities does the university offer?",
+ "What student support services are available?",
+ "What do you know about its rankings?","What do you know about student satisfaction?",
+ "What are its graduate employment outcomes?",
+ "How does its course structure compare with other universities?",
+ "Why should you choose this university over another institution?"
+ ]
+},
+{
+ title:"Why This Course?",
+ description:"Explain your course choice, subject interests and connection with your future plans.",
+ questions:[
+ "Why did you choose this course?","What do you know about your course?",
+ "How is this course related to your previous studies?",
+ "Why did you choose this course instead of another subject?",
+ "What skills do you expect to gain?",
+ "How will this course help your career?",
+ "What are your favourite areas of this subject?",
+ "What challenges do you expect during this course?",
+ "Why is this course suitable for your future plans?",
+ "What do you understand by your course title?"
+ ]
+},
+{
+ title:"Modules & Course Knowledge",
+ description:"Understand actual modules, course credits, learning outcomes and subject relevance.",
+ questions:[
+ "Can you explain two modules from your course?",
+ "Which module interests you the most and why?",
+ "Which module do you think will be challenging?",
+ "What will you learn in your first year?",
+ "What are the main learning outcomes of your course?",
+ "How many credits does your course include?",
+ "How is your course divided across academic years?",
+ "How will your modules develop your professional skills?",
+ "How are your modules connected with your career plans?",
+ "Where did you research your course modules?",
+ "What is the difference between a module and a course?",
+ "How will you overcome difficulties in a challenging module?"
+ ]
+},
+{
+ title:"Teaching & Assessment",
+ description:"Understand how you will study, participate and be assessed.",
+ questions:[
+ "How will you be taught at university?","What teaching methods does your university use?",
+ "What is coursework?","What is the difference between coursework and examinations?",
+ "What are presentations and group projects?",
+ "How will practical learning benefit you?",
+ "How will you manage assignments and deadlines?",
+ "How will you improve your academic writing?",
+ "What will you do if you struggle with an assignment?",
+ "How will you participate in classroom discussions?"
+ ]
+},
+{
+ title:"Financial Questions",
+ description:"Prepare accurate answers about tuition fees, living costs, sponsorship and financial planning.",
+ questions:[
+ "Who is sponsoring your education?","What does your sponsor do?",
+ "What is your sponsor's annual income?","How will your tuition fees be paid?",
+ "What is your total tuition fee?","Have you received a scholarship?",
+ "What is your remaining tuition fee after scholarship?",
+ "How much will your living expenses cost?",
+ "How will you manage your monthly expenses?",
+ "What financial documents support your application?",
+ "Why is your sponsor willing to fund your education?",
+ "Do you intend to work part-time?","What will you do if your expenses increase?",
+ "Have you researched the cost of accommodation?",
+ "Can you explain your financial plan?"
+ ]
+},
+{
+ title:"Accommodation & Student Life",
+ description:"Know where you will live, how you will travel and what student support is available.",
+ questions:[
+ "Where will you stay during your studies?","Have you booked your accommodation?",
+ "Why did you choose this accommodation?",
+ "How far is your accommodation from university?",
+ "How will you travel to university?","What is your expected monthly rent?",
+ "What facilities are available in your accommodation?",
+ "Have you researched alternative accommodation?",
+ "How will you manage homesickness?","What do you know about the local area?",
+ "What student support services can you use?",
+ "How will you balance study and personal life?"
+ ]
+},
+{
+ title:"Career Plans & Future Goals",
+ description:"Explain your future career plans and how the course supports them.",
+ questions:[
+ "What are your plans after graduation?","Do you intend to return to your home country?",
+ "Why do you want to return home?","Which job role are you targeting?",
+ "What does a business analyst do?","What does a marketing manager do?",
+ "What skills are required for your chosen career?",
+ "Which companies or industries interest you?",
+ "What salary do you expect after graduation?",
+ "How will this degree improve your career opportunities?",
+ "How is your course connected to your career?",
+ "Where do you see yourself in five years?",
+ "How will you use your international education in your home country?"
+ ]
+},
+{
+ title:"Visa & Credibility Questions",
+ description:"Practise questions about your genuine study intentions, responsibilities and understanding.",
+ questions:[
+ "Why should we believe you are a genuine student?",
+ "What are your main reasons for studying abroad?",
+ "Do you understand your responsibilities as an international student?",
+ "What will you do if your visa application is refused?",
+ "What will you do if you fail a module?",
+ "What will you do if you face academic difficulties?",
+ "Do you know the conditions of your student visa?",
+ "How will you maintain your attendance?",
+ "What would you do if you could not pay your fees?",
+ "Why should your application be considered credible?",
+ "What will you do if your course does not meet your expectations?",
+ "How will you comply with university rules?"
+ ]
+];
 
-function ghEsc(value){
- return String(value||"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
+const $ = id => document.getElementById(id);
+
+function getStudentInstructions(){
+ if(!student)return "";
+ return `
+You are GLORY HELPER, an international university and student visa credibility interview preparation assistant.
+
+STUDENT PROFILE:
+Full name: ${student.name}
+Destination country: ${student.country}
+University: ${student.university}
+Full course name: ${student.course}
+
+PERSONALISED RESPONSE RULES:
+1. Personalise relevant answers using the student's actual destination, university and course.
+2. Use clear, natural, moderately simple professional English.
+3. Keep answers concise when the student asks for short answers.
+4. Never invent university facts, modules, fees, scholarships, rankings, employment rates, accommodation details or salary figures.
+5. For current facts, prioritise official university websites, government sources and recognised education sources. State source and reporting year for statistics.
+6. Use exact published course modules. Explain what they teach, skills developed and career relevance.
+7. For comparison questions, BEFORE the final spoken answer:
+   a. Identify at least 6-7 relevant comparison points, or more when appropriate.
+   b. Give each point an individual heading.
+   c. Briefly explain why each point matters.
+   d. Compare actual alternatives using reliable information where available.
+   e. Build the final spoken answer using those same points.
+8. Do not force irrelevant comparison points into an answer.
+9. For career questions, explain job roles, responsibilities, skills, sectors, salary ranges and progression. Give location, currency, year and source where available.
+10. For financial questions, use actual financial information only when provided. Never invent sponsorship or bank details.
+11. For accommodation questions, explain location, rent, facilities and travel only when verified.
+12. For mock interviews, ask ONE question at a time and wait for the answer. Ask realistic follow-up questions.
+13. Do not reveal model answers before the student responds during a mock interview.
+14. Give detailed feedback at the end: answer quality, relevance, clarity, English, missing details and improvements.
+15. Do not correct every answer during a mock interview if feedback at the end was requested.
+16. Never claim to have checked an official website unless you actually accessed and verified it.
+17. Provide natural sample answers the student can understand and adapt.
+`;
 }
 
-function ghLoadQuestion(){
- const key=document.getElementById("ghQuestion").value;
- const points=ghQuestionPoints[key]||[];
- document.getElementById("ghPoints").innerHTML=
-  "<h3>First: identify the comparison points</h3>"+
-  "<p class='gh-muted'>These points are specific to the selected question. Review them before preparing the answer.</p>"+
-  points.map((p,i)=>`<div class="gh-point"><strong>${i+1}. ${ghEsc(p)}</strong></div>`).join("");
- document.getElementById("ghComparison").innerHTML="";
- document.getElementById("ghFinalAnswer").innerHTML="";
-}
-
-function ghEvidence(){
- return [
-  ["Ranking",document.getElementById("ghRanking").value],
-  ["Student satisfaction",document.getElementById("ghSatisfaction").value],
-  ["Graduate employment and outcomes",document.getElementById("ghEmployment").value],
-  ["Teaching and academic support",document.getElementById("ghTeaching").value],
-  ["Course modules and structure",document.getElementById("ghModules").value],
-  ["Tuition fees and scholarships",document.getElementById("ghFees").value],
-  ["Facilities and location",document.getElementById("ghFacilities").value],
-  ["Other evidence",document.getElementById("ghOther").value]
- ].filter(item=>item[1].trim());
-}
-
-function ghShowComparison(){
- const key=document.getElementById("ghQuestion").value;
- const points=ghQuestionPoints[key]||[];
- const u1=document.getElementById("ghUniversity1").value.trim()||"Selected option";
- const u2=document.getElementById("ghUniversity2").value.trim()||"Alternative option";
- const u3=document.getElementById("ghUniversity3").value.trim();
- const evidence=ghEvidence();
-
- let html="<h3>Second: point-by-point comparison</h3>";
- html+=`<p><strong>Options:</strong> ${ghEsc(u1)} compared with ${ghEsc(u2)}${u3?" and "+ghEsc(u3):""}</p>`;
-
- points.forEach((point,i)=>{
-  html+=`<div class="gh-point"><strong>${i+1}. ${ghEsc(point)}</strong>
-  <p class="gh-muted">Selected option: add the verified evidence relevant to this point.</p>
-  <p class="gh-muted">Alternative option: add its corresponding evidence for a fair comparison.</p></div>`;
- });
-
- html+="<h3>Evidence entered</h3>";
- if(!evidence.length){
-  html+="<p class='gh-muted'>No evidence has been entered yet. Add verified information before using this comparison in an interview.</p>";
+function updateConnection(connected){
+ const el=$("connectionStatus");
+ if(connected){
+  el.classList.add("connected");
+  el.innerHTML='<span class="status-dot"></span>Assistant connected';
  }else{
-  evidence.forEach(item=>{
-   html+=`<div class="gh-point"><strong>${ghEsc(item[0])}</strong><p>${ghEsc(item[1])}</p></div>`;
-  });
+  el.classList.remove("connected");
+  el.innerHTML='<span class="status-dot"></span>Connecting assistant...';
  }
- document.getElementById("ghComparison").innerHTML=html;
 }
 
-function ghBuildAnswer(){
- const key=document.getElementById("ghQuestion").value;
- const points=ghQuestionPoints[key]||[];
- const evidence=ghEvidence();
- const u1=document.getElementById("ghUniversity1").value.trim()||"my selected option";
- const u2=document.getElementById("ghUniversity2").value.trim()||"the alternatives I considered";
- const reason=document.getElementById("ghReason").value.trim();
- const personal=document.getElementById("ghPersonal").value.trim();
+function saveStudent(){
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(student));}catch(e){}
+}
 
- if(!evidence.length){
-  document.getElementById("ghFinalAnswer").innerHTML=
-   "<p class='gh-muted'>Please add verified evidence before building your detailed answer.</p>";
+function loadStudent(){
+ try{
+  const data=localStorage.getItem(STORAGE_KEY);
+  return data?JSON.parse(data):null;
+ }catch(e){return null}
+}
+
+function showDashboard(){
+ $("setupScreen").classList.add("hidden");
+ $("categoryView").classList.add("hidden");
+ $("dashboard").classList.remove("hidden");
+ $("welcomeHeading").textContent="Welcome, "+student.name+"!";
+ $("profileName").textContent=student.name;
+ $("profileCountry").textContent=student.country;
+ $("profileUniversity").textContent=student.university;
+ $("profileCourse").textContent=student.course;
+ renderSections();
+ renderAllQuestions();
+}
+
+function showSetup(){
+ $("dashboard").classList.add("hidden");
+ $("categoryView").classList.add("hidden");
+ $("setupScreen").classList.remove("hidden");
+
+ if(student){
+  $("studentName").value=student.name;
+  $("destination").value=student.country;
+  $("university").value=student.university;
+  $("course").value=student.course;
+
+  if(![
+   "United Kingdom","United States","Canada","Australia",
+   "New Zealand","Ireland","Germany","France"
+  ].includes(student.country)){
+   $("destination").value="Other";
+   $("otherCountryField").classList.remove("hidden");
+   $("otherCountry").value=student.country;
+  }
+ }
+}
+
+$("destination").addEventListener("change",()=>{
+ const other=$("destination").value==="Other";
+ $("otherCountryField").classList.toggle("hidden",!other);
+ $("otherCountry").required=other;
+});
+
+$("studentForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=$("studentName").value.trim();
+ const destination=$("destination").value;
+ const country=destination==="Other"?$("otherCountry").value.trim():destination;
+ const university=$("university").value.trim();
+ const course=$("course").value.trim();
+
+ if(!name||!country||!university||!course){
+  $("formError").textContent="Please complete all four student details.";
   return;
  }
 
- const selected=evidence.slice(0,3);
- const remaining=evidence.slice(3);
- const paragraphs=[
-  `I chose ${u1} after carefully considering my academic interests and comparing it with ${u2}. I wanted to make a well-informed decision rather than choosing an institution or destination without understanding its course, teaching approach and overall suitability. ${reason}`,
-  `One of the main factors I considered was the course and its academic structure. ${selected.map(x=>x[0]+": "+x[1]).join(" ")}`,
-  `I also looked at the quality of the student experience and the opportunities available. ${remaining.slice(0,2).map(x=>x[0]+": "+x[1]).join(" ")}`,
-  `Another important consideration was whether the overall choice matched my academic requirements and practical circumstances. ${remaining.slice(2).map(x=>x[0]+": "+x[1]).join(" ")}`,
-  `These comparisons helped me understand the differences between my selected option and the alternatives. I gave particular importance to the factors that directly affect my learning, course experience and academic development.`,
-  `Overall, I selected ${u1} because it is the option that best matches the priorities I identified during my research. ${personal}`
- ];
+ student={name,country,university,course};
+ saveStudent();
+ showDashboard();
+ addMessage("system","Your student profile is ready. You can now begin your preparation.");
+ sendToBotpress(
+  "I have completed my student profile. Please introduce yourself as my interview preparation assistant and begin by asking: Why have you chosen "+student.country+" for higher education? Ask one question at a time."
+ );
+});
 
- const answer=paragraphs.map(p=>p.trim()).filter(Boolean).join("\n\n");
- document.getElementById("ghFinalAnswer").innerHTML=
-  "<h3>Third: your interview answer</h3>"+
-  "<p class='gh-muted'>This draft uses your entered evidence. Check every statement, personalise it and remove anything that is not accurate.</p>"+
-  `<div class="gh-answer" id="ghAnswerText">${ghEsc(answer)}</div>`+
-  `<p class="gh-muted">Word count: ${answer.split(/\s+/).filter(Boolean).length}. Six-paragraph structure.</p>`+
-  `<button onclick="navigator.clipboard.writeText(document.getElementById('ghAnswerText').innerText)">Copy answer</button>`;
+$("editProfileBtn").addEventListener("click",showSetup);
+
+function renderSections(){
+ const grid=$("sectionGrid");
+ grid.innerHTML="";
+ categories.forEach((category,index)=>{
+  const button=document.createElement("button");
+  button.className="section-card";
+  button.innerHTML=`
+   <div class="section-number">SECTION ${(index+1).toString().padStart(2,"0")}</div>
+   <strong>${escapeHTML(category.title)}</strong>
+   <p>${escapeHTML(category.description)}</p>
+   <p style="color:var(--gold);margin-top:10px">${category.questions.length} questions →</p>
+  `;
+  button.addEventListener("click",()=>openCategory(index));
+  grid.appendChild(button);
+ });
 }
 
-ghLoadQuestion();
+function openCategory(index){
+ const category=categories[index];
+ $("dashboard").classList.add("hidden");
+ $("categoryView").classList.remove("hidden");
+ $("categoryTitle").textContent=category.title;
+ $("categoryDescription").textContent=category.description;
+ const container=$("categoryQuestions");
+ container.innerHTML="";
+ category.questions.forEach((question,i)=>{
+  const button=document.createElement("button");
+  button.className="question-item";
+  button.innerHTML=`<span>QUESTION ${(i+1).toString().padStart(2,"0")}</span>${escapeHTML(question)}`;
+  button.addEventListener("click",()=>{
+   $("categoryView").classList.add("hidden");
+   $("dashboard").classList.remove("hidden");
+   askQuestion(question,category.title);
+  });
+  container.appendChild(button);
+ });
+}
+
+$("backFromCategory").addEventListener("click",()=>{
+ $("categoryView").classList.add("hidden");
+ $("dashboard").classList.remove("hidden");
+});
+
+function getAllQuestions(){
+ return categories.flatMap(category=>
+  category.questions.map(question=>({question,category:category.title}))
+ );
+}
+
+function renderAllQuestions(filter=""){
+ const container=$("allQuestions");
+ container.innerHTML="";
+ const normalized=filter.toLowerCase();
+ const all=getAllQuestions();
+ const list=all.filter(item=>
+  item.question.toLowerCase().includes(normalized)||
+  item.category.toLowerCase().includes(normalized)
+ );
+ $("questionCount").textContent=all.length+" questions available";
+ if(!list.length){
+  container.innerHTML='<div class="empty-state">No matching questions found.</div>';
+  return;
+ }
+ list.forEach(item=>{
+  const button=document.createElement("button");
+  button.className="question-item";
+  button.innerHTML=`<span>${escapeHTML(item.category.toUpperCase())}</span>${escapeHTML(item.question)}`;
+  button.addEventListener("click",()=>askQuestion(item.question,item.category));
+  container.appendChild(button);
+ });
+}
+
+$("questionSearch").addEventListener("input",e=>renderAllQuestions(e.target.value.trim()));
+
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,char=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[char]));
+}
+
+function addMessage(type,text){
+ const container=$("messages");
+ const message=document.createElement("div");
+ message.className="message "+type;
+ message.textContent=text;
+ container.appendChild(message);
+ container.scrollTop=container.scrollHeight;
+}
+
+function askQuestion(question,category){
+ const prompt=`
+The student wants to prepare this interview question:
+"${question}"
+Preparation category: ${category}
+
+Explain what the interviewer expects. Give relevant key points and a natural spoken sample answer.
+
+If this is a comparison question, first identify and explain at least 6-7 relevant individual comparison points, compare the relevant alternatives using verified evidence where available, and then create the spoken answer using those same points.
+
+Personalise the answer to the student's profile. Keep the language clear and natural.
+`;
+ addMessage("user",question);
+ sendToBotpress(prompt);
+ $("chatPanel").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function buildMockInterviewPrompt(){
+ return `
+Start a realistic international university credibility mock interview for this student.
+
+Student profile:
+Name: ${student.name}
+Destination: ${student.country}
+University: ${student.university}
+Course: ${student.course}
+
+Cover personal introduction, academic background, study gaps, country choice, university comparisons, course choice, actual modules, teaching and assessment, finances, accommodation, career plans and student visa responsibilities.
+
+Ask ONE question at a time. Wait for the student's response. Ask challenging but realistic follow-up questions.
+
+Do not provide answers before the student responds. Do not correct each response during the interview. At the end, provide comprehensive feedback with strengths, weaknesses, answer quality, English, clarity, missing information and practical improvements.
+
+Begin with: "Good morning. Could you please introduce yourself?"
+`;
+}
+
+$("mockInterviewBtn").addEventListener("click",()=>{
+ mockInterviewActive=true;
+ mockQuestionNumber=0;
+ addMessage("system","Mock interview mode started. Answer each question naturally.");
+ addMessage("user","Start my full mock interview.");
+ sendToBotpress(buildMockInterviewPrompt());
+ $("chatPanel").scrollIntoView({behavior:"smooth"});
+});
+
+$("comparisonBtn").addEventListener("click",()=>{
+ const prompt=`
+Help me compare my chosen university, ${student.university}, with suitable alternative universities for ${student.course} in ${student.country}.
+
+First identify 8-12 relevant comparison points where appropriate. Explain each point separately. Then research and compare actual universities using verified information. Consider course modules, course structure, teaching, assessment, location, facilities, student support, rankings, student satisfaction, graduate outcomes, industry links, duration and fees where relevant.
+
+Do not invent alternatives or statistics. Cite sources and reporting years. Finally prepare a natural spoken interview answer to "Why did you choose this university instead of other universities?"
+`;
+ addMessage("user","Help me compare my university with other universities.");
+ sendToBotpress(prompt);
+ $("chatPanel").scrollIntoView({behavior:"smooth"});
+});
+
+$("courseBtn").addEventListener("click",()=>{
+ const prompt=`
+Research the official course page for ${student.course} at ${student.university} in ${student.country}.
+
+Explain the actual course structure, duration, modules, credits and learning outcomes. Explain what each relevant module teaches, the skills it develops and its career relevance. Use official published module names. Do not invent module names or course details. If information cannot be verified, say so.
+
+Then prepare likely interviewer questions about course knowledge and natural spoken answers.
+`;
+ addMessage("user","Help me understand my course and modules.");
+ sendToBotpress(prompt);
+ $("chatPanel").scrollIntoView({behavior:"smooth"});
+});
+
+$("careerBtn").addEventListener("click",()=>{
+ const prompt=`
+Help me understand realistic career opportunities after completing ${student.course} at ${student.university}.
+
+Explain suitable job roles, actual daily responsibilities, required skills, relevant industries, possible employers and career progression. Include realistic salary ranges for my intended career location, with currency, year and reliable sources where available.
+
+Then prepare natural interview answers connecting my course to my career plans. Do not invent salary figures or guarantee employment.
+`;
+ addMessage("user","Explain my career opportunities after this course.");
+ sendToBotpress(prompt);
+ $("chatPanel").scrollIntoView({behavior:"smooth"});
+});
+
+$("randomQuestionBtn").addEventListener("click",()=>{
+ const all=getAllQuestions();
+ const item=all[Math.floor(Math.random()*all.length)];
+ askQuestion(item.question,item.category);
+});
+
+$("generalHelpBtn").addEventListener("click",()=>{
+ $("chatInput").focus();
+ $("chatPanel").scrollIntoView({behavior:"smooth"});
+});
+
+/* ==========================================
+   DARK KING - BOTPRESS THEME
+   Uses the existing Botpress connection.
+========================================== */
+
+function applyDarkKingTheme(){
+ if(!window.botpress||typeof window.botpress.config!=="function")return;
+
+ try{
+  window.botpress.config({
+   configuration:{
+    themeMode:"dark",
+    color:"#d5ae62"
+   }
+  });
+  darkKingThemeApplied=true;
+ }catch(error){
+  console.warn("GLORY HELPER theme configuration could not be applied:",error);
+ }
+}
+
+function sendToBotpress(text){
+ if(!text.trim())return;
+ const fullMessage=getStudentInstructions()+"\n\nSTUDENT'S REQUEST:\n"+text;
+
+ if(!window.botpress||typeof window.botpress.sendMessage!=="function"){
+  pendingMessages.push(fullMessage);
+  addMessage("system","The assistant is still connecting. Your message is queued.");
+  return;
+ }
+
+ try{
+  const result=window.botpress.sendMessage(fullMessage);
+  if(result&&typeof result.catch==="function"){
+   result.catch(()=>{
+    addMessage("system","The message could not be sent. Please try again.");
+   });
+  }
+ }catch(error){
+  pendingMessages.push(fullMessage);
+  addMessage("system","The assistant is temporarily unavailable. Your message is queued.");
+ }
+}
+
+function flushPendingMessages(){
+ if(!window.botpress||typeof window.botpress.sendMessage!=="function")return;
+ while(pendingMessages.length){
+  const message=pendingMessages.shift();
+  try{
+   const result=window.botpress.sendMessage(message);
+   if(result&&typeof result.catch==="function"){
+    result.catch(()=>pendingMessages.unshift(message));
+   }
+  }catch(error){
+   pendingMessages.unshift(message);
+   break;
+  }
+ }
+}
+
+function extractBotText(event){
+ if(typeof event==="string")return event;
+ const candidates=[
+  event?.payload?.text,
+  event?.message?.payload?.text,
+  event?.message?.text,
+  event?.payload?.markdown,
+  event?.text,
+  event?.data?.payload?.text
+ ];
+ for(const value of candidates){
+  if(typeof value==="string"&&value.trim())return value;
+ }
+ return "";
+}
+
+function registerBotpressEvents(){
+ if(botpressEventsRegistered)return;
+ if(!window.botpress||typeof window.botpress.on!=="function")return;
+
+ botpressEventsRegistered=true;
+
+ try{
+  window.botpress.on("webchat:initialized",()=>{
+   botpressReady=true;
+   applyDarkKingTheme();
+   updateConnection(true);
+   flushPendingMessages();
+  });
+
+  window.botpress.on("webchat:ready",()=>{
+   botpressReady=true;
+   applyDarkKingTheme();
+   updateConnection(true);
+   flushPendingMessages();
+  });
+
+  window.botpress.on("message",event=>{
+   const text=extractBotText(event);
+   if(text)addMessage("bot",text);
+  });
+
+  window.botpress.on("webchat:opened",()=>{
+   applyDarkKingTheme();
+   updateConnection(true);
+  });
+ }catch(error){
+  botpressEventsRegistered=false;
+ }
+}
+
+function checkBotpress(){
+ if(window.botpress){
+  registerBotpressEvents();
+
+  if(typeof window.botpress.sendMessage==="function"){
+   updateConnection(true);
+   flushPendingMessages();
+  }
+
+  if(!darkKingThemeApplied){
+   applyDarkKingTheme();
+  }
+ }
+}
+
+function sendChat(){
+ const input=$("chatInput");
+ const text=input.value.trim();
+ if(!text)return;
+ input.value="";
+ addMessage("user",text);
+ sendToBotpress(text);
+}
+
+$("sendBtn").addEventListener("click",sendChat);
+
+$("chatInput").addEventListener("keydown",e=>{
+ if(e.key==="Enter"&&!e.shiftKey){
+  e.preventDefault();
+  sendChat();
+ }
+});
+
+$("newChatBtn").addEventListener("click",()=>{
+ $("messages").innerHTML="";
+ mockInterviewActive=false;
+ addMessage("system","New conversation started.");
+ addMessage("bot","Hello "+(student?.name||"there")+". What would you like to prepare today?");
+});
+
+function initialise(){
+ student=loadStudent();
+
+ if(student&&student.name&&student.country&&student.university&&student.course){
+  showDashboard();
+ }else{
+  $("setupScreen").classList.remove("hidden");
+ }
+
+ checkBotpress();
+ setInterval(checkBotpress,1500);
+}
+
+initialise();
 </script>
-<!-- END GLORY HELPER UPGRADE -->
+
+</body>
+</html>
 
