@@ -1,103 +1,703 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d1f">
-<meta name="description" content="GLORY HELPER - Your intelligent AI assistant">
-<title>GLORY HELPER AI</title>
-<style>
-:root{--background:#070b18;--panel:#10182b;--panel-light:#17223a;--text:#f4f7ff;--muted:#9ca9c9;--border:rgba(255,255,255,.12);--primary:#6c63ff;--secondary:#00d9ff;--success:#35e58a;--shadow:0 20px 60px rgba(0,0,0,.28);--bot:#17233b}
-body.light{--background:#eef3ff;--panel:#fff;--panel-light:#e8edff;--text:#16213a;--muted:#60708f;--border:rgba(20,35,70,.14);--shadow:0 20px 60px rgba(40,60,120,.12);--bot:#e8edff}
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}body{min-height:100vh;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(0,217,255,.16),transparent 28%),radial-gradient(circle at 100% 100%,rgba(108,99,255,.22),transparent 34%),var(--background);transition:background .3s,color .3s}button,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;min-height:100vh;padding:22px 18px;display:flex;flex-direction:column;gap:18px;background:rgba(8,13,31,.82);border-right:1px solid var(--border);backdrop-filter:blur(20px)}body.light .sidebar{background:rgba(255,255,255,.82)}.brand{display:flex;align-items:center;gap:12px;padding:4px 6px 16px}.logo{width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;border-radius:16px;color:#fff;font-size:25px;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary));box-shadow:0 0 28px rgba(0,217,255,.4)}.brand h1{font-size:18px;letter-spacing:1px}.brand p{margin-top:4px;color:var(--muted);font-size:12px}.new-chat{width:100%;padding:14px;border:0;border-radius:13px;color:#fff;background:linear-gradient(135deg,var(--primary),#278bff);cursor:pointer;font-weight:bold;transition:.2s}.menu-title{margin-top:12px;color:var(--muted);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}.side-button{width:100%;padding:13px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:12px;background:var(--panel-light);transition:.2s}.new-chat:hover,.side-button:hover,.quick-button:hover{transform:translateY(-2px);filter:brightness(1.1)}.sidebar-bottom{display:grid;gap:10px;margin-top:auto}.creator-mini{padding:14px;color:var(--muted);font-size:12px;line-height:1.6;border:1px solid var(--border);border-radius:13px;background:var(--panel)}.creator-mini strong{color:var(--secondary)}.main{min-width:0;flex:1;display:flex;flex-direction:column;min-height:100vh}.topbar{min-height:72px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);background:rgba(8,13,31,.28);backdrop-filter:blur(15px)}body.light .topbar{background:rgba(255,255,255,.35)}.topbar h2{font-size:20px}.online{display:flex;align-items:center;gap:7px;color:var(--success);font-size:12px}.online-dot{width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success)}.content{width:min(100%,1050px);margin:0 auto;padding:34px 25px 20px;text-align:center;flex:1}.hero-logo{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border:1px solid rgba(0,217,255,.4);border-radius:25px;color:#fff;font-size:40px;font-weight:bold;background:linear-gradient(135deg,#00bde8,#6c63ff);box-shadow:0 0 42px rgba(0,217,255,.25)}.content h3{font-size:clamp(28px,5vw,45px);background:linear-gradient(90deg,var(--secondary),#a993ff);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{max-width:650px;margin:13px auto 0;color:var(--muted);line-height:1.7}.quick-grid{max-width:900px;margin:26px auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.quick-button{padding:16px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:15px;background:var(--panel);transition:.2s}.quick-button span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.5}.chat-area{width:min(100%,850px);min-height:0;margin:0 auto 20px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:left}body.light .chat-area{background:transparent}.chat-messages{display:flex;flex-direction:column;gap:12px}.message-row{display:flex;gap:9px;align-items:flex-start}.message-row.user{justify-content:flex-end}.avatar{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;color:#fff;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary))}.message-row.user .avatar{order:2;background:linear-gradient(135deg,#655cff,#168cff)}.bubble{max-width:85%;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--bot);color:var(--text);line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.message-row.user .bubble{background:linear-gradient(135deg,#655cff,#168cff);color:white;border:0}.typing{display:none;color:var(--muted);font-size:12px;padding:12px 0 0}.input-area{width:min(100%,850px);margin:0 auto 22px}.input-box{display:flex;gap:10px;padding:9px;border:1px solid var(--border);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}textarea{flex:1;min-width:0;resize:none;outline:none;border:0;padding:12px;min-height:46px;max-height:130px;color:var(--text);background:transparent;font-size:15px;line-height:1.4}textarea::placeholder{color:var(--muted)}.send{width:48px;height:46px;flex-shrink:0;border:0;border-radius:12px;color:white;background:linear-gradient(135deg,var(--primary),var(--secondary));font-size:19px}.disclaimer{text-align:center;color:var(--muted);font-size:11px;margin-top:9px}.creator{margin:10px auto 0;padding:18px 10px 8px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.8}.creator strong{color:var(--secondary);font-size:14px}.creator a{color:#9d8cff;text-decoration:none}.creator a:hover{text-decoration:underline}.empty-note{padding:12px;text-align:center;color:var(--muted);font-size:12px}
-@media(max-width:760px){.app{display:block}.sidebar{width:100%;min-height:auto;padding:12px 14px;display:block;border-right:0;border-bottom:1px solid var(--border)}.brand{padding:0}.brand .logo{width:42px;height:42px}.new-chat,.menu-title,.side-button,.sidebar-bottom{display:none}.topbar{min-height:60px;padding:0 16px}.topbar h2{font-size:17px}.content{padding:25px 14px 15px}.quick-grid{grid-template-columns:1fr;margin:22px auto}.hero-logo{width:64px;height:64px;font-size:33px;border-radius:21px}.chat-area{padding:0}.input-area{padding:0 2px}.bubble{max-width:88%}.creator{padding-bottom:15px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+<meta name="theme-color" content="#090909">
+<meta name="description" content="GLORY HELPER - International Interview Preparation">
+<title>GLORY HELPER | Interview Preparation</title>
 
-/* Hide the extra Botpress floating launcher; the page's own message box is used instead. */
-.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
-</style>
-<!-- Existing Botpress integration preserved. Do not remove these scripts. -->
-<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
-</head>
-<body>
-<div class="app">
-  <aside class="sidebar">
-    <div class="brand"><div class="logo">G</div><div><h1>GLORY HELPER</h1><p>Intelligent AI assistant</p></div></div>
-    <button class="new-chat" type="button" onclick="newChat()">＋ New conversation</button>
-    <div class="menu-title">Workspace</div>
-    <button class="side-button" type="button" onclick="scrollToChat()">💬 Open chat</button>
-    <button class="side-button" type="button" onclick="toggleTheme()">🌙 Change theme</button>
-    <div class="sidebar-bottom"><div class="creator-mini">Created and managed by<br><strong>Manthan Bhardwaj</strong></div></div>
-  </aside>
-  <main class="main">
-    <header class="topbar"><h2>GLORY HELPER</h2><div class="online"><span class="online-dot"></span><span id="status">Connecting to Botpress…</span></div></header>
-    <section class="content">
-      <div class="hero-logo" aria-hidden="true">G</div>
-      <h3>How can I help you today?</h3>
-      <p class="subtitle">Ask questions, learn English, prepare for interviews, explore ideas, or get clear explanations from GLORY HELPER.</p>
-      <div class="quick-grid">
-        <button class="quick-button" type="button" onclick="sendQuickMessage('Explain this topic in simple English')">📚 Learn something<span>Get a simple step-by-step explanation</span></button>
-        <button class="quick-button" type="button" onclick="sendQuickMessage('Help me improve my English speaking')">🗣️ Improve English<span>Practice useful English conversations</span></button>
-        <button class="quick-button" type="button" onclick="sendQuickMessage('Give me a useful business idea')">💡 Get an idea<span>Explore business and technology ideas</span></button>
-      </div>
-      <div class="chat-area" id="chat-area">
-        <div class="chat-messages" id="chat-messages"><div class="empty-note" id="empty-note">GLORY HELPER replies will appear here.</div></div>
-        <div class="typing" id="typing">GLORY HELPER is thinking…</div>
-      </div>
-      <div class="input-area">
-        <form class="input-box" id="message-form" onsubmit="sendMessage(event)">
-          <textarea id="message-input" rows="1" placeholder="Message GLORY HELPER…" aria-label="Message GLORY HELPER"></textarea>
-          <button class="send" type="submit" aria-label="Send message">➤</button>
-        </form>
-        <p class="disclaimer">AI can make mistakes. Please verify important information.</p>
-      </div>
-      <footer class="creator"><strong>GLORY HELPER</strong><br>Powered by Ambition<br>Created and managed by <strong>Manthan Bhardwaj</strong><br>Email: <a href="mailto:Manthanb745@gmail.com">Manthanb745@gmail.com</a> · 2026</footer>
-    </section>
-  </main>
-</div>
-<script>
-const messageInput=document.getElementById('message-input');
-const messagesBox=document.getElementById('chat-messages');
-const typing=document.getElementById('typing');
-const statusEl=document.getElementById('status');
-let botpressReady=false;
-let pendingMessage='';
-let messages=[];
-try{const saved=JSON.parse(localStorage.getItem('gloryMessages')||'[]');if(Array.isArray(saved))messages=saved.filter(m=>m&&typeof m.text==='string'&&m.sender==='bot');}catch(e){messages=[];}
-function saveMessages(){try{localStorage.setItem('gloryMessages',JSON.stringify(messages.slice(-100)));}catch(e){}}
-function addMessage(text,sender,save=true){if(sender==='user'||!text||!text.trim())return;document.getElementById('empty-note')?.remove();const row=document.createElement('div');row.className='message-row '+sender;const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=sender==='user'?'You':'G';const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=text;row.appendChild(avatar);row.appendChild(bubble);messagesBox.appendChild(row);messagesBox.scrollTop=messagesBox.scrollHeight;if(save){messages.push({text,sender});saveMessages();}}
-function showSavedMessages(){messagesBox.innerHTML='';if(!messages.length){const note=document.createElement('div');note.className='empty-note';note.id='empty-note';note.textContent='GLORY HELPER replies will appear here.';messagesBox.appendChild(note);return;}messages.forEach(m=>addMessage(m.text,m.sender,false));}
-function sendToBot(text){if(!window.botpress||typeof window.botpress.sendMessage!=='function'){typing.style.display='none';statusEl.textContent='Botpress is loading';addMessage('The Botpress chat interface is not ready yet. Please wait a few seconds and try again. If this continues, check the Botpress configuration script.','bot');return;}try{if(!botpressReady){pendingMessage=text;typing.style.display='block';statusEl.textContent='Waiting for Botpress…';if(typeof window.botpress.open==='function')window.botpress.open();return;}if(typeof window.botpress.open==='function')window.botpress.open();const result=window.botpress.sendMessage(text);if(result&&typeof result.catch==='function')result.catch(()=>{typing.style.display='none';addMessage('I could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';statusEl.textContent='Botpress connection issue';addMessage('Could not send the message. Please check the Botpress Webchat setup.','bot');}}
-function sendMessage(event){event.preventDefault();const text=messageInput.value.trim();if(!text)return;messageInput.value='';messageInput.style.height='46px';typing.style.display='block';sendToBot(text);}
-function sendQuickMessage(text){messageInput.value=text;messageInput.focus();messageInput.style.height='auto';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';scrollToChat();sendMessage(new Event('submit',{cancelable:true,preventDefault(){}}));}
-function scrollToChat(){document.getElementById('chat-area').scrollIntoView({behavior:'smooth',block:'center'});messageInput.focus({preventScroll:true});}
-function newChat(){messages=[];saveMessages();showSavedMessages();typing.style.display='none';try{if(window.botpress&&typeof window.botpress.restartConversation==='function'&&botpressReady){const r=window.botpress.restartConversation();if(r&&typeof r.catch==='function')r.catch(()=>{});}}catch(e){}scrollToChat();}
-function toggleTheme(){document.body.classList.toggle('light');try{localStorage.setItem('glory-theme',document.body.classList.contains('light')?'light':'dark');}catch(e){}}
-function hideBotpressLauncher(){
-  const launcherStyle='.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}';
-  const visited=new WeakSet();
-  function scan(root){
-    if(!root||visited.has(root))return;visited.add(root);
-    try{root.querySelectorAll('.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]').forEach(el=>{el.style.setProperty('display','none','important');el.style.setProperty('visibility','hidden','important');el.style.setProperty('pointer-events','none','important');});
-      root.querySelectorAll('*').forEach(el=>{if(el.shadowRoot)scan(el.shadowRoot);});
-      if(root instanceof ShadowRoot&&!root.querySelector('style[data-glory-hide-fab]')){const style=document.createElement('style');style.setAttribute('data-glory-hide-fab','true');style.textContent=launcherStyle;root.appendChild(style);}
-    }catch(e){}
-  }
-  scan(document);
+<style>
+:root {
+  --gold:#d6b36a;
+  --gold2:#f1d99d;
+  --bg:#090909;
+  --panel:#141414;
+  --muted:#a9a295;
+  --line:#332b1d;
 }
-function extractText(event){const candidates=[event?.payload?.text,event?.message?.payload?.text,event?.message?.text,event?.payload?.markdown,event?.text];return candidates.find(x=>typeof x==='string'&&x.trim())||'';}
-function registerBotpress(){if(!window.botpress||typeof window.botpress.on!=='function'){statusEl.textContent='Connecting to Botpress…';return false;}try{window.botpress.on('webchat:initialized',()=>{statusEl.textContent='Botpress connected';});window.botpress.on('webchat:ready',()=>{botpressReady=true;statusEl.textContent='AI assistant ready';if(pendingMessage){const text=pendingMessage;pendingMessage='';try{const r=window.botpress.sendMessage(text);if(r&&typeof r.catch==='function')r.catch(()=>{typing.style.display='none';addMessage('Could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';}}});window.botpress.on('message',(event)=>{const text=extractText(event);if(!text)return;const direction=event?.direction||event?.message?.direction||event?.payload?.direction;const isBot=direction==='incoming'||direction==='bot'||event?.from==='bot'||event?.message?.from==='bot'||event?.user?.role==='bot';if(isBot){typing.style.display='none';addMessage(text,'bot');}});window.botpress.on('error',()=>{statusEl.textContent='Botpress error';typing.style.display='none';});return true;}catch(e){statusEl.textContent='Check Botpress setup';return false;}}
-try{if(localStorage.getItem('glory-theme')==='light')document.body.classList.add('light');}catch(e){}
-showSavedMessages();
-hideBotpressLauncher();
-const launcherObserver=new MutationObserver(()=>hideBotpressLauncher());launcherObserver.observe(document.documentElement,{childList:true,subtree:true});
-let bpAttempts=0;const bpTimer=setInterval(()=>{hideBotpressLauncher();bpAttempts++;if(registerBotpress()||bpAttempts>=30){clearInterval(bpTimer);if(bpAttempts>=30&&!botpressReady)statusEl.textContent='Check Botpress setup';}},500);
-messageInput.addEventListener('input',()=>{messageInput.style.height='46px';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';});
-messageInput.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();document.getElementById('message-form').requestSubmit();}});
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  background:
+    radial-gradient(ellipse at top,rgba(214,179,106,.08),transparent 40%),
+    var(--bg);
+  color:#f5f0e5;
+  font-family:Georgia,serif;
+  min-height:100vh;
+}
+header {
+  padding:22px 7%;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+.logo {
+  font-size:22px;
+  letter-spacing:3px;
+  color:var(--gold);
+}
+.status {
+  font:12px Arial,sans-serif;
+  color:#b8b8a0;
+}
+.status:before {
+  content:"● ";
+  color:#8ac78a;
+}
+main {
+  max-width:1050px;
+  margin:auto;
+  padding:55px 22px;
+}
+.hero {
+  text-align:center;
+  margin-bottom:42px;
+}
+.hero small {
+  color:var(--gold);
+  letter-spacing:4px;
+}
+h1 {
+  font-size:clamp(36px,7vw,65px);
+  margin:15px 0;
+  font-weight:normal;
+}
+h1 span {color:var(--gold)}
+.hero p {
+  color:var(--muted);
+  font:15px/1.7 Arial,sans-serif;
+  max-width:650px;
+  margin:auto;
+}
+.quote {
+  color:var(--gold2);
+  font-style:italic;
+  margin-top:20px;
+}
+.panel {
+  background:linear-gradient(145deg,#191714,#101010);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:28px;
+  margin:22px 0;
+}
+.panel h2 {
+  color:var(--gold);
+  font-size:23px;
+  margin-top:0;
+}
+.grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:17px;
+}
+label {
+  display:block;
+  color:#d9cba9;
+  font:13px Arial,sans-serif;
+  margin-bottom:8px;
+}
+input,select {
+  width:100%;
+  padding:14px;
+  background:#0b0b0b;
+  color:white;
+  border:1px solid #51432b;
+  border-radius:8px;
+  font:14px Arial,sans-serif;
+  min-height:46px;
+}
+input:focus,select:focus {
+  outline:1px solid var(--gold);
+}
+select option {
+  background:#111;
+  color:white;
+}
+button {
+  background:linear-gradient(110deg,#a77b32,#efd18b);
+  color:#17120a;
+  border:0;
+  border-radius:8px;
+  padding:15px 22px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:14px;
+}
+button:hover {filter:brightness(1.08)}
+button.secondary {
+  background:#211d16;
+  color:var(--gold);
+  border:1px solid var(--line);
+}
+.actions {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.note {
+  color:var(--muted);
+  font:12px/1.6 Arial,sans-serif;
+  margin-top:15px;
+}
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.feature {
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#111;
+}
+.feature b {
+  display:block;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.feature p {
+  font:13px/1.6 Arial,sans-serif;
+  color:var(--muted);
+  margin:0;
+}
+
+/* GLORY HELPER CREATOR FOOTER */
+.brand-footer {
+  text-align:center;
+  padding:42px 20px;
+  border-top:1px solid #49391f;
+  background:linear-gradient(180deg,#111,#080808);
+  font-family:Arial,sans-serif;
+}
+.footer-logo {
+  color:var(--gold);
+  font-family:Georgia,serif;
+  font-size:23px;
+  letter-spacing:4px;
+  font-weight:bold;
+}
+.footer-tagline {
+  color:#a99a7c;
+  font-size:10px;
+  letter-spacing:3px;
+  margin-top:9px;
+}
+.footer-divider {
+  width:65px;
+  height:1px;
+  background:var(--gold);
+  margin:23px auto;
+}
+.creator-credit {
+  color:#e8dfcf;
+  font-size:13px;
+  margin:0 0 10px;
+}
+.creator-credit strong {color:var(--gold)}
+.creator-email {
+  color:var(--gold);
+  font-size:13px;
+  text-decoration:none;
+}
+.creator-email:hover {color:var(--gold2)}
+
+@media(max-width:700px) {
+  .features {grid-template-columns:1fr 1fr}
+  main {padding:35px 16px}
+  header {padding:18px}
+  .panel {padding:20px}
+}
+@media(max-width:520px) {
+  .grid,.features {grid-template-columns:1fr}
+  .actions {flex-direction:column}
+  .actions button {width:100%}
+  .logo {font-size:18px}
+}
+</style>
+
+<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">GLORY HELPER</div>
+  <div class="status">Your preparation starts here</div>
+</header>
+
+<main>
+
+<section class="hero">
+  <small>YOUR INTERNATIONAL INTERVIEW GUIDE</small>
+  <h1>Prepare with <span>Confidence.</span></h1>
+  <p>
+    Research your destination, understand your university,
+    learn how to build strong answers and practise your interview
+    with GLORY AI.
+  </p>
+  <div class="quote">
+    “Let others chase glory. I shall become its definition.”
+  </div>
+</section>
+
+<section class="panel">
+  <h2>01 — Your Study Profile</h2>
+
+  <div class="grid">
+
+    <div>
+      <label for="country">Destination country *</label>
+      <select id="country">
+        <option value="">Select country</option>
+        <option>United Kingdom</option>
+        <option>United States</option>
+        <option>Canada</option>
+        <option>Australia</option>
+        <option>Germany</option>
+        <option>France</option>
+        <option>Ireland</option>
+        <option>Netherlands</option>
+        <option>Italy</option>
+        <option>Sweden</option>
+        <option>New Zealand</option>
+        <option>Japan</option>
+        <option>South Korea</option>
+        <option>Singapore</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="level">Study level *</label>
+      <select id="level">
+        <option value="">Select level</option>
+        <option>Foundation</option>
+        <option>Undergraduate / Bachelor's</option>
+        <option>Postgraduate / Master's</option>
+        <option>Doctorate / PhD</option>
+        <option>Diploma</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="university">University name *</label>
+      <input id="university" placeholder="Enter university name">
+    </div>
+
+    <div>
+      <label for="course">Course name *</label>
+      <input id="course" placeholder="Enter your course">
+    </div>
+
+    <div>
+      <label for="interview">Interview type</label>
+      <select id="interview">
+        <option>University credibility interview</option>
+        <option>Student visa interview</option>
+        <option>Admission interview</option>
+        <option>General study abroad interview</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="background">Previous education / subjects</label>
+      <input id="background" placeholder="Your education and subjects">
+    </div>
+
+    <div>
+      <label for="sponsor">Who will fund your studies?</label>
+      <input id="sponsor" placeholder="e.g. Parent, self-funded">
+    </div>
+
+    <div>
+      <label for="career">Future career goal</label>
+      <input id="career" placeholder="Your career plan">
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <button type="button" onclick="startGlory('prepare')">
+      START WITH GLORY AI →
+    </button>
+
+    <button type="button" class="secondary"
+      onclick="startGlory('mock')">
+      MOCK INTERVIEW
+    </button>
+  </div>
+
+  <p class="note">
+    Fields marked * are required. Enter accurate information.
+    GLORY should never invent personal details or university facts.
+  </p>
+
+  <p class="note" id="connection-note" aria-live="polite">
+    Complete your profile to begin your preparation.
+  </p>
+</section>
+
+<section class="panel">
+  <h2>02 — Your Learning Journey</h2>
+
+  <div class="features">
+
+    <div class="feature">
+      <b>Research & Compare</b>
+      <p>Understand countries, universities, courses, fees, rankings and student services.</p>
+    </div>
+
+    <div class="feature">
+      <b>Learn to Answer</b>
+      <p>Learn how to structure answers, use research and connect it to your background.</p>
+    </div>
+
+    <div class="feature">
+      <b>Complete Question Bank</b>
+      <p>Practise relevant questions, sample answers and difficult follow-ups.</p>
+    </div>
+
+    <div class="feature">
+      <b>Beginner Friendly</b>
+      <p>Simple explanations of every topic before preparing your answer.</p>
+    </div>
+
+    <div class="feature">
+      <b>Realistic Mock Interview</b>
+      <p>One question at a time, realistic follow-ups and feedback at the end.</p>
+    </div>
+
+    <div class="feature">
+      <b>Personal Preparation</b>
+      <p>Preparation tailored to your destination, course and genuine profile.</p>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="brand-footer">
+  <div class="footer-logo">GLORY HELPER</div>
+  <div class="footer-tagline">POWERED BY AMBITION</div>
+  <div class="footer-divider"></div>
+
+  <p class="creator-credit">
+    Created and managed by <strong>Manthan Bhardwaj</strong>
+  </p>
+
+  <a class="creator-email" href="mailto:Manthanb745@gmail.com">
+    Manthanb745@gmail.com
+  </a>
+</footer>
+
+<script>
+
+/* ==========================================
+   BOTPRESS CONNECTION
+   Replace both placeholders with your actual
+   Botpress Dashboard embed values.
+========================================== */
+
+const BOT_ID = "PASTE_YOUR_BOT_ID";
+const CLIENT_ID = "PASTE_YOUR_CLIENT_ID";
+
+let pendingPrompt = "";
+let webchatReady = false;
+let sendingProfile = false;
+
+function getValue(id) {
+  return document.getElementById(id).value.trim();
+}
+
+function buildPrompt(mode) {
+
+  const profile = {
+    destination: getValue("country"),
+    studyLevel: getValue("level"),
+    university: getValue("university"),
+    course: getValue("course"),
+    interviewType: getValue("interview"),
+    previousEducation: getValue("background"),
+    sponsor: getValue("sponsor"),
+    careerGoal: getValue("career")
+  };
+
+  if (
+    !profile.destination ||
+    !profile.studyLevel ||
+    !profile.university ||
+    !profile.course
+  ) {
+    alert("Please complete your country, study level, university and course.");
+    return null;
+  }
+
+  return `
+You are GLORY HELPER, a complete international study interview preparation teacher.
+
+STUDENT PROFILE:
+${JSON.stringify(profile, null, 2)}
+
+MODE:
+${mode === "mock" ? "MOCK INTERVIEW" : "FULL PREPARATION"}
+
+IMPORTANT RULES:
+
+1. Personalise all guidance to this student's destination,
+university, course and genuine background.
+
+2. Never invent personal experiences, academic results,
+sponsor income, funds or career plans.
+
+3. Never invent university rankings, modules, tuition fees,
+living costs, satisfaction statistics, employment rates,
+teacher-student ratios, visa rules or healthcare costs.
+
+4. Use trustworthy sources and direct links when reliable
+research tools are available. Mention the source and year.
+If live research is unavailable, tell the student to verify
+facts on official university and government websites.
+
+5. Ask for missing personal information when necessary.
+Never assume or fabricate it.
+
+FULL PREPARATION MODE:
+
+Start by welcoming the student and confirming their profile.
+
+SECTION 1 — PREPARATION ROADMAP
+Explain how to prepare from beginner level to interview readiness.
+
+SECTION 2 — RESEARCH AND COMPARISON
+
+Teach these research points:
+- Course availability and duration
+- Course modules
+- Tuition fees and living costs
+- Scholarships
+- University rankings and ranking year
+- Academic support
+- Extracurricular facilities
+- Teacher-student ratio, if published
+- Teaching approach
+- Assessment methods
+- Student satisfaction
+- Graduate employment and employability
+- Healthcare and student insurance
+- Industry links and career opportunities
+
+Explain what each point means, why it matters,
+where to research it and how to use verified facts
+in an interview answer.
+
+Compare relevant universities only when reliable,
+meaningful comparisons are available.
+
+SECTION 3 — ANSWER WRITING
+
+Teach the student to:
+1. Understand the question.
+2. Give a direct answer.
+3. Add researched facts.
+4. Explain why those facts matter.
+5. Connect the facts to genuine personal goals.
+6. Finish with a clear conclusion.
+
+Provide:
+- An answer framework.
+- A weak versus improved example.
+- A complete natural sample answer.
+- Advice on adapting answers honestly instead of memorising.
+
+SECTION 4 — COMPLETE QUESTION BANK
+
+Cover all relevant categories:
+
+- Self-introduction
+- Previous education and subjects
+- Academic gaps
+- Destination choice
+- Why not the home country
+- Why not other countries
+- University and campus choice
+- Course choice
+- Course modules
+- Difficult modules
+- Teaching and assessment
+- University comparisons
+- Tuition fees and living costs
+- Scholarships
+- Sponsor and source of funds
+- Accommodation
+- Healthcare and insurance
+- Student support
+- Facilities
+- Career plans
+- Plans after graduation
+- Challenging credibility follow-ups
+
+FOR EVERY QUESTION INCLUDE:
+
+A. Interview question.
+B. Relevant research point names only.
+C. What the interviewer wants to understand.
+D. Step-by-step answer construction.
+E. Complete natural sample answer using verified facts
+   and known profile information only.
+F. Possible follow-up questions.
+
+Do not stop after only 10 or 15 questions.
+Organise the question bank into manageable sections.
+
+MOCK INTERVIEW MODE:
+
+Act as a realistic interviewer.
+
+Ask ONE question at a time.
+Wait for the student's answer.
+Ask challenging follow-up questions when relevant.
+Do not reveal sample answers during the interview.
+Do not interrupt to correct the student.
+
+At the end, give detailed feedback on:
+- Accuracy
+- Clarity
+- Research
+- Credibility
+- Answer structure
+- Confidence
+- Improvement areas
+
+Begin now in the selected mode.
+  `.trim();
+}
+
+function showNote(message) {
+  document.getElementById("connection-note").textContent = message;
+}
+
+async function sendPendingPrompt() {
+
+  if (!pendingPrompt || !webchatReady || sendingProfile) return;
+
+  sendingProfile = true;
+  const prompt = pendingPrompt;
+
+  try {
+    await window.botpress.restartConversation();
+    await window.botpress.sendMessage(prompt);
+
+    pendingPrompt = "";
+    showNote("Your study profile has been sent to GLORY AI.");
+
+  } catch (error) {
+    console.error("GLORY session error:", error);
+    showNote("Could not send your profile. Please try again.");
+    alert("Could not send your profile to GLORY AI. Please try again.");
+
+  } finally {
+    sendingProfile = false;
+  }
+}
+
+function startGlory(mode) {
+
+  const prompt = buildPrompt(mode);
+  if (!prompt) return;
+
+  if (
+    BOT_ID === "PASTE_YOUR_BOT_ID" ||
+    CLIENT_ID === "PASTE_YOUR_CLIENT_ID"
+  ) {
+    alert("Please add your real Bot ID and Client ID from Botpress Dashboard.");
+    return;
+  }
+
+  if (!window.botpress || !window.botpress.open) {
+    alert("Botpress has not loaded. Check your internet connection and embed code.");
+    return;
+  }
+
+  pendingPrompt = prompt;
+
+  window.botpress.open();
+
+  if (webchatReady) {
+    sendPendingPrompt();
+  } else {
+    showNote("Opening GLORY AI. Your profile will be sent when chat is ready.");
+  }
+}
+
+/* Initialise Botpress after the page loads. */
+
+window.addEventListener("load", function() {
+
+  if (
+    BOT_ID === "PASTE_YOUR_BOT_ID" ||
+    CLIENT_ID === "PASTE_YOUR_CLIENT_ID"
+  ) {
+    console.warn("Add your actual Botpress IDs.");
+    return;
+  }
+
+  if (!window.botpress || !window.botpress.init) {
+    showNote("Botpress did not load. Check the Webchat script URL.");
+    return;
+  }
+
+  try {
+
+    window.botpress.init({
+      botId: BOT_ID,
+      clientId: CLIENT_ID,
+
+      configuration: {
+        botName: "GLORY HELPER",
+        botDescription: "Your international interview preparation teacher",
+        website: {},
+        email: {},
+        phone: {},
+        termsOfService: {},
+        privacyPolicy: {},
+        color: "#b58a45",
+        variant: "solid",
+        themeMode: "dark",
+        fontFamily: "inter"
+      }
+    });
+
+    window.botpress.on("webchat:ready", function() {
+      webchatReady = true;
+
+      if (pendingPrompt) {
+        sendPendingPrompt();
+      }
+    });
+
+    window.botpress.on("error", function(error) {
+      console.error("Botpress error:", error);
+      showNote("Botpress reported an error. Check your bot settings.");
+    });
+
+    showNote("GLORY AI is ready. Complete your profile to begin.");
+
+  } catch(error) {
+    console.error("Botpress initialisation failed:", error);
+    showNote("Botpress could not initialise. Check your Dashboard embed details.");
+  }
+});
+
 </script>
+
 </body>
 </html>
-
-
-
