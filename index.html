@@ -1,149 +1,256 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GLORY HELPER</title>
+<!-- GLORY HELPER: COMPARISON & OFFICIAL RESEARCH UPGRADE -->
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#090909;color:#f1e5cd;
- font-family:Arial,sans-serif;padding:22px;
-}
-main{max-width:720px;margin:auto}
-.gold{color:#d6b36a}
-h1{letter-spacing:2px}
-h2{font-size:30px;line-height:1.2}
-p{color:#aaa295;line-height:1.6}
-.panel{
- background:#151515;border:1px solid #49391f;
- border-radius:15px;padding:18px;margin:14px 0;
-}
-input,select{
- width:100%;padding:14px;margin-top:9px;
- border:1px solid #49391f;border-radius:9px;
- background:#101010;color:#f1e5cd;font-size:15px;
-}
-button{
- background:#b58a45;color:#17120a;border:0;
- border-radius:9px;padding:15px;font-weight:bold;
- width:100%;margin-top:15px;cursor:pointer;
-}
-.countries{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.country{
- padding:15px;background:#171717;
- border:1px solid #49391f;border-radius:10px;
- color:#f1e5cd;cursor:pointer;text-align:left;
-}
-.country.selected{border-color:#d6b36a;background:#302314}
-small{color:#b58a45}
+.gh-research{background:#111;border:1px solid #92774466;border-radius:14px;padding:20px;margin:18px 0;color:#f5f0e7}
+.gh-research h2,.gh-research h3{color:#e5c889}
+.gh-research label{display:block;color:#d8c9aa;margin:12px 0 5px;font-size:13px}
+.gh-research input,.gh-research select,.gh-research textarea{width:100%;padding:12px;background:#090909;border:1px solid #625137;border-radius:8px;color:white}
+.gh-research button{padding:11px 16px;background:#b89553;color:#100e09;border:0;border-radius:8px;font-weight:bold;margin:10px 5px 5px 0}
+.gh-research .gh-secondary{background:transparent;color:#e5c889;border:1px solid #927744}
+.gh-point{padding:12px;margin:9px 0;background:#1b1812;border-left:3px solid #c9a45c;border-radius:5px}
+.gh-answer{white-space:pre-wrap;line-height:1.85;background:#090909;padding:17px;border:1px solid #92774466;border-radius:9px;margin-top:12px}
+.gh-source{display:block;color:#e5c889;margin:9px 0;overflow-wrap:anywhere}
+.gh-muted{color:#aaa49a;font-size:12px}
 </style>
-</head>
-<body>
-<main>
-<header>
- <h1 class="gold">GLORY HELPER</h1>
- <small>POWERED BY AMBITION</small>
-</header>
 
-<section class="panel">
- <small>YOUR INTERNATIONAL EDUCATION COMPANION</small>
- <h2>Your ambition deserves
- <span class="gold">better preparation.</span></h2>
- <p>Research your university, understand your course
- and prepare for your interview.</p>
+<section class="gh-research">
+  <h2>GLORY HELPER — Official Research & Comparison Centre</h2>
+  <p>Compare universities using relevant evidence, then build a detailed interview answer from the same comparison points.</p>
+
+  <label>Choose your question</label>
+  <select id="ghQuestion" onchange="ghLoadQuestion()">
+    <option value="uk">Why did you choose the UK instead of your home country?</option>
+    <option value="university">Why this university instead of other universities?</option>
+    <option value="country">Why this country instead of other countries?</option>
+    <option value="course">Why did you choose this course?</option>
+    <option value="career">What career opportunities does your course offer?</option>
+  </select>
+
+  <div id="ghPoints"></div>
+
+  <hr style="border-color:#625137">
+
+  <h3>University details</h3>
+  <label>Your selected university</label>
+  <input id="ghUniversity1" placeholder="Enter your selected university">
+
+  <label>University you compared it with</label>
+  <input id="ghUniversity2" placeholder="Enter another university">
+
+  <label>Other university (optional)</label>
+  <input id="ghUniversity3" placeholder="Enter another university">
+
+  <h3>Research evidence</h3>
+  <p class="gh-muted">Enter the latest published figure and its actual year. Add the original source link. Do not enter estimated or invented statistics.</p>
+
+  <label>Ranking information, publisher and edition year</label>
+  <textarea id="ghRanking" placeholder="Example: Guardian University Guide, position and edition year. Include the source link."></textarea>
+
+  <label>Student satisfaction — percentage and survey year</label>
+  <textarea id="ghSatisfaction" placeholder="Enter the published percentage, survey year and source."></textarea>
+
+  <label>Graduate employment / outcomes — figure and reporting year</label>
+  <textarea id="ghEmployment" placeholder="Explain what the figure measures, its year and source."></textarea>
+
+  <label>Teaching quality and academic support</label>
+  <textarea id="ghTeaching" placeholder="Enter official survey results, ratings or published information with the year."></textarea>
+
+  <label>Course modules and course structure</label>
+  <textarea id="ghModules" placeholder="Use the official module names, course duration and course structure."></textarea>
+
+  <label>Tuition fees and scholarships</label>
+  <textarea id="ghFees" placeholder="Enter official fees, scholarship and academic year."></textarea>
+
+  <label>Facilities, location and student support</label>
+  <textarea id="ghFacilities" placeholder="Enter relevant information from official university sources."></textarea>
+
+  <label>Other comparison evidence</label>
+  <textarea id="ghOther" placeholder="Add any other relevant verified comparison information."></textarea>
+
+  <h3>Official research sources</h3>
+  <a class="gh-source" href="https://www.discoveruni.gov.uk/" target="_blank">Discover Uni — official UK course and student information</a>
+  <a class="gh-source" href="https://www.hesa.ac.uk/" target="_blank">HESA — higher education statistics and datasets</a>
+  <a class="gh-source" href="https://www.officeforstudents.org.uk/" target="_blank">Office for Students — official regulatory information</a>
+  <a class="gh-source" href="https://www.graduateoutcomes.ac.uk/" target="_blank">Graduate Outcomes — graduate employment survey</a>
+  <a class="gh-source" href="https://www.gov.uk/" target="_blank">GOV.UK — official government information</a>
+
+  <p class="gh-muted">The links open original source websites. This static website does not automatically retrieve or verify their latest figures. Always record the source and year beside each figure.</p>
+
+  <button onclick="ghShowComparison()">Prepare point-by-point comparison</button>
+  <div id="ghComparison"></div>
+
+  <hr style="border-color:#625137">
+  <h3>Build the final interview answer</h3>
+  <label>Your personal reason for choosing this option</label>
+  <textarea id="ghReason" placeholder="Explain your genuine reasons in your own words."></textarea>
+
+  <label>Additional details you want included</label>
+  <textarea id="ghPersonal" placeholder="Add your academic background, interests or future goals."></textarea>
+
+  <button onclick="ghBuildAnswer()">Generate 5–6 paragraph answer</button>
+  <div id="ghFinalAnswer"></div>
 </section>
-
-<section class="panel">
- <h3>01. Choose your destination</h3>
- <div class="countries" id="countries">
-  <button class="country selected" data-country="United Kingdom">🇬🇧 United Kingdom</button>
-  <button class="country" data-country="Canada">🇨🇦 Canada</button>
-  <button class="country" data-country="United States">🇺🇸 United States</button>
-  <button class="country" data-country="Australia">🇦🇺 Australia</button>
-  <button class="country" data-country="Germany">🇩🇪 Germany</button>
-  <button class="country" data-country="Ireland">🇮🇪 Ireland</button>
- </div>
-
- <h3>02. Study level</h3>
- <select id="level">
-  <option>Undergraduate</option>
-  <option>Postgraduate</option>
-  <option>Foundation</option>
-  <option>Diploma</option>
-  <option>Other</option>
- </select>
-
- <h3>03. University name</h3>
- <input id="university" placeholder="Enter full university name">
-
- <h3>04. Full course name</h3>
- <input id="course" placeholder="Type your complete course title">
-
- <h3>05. Interview type</h3>
- <select id="interview">
-  <option>University credibility interview</option>
-  <option>Admission interview</option>
-  <option>Student visa interview preparation</option>
-  <option>Other</option>
- </select>
-
- <button onclick="beginPreparation()">
-  BEGIN PREPARATION →
- </button>
-</section>
-
-<section class="panel">
- <h3 class="gold">YOUR PREPARATION CENTRE</h3>
- <p>University comparisons · All course modules ·
- Career opportunities · Interview question bank ·
- Mock interviews</p>
- <div id="status" aria-live="polite"></div>
-</section>
-
-<footer class="panel" style="text-align:center">
- <b>Created and managed by Manthan Bhardwaj</b>
- <p class="gold">Manthanb745@gmail.com</p>
- <small>GLORY HELPER · POWERED BY AMBITION</small>
-</footer>
-</main>
 
 <script>
-let destination="United Kingdom";
+const ghQuestionPoints = {
+ uk:[
+  "Availability of the exact course in the UK compared with the home country",
+  "Course modules and subject coverage",
+  "Teaching methods and practical learning",
+  "Assessment methods, including assignments and presentations",
+  "Course duration and academic structure",
+  "International learning environment",
+  "Student satisfaction and academic experience",
+  "Graduate employment and career outcomes",
+  "University rankings and recognition",
+  "Academic support and learning facilities",
+  "Tuition fees, living expenses and scholarships",
+  "Student accommodation and location"
+ ],
+ university:[
+  "Availability of the exact course at each university",
+  "Official modules and subject content",
+  "Course duration and structure",
+  "Teaching and learning approach",
+  "Assessment methods",
+  "Student satisfaction and academic experience",
+  "Graduate employment and outcomes",
+  "University ranking and edition year",
+  "Academic support and learning facilities",
+  "Industry connections and practical opportunities",
+  "Campus location and transport",
+  "Tuition fees and scholarships"
+ ],
+ country:[
+  "Availability of the selected course",
+  "Education system and qualification structure",
+  "Teaching and assessment methods",
+  "Course duration",
+  "International recognition of qualifications",
+  "International student environment",
+  "Student support and academic resources",
+  "Tuition fees and cost of living",
+  "Scholarships and financial support",
+  "Accommodation and transport",
+  "Relevant student visa requirements"
+ ],
+ course:[
+  "Connection with previous education",
+  "Personal interest in the subject",
+  "Official course content",
+  "Individual course modules",
+  "Knowledge and understanding gained",
+  "Practical and transferable skills",
+  "Teaching and assessment methods",
+  "Industry and career relevance",
+  "Professional development opportunities"
+ ],
+ career:[
+  "Course-related entry-level job roles",
+  "Actual duties and responsibilities",
+  "Skills developed through the course",
+  "Relevant industries and employers",
+  "Current job-market information",
+  "Published salary information and reporting year",
+  "Career progression",
+  "Further qualifications or professional requirements"
+ ]
+};
 
-document.querySelectorAll(".country").forEach(btn=>{
- btn.addEventListener("click",()=>{
-  document.querySelectorAll(".country")
-   .forEach(b=>b.classList.remove("selected"));
-  btn.classList.add("selected");
-  destination=btn.dataset.country;
+function ghEsc(value){
+ return String(value||"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function ghLoadQuestion(){
+ const key=document.getElementById("ghQuestion").value;
+ const points=ghQuestionPoints[key]||[];
+ document.getElementById("ghPoints").innerHTML=
+  "<h3>First: identify the comparison points</h3>"+
+  "<p class='gh-muted'>These points are specific to the selected question. Review them before preparing the answer.</p>"+
+  points.map((p,i)=>`<div class="gh-point"><strong>${i+1}. ${ghEsc(p)}</strong></div>`).join("");
+ document.getElementById("ghComparison").innerHTML="";
+ document.getElementById("ghFinalAnswer").innerHTML="";
+}
+
+function ghEvidence(){
+ return [
+  ["Ranking",document.getElementById("ghRanking").value],
+  ["Student satisfaction",document.getElementById("ghSatisfaction").value],
+  ["Graduate employment and outcomes",document.getElementById("ghEmployment").value],
+  ["Teaching and academic support",document.getElementById("ghTeaching").value],
+  ["Course modules and structure",document.getElementById("ghModules").value],
+  ["Tuition fees and scholarships",document.getElementById("ghFees").value],
+  ["Facilities and location",document.getElementById("ghFacilities").value],
+  ["Other evidence",document.getElementById("ghOther").value]
+ ].filter(item=>item[1].trim());
+}
+
+function ghShowComparison(){
+ const key=document.getElementById("ghQuestion").value;
+ const points=ghQuestionPoints[key]||[];
+ const u1=document.getElementById("ghUniversity1").value.trim()||"Selected option";
+ const u2=document.getElementById("ghUniversity2").value.trim()||"Alternative option";
+ const u3=document.getElementById("ghUniversity3").value.trim();
+ const evidence=ghEvidence();
+
+ let html="<h3>Second: point-by-point comparison</h3>";
+ html+=`<p><strong>Options:</strong> ${ghEsc(u1)} compared with ${ghEsc(u2)}${u3?" and "+ghEsc(u3):""}</p>`;
+
+ points.forEach((point,i)=>{
+  html+=`<div class="gh-point"><strong>${i+1}. ${ghEsc(point)}</strong>
+  <p class="gh-muted">Selected option: add the verified evidence relevant to this point.</p>
+  <p class="gh-muted">Alternative option: add its corresponding evidence for a fair comparison.</p></div>`;
  });
-});
 
-function beginPreparation(){
- const university=document.getElementById("university").value.trim();
- const course=document.getElementById("course").value.trim();
+ html+="<h3>Evidence entered</h3>";
+ if(!evidence.length){
+  html+="<p class='gh-muted'>No evidence has been entered yet. Add verified information before using this comparison in an interview.</p>";
+ }else{
+  evidence.forEach(item=>{
+   html+=`<div class="gh-point"><strong>${ghEsc(item[0])}</strong><p>${ghEsc(item[1])}</p></div>`;
+  });
+ }
+ document.getElementById("ghComparison").innerHTML=html;
+}
 
- if(!university || !course){
-  document.getElementById("status").textContent=
-   "Please enter your university and full course name.";
+function ghBuildAnswer(){
+ const key=document.getElementById("ghQuestion").value;
+ const points=ghQuestionPoints[key]||[];
+ const evidence=ghEvidence();
+ const u1=document.getElementById("ghUniversity1").value.trim()||"my selected option";
+ const u2=document.getElementById("ghUniversity2").value.trim()||"the alternatives I considered";
+ const reason=document.getElementById("ghReason").value.trim();
+ const personal=document.getElementById("ghPersonal").value.trim();
+
+ if(!evidence.length){
+  document.getElementById("ghFinalAnswer").innerHTML=
+   "<p class='gh-muted'>Please add verified evidence before building your detailed answer.</p>";
   return;
  }
 
- const profile={
-  destination,
-  level:document.getElementById("level").value,
-  university,
-  course,
-  interview:document.getElementById("interview").value
- };
+ const selected=evidence.slice(0,3);
+ const remaining=evidence.slice(3);
+ const paragraphs=[
+  `I chose ${u1} after carefully considering my academic interests and comparing it with ${u2}. I wanted to make a well-informed decision rather than choosing an institution or destination without understanding its course, teaching approach and overall suitability. ${reason}`,
+  `One of the main factors I considered was the course and its academic structure. ${selected.map(x=>x[0]+": "+x[1]).join(" ")}`,
+  `I also looked at the quality of the student experience and the opportunities available. ${remaining.slice(0,2).map(x=>x[0]+": "+x[1]).join(" ")}`,
+  `Another important consideration was whether the overall choice matched my academic requirements and practical circumstances. ${remaining.slice(2).map(x=>x[0]+": "+x[1]).join(" ")}`,
+  `These comparisons helped me understand the differences between my selected option and the alternatives. I gave particular importance to the factors that directly affect my learning, course experience and academic development.`,
+  `Overall, I selected ${u1} because it is the option that best matches the priorities I identified during my research. ${personal}`
+ ];
 
- document.getElementById("status").textContent=
-  "Your study profile is ready. Connect your AI assistant to begin.";
-
- console.log("Student study profile:",profile);
+ const answer=paragraphs.map(p=>p.trim()).filter(Boolean).join("\n\n");
+ document.getElementById("ghFinalAnswer").innerHTML=
+  "<h3>Third: your interview answer</h3>"+
+  "<p class='gh-muted'>This draft uses your entered evidence. Check every statement, personalise it and remove anything that is not accurate.</p>"+
+  `<div class="gh-answer" id="ghAnswerText">${ghEsc(answer)}</div>`+
+  `<p class="gh-muted">Word count: ${answer.split(/\s+/).filter(Boolean).length}. Six-paragraph structure.</p>`+
+  `<button onclick="navigator.clipboard.writeText(document.getElementById('ghAnswerText').innerText)">Copy answer</button>`;
 }
+
+ghLoadQuestion();
 </script>
-</body>
-</html>
+<!-- END GLORY HELPER UPGRADE -->
+
