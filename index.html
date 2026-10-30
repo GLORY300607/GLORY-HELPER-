@@ -7,808 +7,719 @@
 <meta name="theme-color" content="#11100e">
 <title>GLORY HELPER | Powered by Ambition</title>
 
-<!-- Original Botpress scripts -->
 <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg:#0d0d0c;
-  --panel:#171613;
-  --panel2:#201e19;
-  --gold:#d5ae62;
-  --gold2:#f0d69a;
-  --text:#eee9dc;
-  --muted:#a9a18f;
-  --border:rgba(213,174,98,.22);
-  --green:#76c69a;
-  --red:#e58a7d;
+--bg:#0d0d0c;
+--panel:#171613;
+--gold:#d5ae62;
+--gold2:#f0d69a;
+--text:#eee9dc;
+--muted:#a9a18f;
+--border:rgba(213,174,98,.22);
+--green:#76c69a;
+--red:#e58a7d;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{
-  margin:0;background:
-  radial-gradient(ellipse at 15% 0%,rgba(160,116,42,.12),transparent 38%),
-  radial-gradient(ellipse at 100% 80%,rgba(130,91,31,.08),transparent 35%),
-  var(--bg);
-  color:var(--text);font-family:Inter,Arial,sans-serif;
-  min-height:100vh;
+margin:0;
+background:radial-gradient(ellipse at 15% 0%,rgba(160,116,42,.12),transparent 38%),var(--bg);
+color:var(--text);
+font-family:Inter,Arial,sans-serif;
+min-height:100vh;
 }
 button,input,select{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
 .topbar{
-  min-height:76px;padding:14px 5%;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid var(--border);
-  background:rgba(13,13,12,.92);position:sticky;top:0;z-index:20;
-  backdrop-filter:blur(14px);
+min-height:76px;padding:14px 5%;
+display:flex;align-items:center;justify-content:space-between;
+border-bottom:1px solid var(--border);
+background:rgba(13,13,12,.95);
+position:sticky;top:0;z-index:20;
 }
 .brand{display:flex;align-items:center;gap:12px}
 .brand-mark{
-  width:43px;height:43px;border:1px solid var(--gold);
-  display:grid;place-items:center;color:var(--gold);
-  font-family:Cinzel,serif;font-size:21px;
-  transform:rotate(45deg);border-radius:9px;
+width:43px;height:43px;border:1px solid var(--gold);
+display:grid;place-items:center;color:var(--gold);
+font:21px Cinzel,serif;transform:rotate(45deg);border-radius:9px;
 }
 .brand-mark span{transform:rotate(-45deg)}
-.brand h1{
-  font:700 19px Cinzel,serif;letter-spacing:2px;
-  color:var(--gold);margin:0;
-}
+.brand h1{font:700 19px Cinzel,serif;letter-spacing:2px;color:var(--gold);margin:0}
 .brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:3px;margin-top:4px}
-.status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}
-.status-dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 9px var(--green)}
+.status{font-size:12px;color:var(--muted)}
 main{max-width:1250px;margin:auto;padding:42px 22px 65px}
 .hero{text-align:center;max-width:780px;margin:25px auto 35px}
 .eyebrow{color:var(--gold);letter-spacing:4px;font-size:10px;font-weight:700}
-.hero h2{
-  font:700 clamp(30px,5vw,52px) Cinzel,serif;
-  line-height:1.2;margin:16px 0;color:var(--gold2);
-}
+.hero h2{font:700 clamp(30px,5vw,52px) Cinzel,serif;line-height:1.2;color:var(--gold2)}
 .hero p{color:var(--muted);line-height:1.8;font-size:14px}
 .quote{
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:16px;margin:26px auto 0;max-width:650px;
-  color:var(--gold2);font:italic 15px Cinzel,serif;
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+padding:16px;margin:26px auto 0;max-width:650px;
+color:var(--gold2);font:italic 15px Cinzel,serif;
 }
 .panel{
-  background:linear-gradient(145deg,rgba(32,30,25,.97),rgba(20,19,16,.98));
-  border:1px solid var(--border);border-radius:17px;
-  box-shadow:0 18px 55px rgba(0,0,0,.28);
+background:linear-gradient(145deg,#201e19,#141310);
+border:1px solid var(--border);border-radius:17px;
+box-shadow:0 18px 55px rgba(0,0,0,.28);
 }
 .registration{max-width:700px;margin:auto;padding:30px}
-.section-title{font:600 21px Cinzel,serif;color:var(--gold2);margin:0 0 8px}
-.section-sub{font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 25px}
+.section-title{font:600 21px Cinzel,serif;color:var(--gold2)}
+.section-sub{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:25px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
 .field{display:flex;flex-direction:column;gap:8px}
 .field.full{grid-column:1/-1}
 .field label{font-size:12px;color:#d8c9a8;font-weight:600}
 .field input,.field select{
-  width:100%;padding:14px 13px;border-radius:9px;
-  color:var(--text);background:#11110f;border:1px solid #49402d;
-  outline:none;transition:.2s;
+width:100%;padding:14px 13px;border-radius:9px;
+color:var(--text);background:#11110f;border:1px solid #49402d;
+outline:none;
 }
-.field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(213,174,98,.1)}
+.field input:focus,.field select:focus{border-color:var(--gold)}
 .field select option{background:#171613}
 .primary-btn{
-  border:0;border-radius:9px;padding:15px 22px;
-  background:linear-gradient(110deg,#b68a40,#ecd18e);
-  color:#17130b;font-weight:800;letter-spacing:1px;
-  transition:.2s;
+border:0;border-radius:9px;padding:15px 22px;
+background:linear-gradient(110deg,#b68a40,#ecd18e);
+color:#17130b;font-weight:800;letter-spacing:1px;
 }
-.primary-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .start-btn{width:100%;margin-top:24px}
 .form-error{color:var(--red);font-size:12px;min-height:17px;margin-top:12px}
-.privacy-note{font-size:11px;color:var(--muted);line-height:1.6;margin:15px 0 0}
-
-/* Workspace */
+.privacy-note{font-size:11px;color:var(--muted);line-height:1.6}
 .workspace-head{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:15px;flex-wrap:wrap;margin:0 0 22px;
+display:flex;justify-content:space-between;align-items:center;
+gap:15px;flex-wrap:wrap;margin-bottom:22px;
 }
-.welcome h2{font:600 25px Cinzel,serif;color:var(--gold2);margin:0 0 7px}
-.welcome p{font-size:13px;color:var(--muted);margin:0}
+.welcome h2{font:600 25px Cinzel,serif;color:var(--gold2)}
+.welcome p{font-size:13px;color:var(--muted)}
 .secondary-btn{
-  border:1px solid var(--border);background:#211e17;color:var(--gold2);
-  border-radius:8px;padding:10px 14px;font-size:12px;
+border:1px solid var(--border);background:#211e17;
+color:var(--gold2);border-radius:8px;padding:10px 14px;
 }
 .workspace-grid{
-  display:grid;grid-template-columns:minmax(245px,.75fr) minmax(0,1.6fr);
-  gap:19px;align-items:stretch;
+display:grid;grid-template-columns:minmax(245px,.75fr) minmax(0,1.6fr);
+gap:19px;
 }
 .side-panel{padding:22px}
-.side-panel h3{font:600 16px Cinzel,serif;color:var(--gold2);margin:0 0 7px}
-.side-panel>p{font-size:12px;color:var(--muted);line-height:1.7;margin:0 0 18px}
+.side-panel h3{font:600 16px Cinzel,serif;color:var(--gold2)}
+.side-panel>p{font-size:12px;color:var(--muted);line-height:1.7}
 .student-card{
-  background:#11110f;border:1px solid var(--border);border-radius:10px;
-  padding:13px;margin-bottom:20px;
+background:#11110f;border:1px solid var(--border);
+border-radius:10px;padding:13px;margin-bottom:20px;
 }
 .student-card strong{color:var(--gold2);font-size:13px}
-.student-card div{font-size:11px;color:var(--muted);line-height:1.7;margin-top:6px;overflow-wrap:anywhere}
+.student-card div{font-size:11px;color:var(--muted);line-height:1.7;margin-top:6px}
 .category-list{display:flex;flex-direction:column;gap:7px}
 .category-item{
-  text-align:left;padding:11px 12px;background:#11110f;
-  color:#d9d0bd;border:1px solid rgba(213,174,98,.13);
-  border-radius:8px;font-size:12px;line-height:1.5;
+text-align:left;padding:11px 12px;background:#11110f;
+color:#d9d0bd;border:1px solid rgba(213,174,98,.13);
+border-radius:8px;font-size:12px;
 }
-.category-item:hover{border-color:var(--gold);color:var(--gold2)}
-.category-item span{color:var(--gold);font-weight:700;margin-right:7px}
+.category-item:hover{border-color:var(--gold)}
+.category-item .number{color:var(--gold);font-weight:700;margin-right:7px}
 .chat-panel{overflow:hidden;min-height:690px;display:flex;flex-direction:column}
 .chat-heading{
-  padding:18px 20px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
+padding:18px 20px;border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;
 }
-.chat-heading h3{font:600 17px Cinzel,serif;color:var(--gold2);margin:0}
-.chat-heading p{font-size:11px;color:var(--muted);margin:5px 0 0}
-.chat-ready{font-size:10px;color:var(--green);white-space:nowrap}
+.chat-heading h3{font:600 17px Cinzel,serif;color:var(--gold2)}
+.chat-heading p{font-size:11px;color:var(--muted)}
+.chat-ready{font-size:10px;color:var(--green)}
 #webchat-container{
-  position:relative;width:100%;height:620px;min-height:520px;
-  background:#11110f;overflow:hidden;
+position:relative;width:100%;height:620px;min-height:520px;
+background:#11110f;overflow:hidden;
 }
-/* Embedded Botpress window: no floating launcher */
 #webchat-container .bpFab,
 #webchat-container .bpFabWrapper{display:none!important}
 #webchat-container .bpWebchat{
-  position:absolute!important;inset:0!important;
-  width:100%!important;height:100%!important;
-  max-height:100%!important;min-height:100%!important;
-  border-radius:0!important;box-shadow:none!important;
+position:absolute!important;inset:0!important;
+width:100%!important;height:100%!important;
+max-height:100%!important;min-height:100%!important;
+border-radius:0!important;
 }
 .chat-fallback{
-  padding:30px;text-align:center;color:var(--muted);
-  font-size:13px;line-height:1.8;
+padding:30px;text-align:center;color:var(--muted);
+font-size:13px;line-height:1.8;
 }
-.chat-fallback strong{color:var(--gold2)}
 .info-strip{
-  margin-top:20px;padding:15px 17px;border:1px solid var(--border);
-  background:rgba(213,174,98,.045);border-radius:10px;
-  color:var(--muted);font-size:12px;line-height:1.7;
+margin-top:20px;padding:15px 17px;
+border:1px solid var(--border);
+background:rgba(213,174,98,.045);
+border-radius:10px;color:var(--muted);
+font-size:12px;line-height:1.7;
 }
 .info-strip strong{color:var(--gold2)}
 footer{
-  border-top:1px solid var(--border);padding:28px 15px;
-  text-align:center;color:var(--muted);font-size:11px;line-height:2;
+border-top:1px solid var(--border);padding:28px 15px;
+text-align:center;color:var(--muted);font-size:11px;line-height:2;
 }
 footer strong{font:700 15px Cinzel,serif;color:var(--gold)}
 footer .credit{color:var(--gold2)}
 @media(max-width:800px){
-  main{padding:28px 14px 45px}
-  .workspace-grid{grid-template-columns:1fr}
-  .category-list{display:grid;grid-template-columns:1fr 1fr}
-  .chat-panel{min-height:620px}
-  #webchat-container{height:580px;min-height:480px}
+main{padding:28px 14px 45px}
+.workspace-grid{grid-template-columns:1fr}
+.category-list{display:grid;grid-template-columns:1fr 1fr}
 }
 @media(max-width:500px){
-  .topbar{padding:12px 15px}
-  .brand h1{font-size:15px}
-  .brand-mark{width:36px;height:36px}
-  .status{font-size:10px}
-  .hero{margin:15px auto 25px}
-  .registration{padding:21px 16px}
-  .form-grid{grid-template-columns:1fr}
-  .field.full{grid-column:auto}
-  .category-list{grid-template-columns:1fr}
-  .chat-heading{padding:15px}
-  #webchat-container{height:560px;min-height:460px}
+.topbar{padding:12px 15px}
+.brand h1{font-size:15px}
+.hero{margin:15px auto 25px}
+.registration{padding:21px 16px}
+.form-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.category-list{grid-template-columns:1fr}
+#webchat-container{height:560px;min-height:460px}
 }
 </style>
 </head>
 
 <body>
 <header class="topbar">
-  <div class="brand">
-    <div class="brand-mark"><span>G</span></div>
-    <div>
-      <h1>GLORY HELPER</h1>
-      <small>POWERED BY AMBITION</small>
-    </div>
-  </div>
-  <div class="status"><span class="status-dot"></span><span id="connectionStatus">Preparing assistant</span></div>
+<div class="brand">
+<div class="brand-mark"><span>G</span></div>
+<div>
+<h1>GLORY HELPER</h1>
+<small>POWERED BY AMBITION</small>
+</div>
+</div>
+<div class="status" id="connectionStatus">Preparing assistant</div>
 </header>
 
 <main>
-  <section class="hero" id="hero">
-    <div class="eyebrow">YOUR UNIVERSITY INTERVIEW COMPANION</div>
-    <h2>Prepare with Knowledge.<br>Speak with Confidence.</h2>
-    <p>A structured preparation space for university interviews, course research, university comparisons and personalised answer development.</p>
-    <div class="quote">“Let others chase glory. I shall become its definition.”</div>
-  </section>
+<section class="hero" id="hero">
+<div class="eyebrow">YOUR UNIVERSITY INTERVIEW COMPANION</div>
+<h2>Prepare with Knowledge.<br>Speak with Confidence.</h2>
+<p>A structured preparation space for university interviews, course research, university comparisons and personalised answer development.</p>
+<div class="quote">“Let others chase glory. I shall become its definition.”</div>
+</section>
 
-  <section class="panel registration" id="registrationPanel">
-    <h2 class="section-title">Begin Your Preparation</h2>
-    <p class="section-sub">Enter your details so GLORY HELPER can tailor the preparation to your university, destination and course.</p>
+<section class="panel registration" id="registrationPanel">
+<h2 class="section-title">Begin Your Preparation</h2>
+<p class="section-sub">Enter your details so GLORY HELPER can personalise your preparation.</p>
 
-    <form id="registrationForm">
-      <div class="form-grid">
-        <div class="field full">
-          <label for="studentName">Student Full Name</label>
-          <input id="studentName" name="studentName" autocomplete="name" placeholder="Enter your full name" required>
-        </div>
-        <div class="field">
-          <label for="country">Destination Country</label>
-          <select id="country" name="country" required>
-            <option value="">Select country</option>
-            <option>United Kingdom</option>
-            <option>United States</option>
-            <option>Canada</option>
-            <option>Australia</option>
-            <option>New Zealand</option>
-            <option>Ireland</option>
-            <option>Germany</option>
-            <option>France</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="university">University Name</label>
-          <input id="university" name="university" placeholder="Enter university name" required>
-        </div>
-        <div class="field full">
-          <label for="campus">Campus (if applicable)</label>
-          <input id="campus" name="campus" placeholder="Enter campus name">
-        </div>
-        <div class="field full">
-          <label for="course">Full Course Name</label>
-          <input id="course" name="course" placeholder="Enter your full course name" required>
-        </div>
-      </div>
-      <button class="primary-btn start-btn" type="submit">START PREPARATION →</button>
-      <div class="form-error" id="formError" role="alert"></div>
-      <p class="privacy-note">Your profile is stored in this browser to help personalise your preparation. Do not enter passwords, payment details or other sensitive information.</p>
-    </form>
-  </section>
+<form id="registrationForm">
+<div class="form-grid">
+<div class="field full">
+<label for="studentName">Student Full Name</label>
+<input id="studentName" required placeholder="Enter your full name">
+</div>
+<div class="field">
+<label for="country">Destination Country</label>
+<select id="country" required>
+<option value="">Select country</option>
+<option>United Kingdom</option><option>United States</option>
+<option>Canada</option><option>Australia</option>
+<option>New Zealand</option><option>Ireland</option>
+<option>Germany</option><option>France</option><option>Other</option>
+</select>
+</div>
+<div class="field">
+<label for="university">University Name</label>
+<input id="university" required placeholder="Enter university name">
+</div>
+<div class="field full">
+<label for="campus">Campus (if applicable)</label>
+<input id="campus" placeholder="Enter campus name">
+</div>
+<div class="field full">
+<label for="course">Full Course Name</label>
+<input id="course" required placeholder="Enter your full course name">
+</div>
+</div>
+<button class="primary-btn start-btn" type="submit">START PREPARATION →</button>
+<div class="form-error" id="formError" role="alert"></div>
+<p class="privacy-note">Your profile is stored in this browser to help personalise your preparation. Do not enter passwords or payment details.</p>
+</form>
+</section>
 
-  <section class="hidden" id="workspace">
-    <div class="workspace-head">
-      <div class="welcome">
-        <h2 id="welcomeTitle">Welcome to GLORY HELPER</h2>
-        <p>Your personalised interview preparation workspace is ready.</p>
-      </div>
-      <button class="secondary-btn" id="editProfileBtn" type="button">Edit student details</button>
-    </div>
+<section class="hidden" id="workspace">
+<div class="workspace-head">
+<div class="welcome">
+<h2 id="welcomeTitle">Welcome to GLORY HELPER</h2>
+<p>Your personalised interview preparation workspace is ready.</p>
+</div>
+<button class="secondary-btn" id="editProfileBtn" type="button">Edit student details</button>
+</div>
 
-    <div class="workspace-grid">
-      <aside class="panel side-panel">
-        <h3>Your Preparation Profile</h3>
-        <p>Use these details as the context for your preparation.</p>
-        <div class="student-card" id="studentCard"></div>
+<div class="workspace-grid">
+<aside class="panel side-panel">
+<h3>Your Preparation Profile</h3>
+<p>Use these details as context for your preparation.</p>
+<div class="student-card" id="studentCard"></div>
+<h3>Interview Preparation Categories</h3>
+<p>Choose a category to request its questions.</p>
+<div class="category-list" id="categoryList"></div>
+<div class="info-strip">
+<strong>How to use GLORY HELPER</strong><br>
+Ask for step-by-step teaching, a personalised sample answer or assessment of your own answer.
+</div>
+</aside>
 
-        <h3>Interview Preparation Categories</h3>
-        <p>GLORY HELPER will provide the relevant question list in the chat.</p>
-        <div class="category-list" id="categoryList"></div>
-
-        <div class="info-strip">
-          <strong>How to use GLORY HELPER</strong><br>
-          Browse the full question list in the chat. Ask for any answer when you need help. You can request step-by-step teaching or a personalised sample answer.
-        </div>
-      </aside>
-
-      <section class="panel chat-panel">
-        <div class="chat-heading">
-          <div>
-            <h3>GLORY HELPER AI</h3>
-            <p>Your university interview preparation assistant</p>
-          </div>
-          <span class="chat-ready" id="botStatus">Connecting…</span>
-        </div>
-
-        <!-- Botpress must be configured to embed into this exact ID -->
-        <div id="webchat-container">
-          <div class="chat-fallback" id="chatFallback">
-            <strong>Preparing your assistant…</strong><br>
-            The chat will appear here when the Botpress connection is ready.
-          </div>
-        </div>
-      </section>
-    </div>
-  </section>
+<section class="panel chat-panel">
+<div class="chat-heading">
+<div>
+<h3>GLORY HELPER AI</h3>
+<p>Your university interview preparation assistant</p>
+</div>
+<span class="chat-ready" id="botStatus">Connecting…</span>
+</div>
+<div id="webchat-container">
+<div class="chat-fallback" id="chatFallback">
+<strong>Preparing your assistant…</strong><br>
+Your chat will appear here when Botpress is ready.
+</div>
+</div>
+</section>
+</div>
+</section>
 </main>
 
 <footer>
-  <strong>GLORY HELPER</strong><br>
-  POWERED BY AMBITION<br>
-  <span class="credit">Created and managed by Manthan Bhardwaj</span><br>
-  Contact: Manthanb745@gmail.com<br>
-  © 2026 GLORY HELPER. All rights reserved.
+<strong>GLORY HELPER</strong><br>
+POWERED BY AMBITION<br>
+<span class="credit">Created and managed by Manthan Bhardwaj</span><br>
+Contact: Manthanb745@gmail.com<br>
+© 2026 GLORY HELPER. All rights reserved.
 </footer>
 
 <script>
 "use strict";
 
-/* ---------------------------------------
-   GLORY HELPER STUDENT PREPARATION RULES
----------------------------------------- */
-
 const STORAGE_KEY = "glory_helper_student_profile_v4";
 
-  
 const categories = [
-  "Personal Introduction",
-  "Academic Background",
-  "Study Gaps & Academic History",
-  "Why UK Instead of India?",
-  "Why Not USA?",
-  "Why Not Canada?",
-  "Why Not Australia?",
-  "Why Not Other European Countries?",
-  "Why This University?",
-  "Why This Course?",
-  "Modules & Course Knowledge",
-  "Teaching & Assessment",
-  "Financial Questions",
-  "Accommodation & Student Life",
-  "Career Plans & Future Goals",
-  "Visa & Credibility Questions",
-  "Country Culture & Lifestyle"
-];
-
-],
-
+"Personal Introduction",
+"Academic Background",
+"Study Gaps & Academic History",
+"Why This Country?",
+"Why This University?",
+"Why This Course?",
+"Modules & Course Knowledge",
+"Teaching & Assessment",
+"Financial Questions",
+"Accommodation & Student Life",
+"Career Plans & Future Goals",
+"Visa & Credibility Questions",
+"Country Culture & Lifestyle"
 ];
 
 const questionBank = {
-  "Personal Introduction": [
-    "Tell me about yourself.",
-    "Can you briefly explain your academic background?",
-    "What are your strengths and areas for improvement?",
-    "What are your interests outside your studies?",
-    "Why do you think you are prepared for university study?"
-  ],
-  "Academic Background": [
-    "Which subjects did you study in your previous education?",
-    "How is your previous education connected to your chosen course?",
-    "Which subject did you find most interesting and why?",
-    "How would you describe your academic performance?",
-    "What academic skills will help you at university?"
-  ],
-  "Study Gaps & Academic History": [
-    "Do you have any gaps in your education?",
-    "What did you do during your study gap?",
-    "Why did you decide to continue your education now?",
-    "How have you prepared yourself for further study?"
-  ],
-  
-"Why This Country?": [
-  "Why did you choose the UK instead of studying in your home country, India?",
-  "Which three or more Indian universities did you research before choosing the UK?",
-  "How does the UK's education system compare with India's education system?",
-  "Why didn't you choose the United States of America?",
-  "Which universities in the USA did you consider, and why did you reject them?",
-  "Why didn't you choose Canada?",
-  "Which Canadian universities did you research?",
-  "Why didn't you choose Australia?",
-  "Which Australian universities did you research?",
-  "Why didn't you choose other European countries?",
-  "Which European countries and at least three universities in each did you consider?",
-  "Why did you finally select the UK over these alternative destinations?"
+"Personal Introduction":[
+"Tell me about yourself.",
+"Can you briefly explain your academic background?",
+"What are your strengths and areas for improvement?",
+"What are your interests outside your studies?",
+"Why do you think you are prepared for university study?"
 ],
-
-  ],
-  "Why This University?": [
-    "Why have you selected this university?",
-    "Why have you selected this particular campus?",
-    "Which other universities did you consider?",
-    "What makes your chosen university suitable for your goals?",
-    "What research have you completed about your university?"
-  ],
-  "Why This Course?": [
-    "Why have you selected this course?",
-    "How does this course connect with your previous studies?",
-    "What skills do you expect to develop?",
-    "How will this course support your future plans?"
-  ],
-  "Modules & Course Knowledge": [
-    "Which modules will you study?",
-    "Can you explain two modules in your course?",
-    "Which module interests you most and why?",
-    "Which module may be challenging for you?",
-    "How will you overcome academic challenges?"
-  ],
-  "Teaching & Assessment": [
-    "How will your university assess your performance?",
-    "What teaching methods will be used?",
-    "What is the difference between the teaching methods in your home country and your destination country?",
-    "Are you comfortable with presentations and group projects?"
-  ],
-  "Financial Questions": [
-    "Who is sponsoring your education?",
-    "What does your sponsor do?",
-    "How will your tuition fees be paid?",
-    "How will you manage your living expenses?",
-    "Have you researched the total cost of studying?"
-  ],
-  "Accommodation & Student Life": [
-    "Where do you plan to live?",
-    "How far is your accommodation from your university?",
-    "How will you travel to campus?",
-    "What facilities are available at your accommodation?",
-    "How will you adapt to living away from home?"
-  ],
-  "Career Plans & Future Goals": [
-    "What are your plans after graduation?",
-    "How will this degree help your career?",
-    "Which job roles are you interested in?",
-    "Where do you see yourself in five years?",
-    "How will you use your new knowledge in your home country?"
-  ],
-  "Visa & Credibility Questions": [
-    "Why should your student visa application be considered genuine?",
-    "What are your responsibilities as an international student?",
-    "What will you do if you face academic difficulties?",
-    "Do you understand the conditions attached to your student permission?"
-  ],
-  "Country Culture & Lifestyle": [
-    "What do you know about the culture of your destination country?",
-    "How will you adapt to a multicultural environment?",
-    "What do you know about the city where you will study?",
-    "How will you manage your daily responsibilities?"
-  ]
+"Academic Background":[
+"Which subjects did you study in your previous education?",
+"How is your previous education connected to your chosen course?",
+"Which subject did you find most interesting and why?",
+"How would you describe your academic performance?",
+"What academic skills will help you at university?"
+],
+"Study Gaps & Academic History":[
+"Do you have any gaps in your education?",
+"What did you do during your study gap?",
+"Why did you decide to continue your education now?",
+"How have you prepared yourself for further study?"
+],
+"Why This Country?":[
+"Why did you choose the UK instead of studying in your home country, India?",
+"Which three or more Indian universities did you research?",
+"How does the UK's education system compare with India's?",
+"Why didn't you choose the United States?",
+"Which universities in the USA did you consider?",
+"Why didn't you choose Canada?",
+"Which Canadian universities did you research?",
+"Why didn't you choose Australia?",
+"Which Australian universities did you research?",
+"Why didn't you choose other European countries?",
+"Which European countries and universities did you consider?",
+"Why did you finally select the UK?"
+],
+"Why This University?":[
+"Why have you selected this university?",
+"Why have you selected this particular campus?",
+"Which other universities did you consider?",
+"What makes your chosen university suitable for your goals?",
+"What research have you completed about your university?"
+],
+"Why This Course?":[
+"Why have you selected this course?",
+"How does this course connect with your previous studies?",
+"What skills do you expect to develop?",
+"How will this course support your future plans?"
+],
+"Modules & Course Knowledge":[
+"Which modules will you study?",
+"Can you explain two modules in your course?",
+"Which module interests you most and why?",
+"Which module may be challenging for you?",
+"How will you overcome academic challenges?"
+],
+"Teaching & Assessment":[
+"How will your university assess your performance?",
+"What teaching methods will be used?",
+"What is the difference between teaching methods in your home country and destination country?",
+"Are you comfortable with presentations and group projects?"
+],
+"Financial Questions":[
+"Who is sponsoring your education?",
+"What does your sponsor do?",
+"How will your tuition fees be paid?",
+"How will you manage your living expenses?",
+"Have you researched the total cost of studying?"
+],
+"Accommodation & Student Life":[
+"Where do you plan to live?",
+"How far is your accommodation from your university?",
+"How will you travel to campus?",
+"What facilities are available at your accommodation?",
+"How will you adapt to living away from home?"
+],
+"Career Plans & Future Goals":[
+"What are your plans after graduation?",
+"How will this degree help your career?",
+"Which job roles are you interested in?",
+"Where do you see yourself in five years?",
+"How will you use your new knowledge in your home country?"
+],
+"Visa & Credibility Questions":[
+"Why should your student visa application be considered genuine?",
+"What are your responsibilities as an international student?",
+"What will you do if you face academic difficulties?",
+"Do you understand the conditions attached to your student permission?"
+],
+"Country Culture & Lifestyle":[
+"What do you know about the culture of your destination country?",
+"How will you adapt to a multicultural environment?",
+"What do you know about the city where you will study?",
+"How will you manage your daily responsibilities?"
+]
 };
 
-/* Questions that require minimum three-university research */
 const comparisonRules = `
-MANDATORY UNIVERSITY COMPARISON RULES:
-
-A. WHY THIS UNIVERSITY / WHY DID YOU SELECT THIS UNIVERSITY INSTEAD OF OTHERS?
-- Compare the chosen university with at least THREE relevant alternative universities in the SAME destination country.
-- Introduce the alternatives by name.
-- Compare them individually using relevant headings such as course structure, modules, tuition fees, scholarships, teaching methods, rankings, student satisfaction, student-teacher ratio, facilities and career support.
-- Do not invent facts. Cite or identify reliable sources and dates.
-
-B. WHICH OTHER UNIVERSITIES DID YOU CONSIDER?
-- Research at least THREE relevant alternative universities in the same country.
-- Compare each university separately with the student's selected university.
-
-C. WHY DID YOU CHOOSE THE UK INSTEAD OF INDIA? (or equivalent home-country question)
-- First introduce at least THREE Indian universities offering genuinely comparable courses.
-- Then compare India with the selected destination under suitable individual headings.
-- Possible headings include education system, teaching methods, course structure and modules, student-teacher ratio, international exposure, student satisfaction, healthcare arrangements (including NHS where relevant), fees and career development.
-- Use only comparable, current and reliable information.
-
-D. WHY DIDN'T YOU CHOOSE OTHER COUNTRIES?
-- For EACH country the student actually discusses as an alternative (for example USA, Canada, Australia, Germany or another European country), identify at least THREE relevant universities in that country.
-- Compare relevant courses and study options country by country with the student's selected destination.
-- Do not claim to compare all European countries when only selected countries are discussed.
-- Clearly state when data is unavailable or not comparable.
-
-E. Do not force university comparisons into unrelated questions such as personal introduction, module explanations or career plans.
+UNIVERSITY COMPARISON RULES:
+- For Why This University, compare the chosen university with at least THREE relevant alternatives in the same country.
+- Introduce each alternative by name and compare institutions individually.
+- Use relevant headings: course structure, modules, tuition, scholarships, teaching, rankings, satisfaction, facilities and career support.
+- For Why UK instead of India, introduce at least THREE Indian universities offering comparable courses.
+- For other countries, identify at least THREE relevant universities in each country the student actually considers.
+- List comparison headings first, then compare each institution, then create a concise spoken answer.
+- Never invent facts. Use current verifiable sources when available.
+- Do not force comparisons into unrelated questions.
 `;
 
-/* General instructions sent with each message */
 function buildAssistantInstructions(profile) {
-  return `
-You are GLORY HELPER, a university interview preparation and assessment tutor.
-Your purpose is to teach students to understand their own study choices and prepare genuine, accurate interview answers.
+return `
+You are GLORY HELPER, a university interview preparation tutor.
 
 STUDENT PROFILE:
 Name: ${profile.name}
-Destination country: ${profile.country}
+Destination: ${profile.country}
 University: ${profile.university}
 Campus: ${profile.campus || "Not provided"}
 Course: ${profile.course}
 
-CORE BEHAVIOUR:
-1. After registration, provide the COMPLETE relevant interview question list in one response, organised under clear category headings. Do not ask questions one at a time.
-2. Give students the freedom to choose any question from the list.
-3. When a student asks for an answer, offer two routes:
-   - Teach me step by step.
-   - Give me a personalised sample answer.
-4. In step-by-step mode, explain what the interviewer expects, identify the key points, teach a logical structure, then help build a natural answer.
-5. In sample-answer mode, use the student's actual profile and facts they have provided. Never invent personal history, marks, sponsor details, finances, accommodation or career plans.
-6. When a student submits their own answer for assessment, assess the actual answer. Do not give a score without explaining the evidence.
-7. Choose the number of assessment/comparison headings based on the question:
-   - Short questions: normally 5–6 relevant points.
-   - Detailed questions: normally 7–8 relevant points.
-   - Complex comparisons: use as many as necessary, often 8–10.
-   - Avoid irrelevant or repetitive headings.
-8. Give each assessment point its own clear heading. Explain what it checks and give specific feedback.
-9. Give an overall preparation score out of 10, with strengths, missing points and practical improvements. This is not a prediction of a visa or admission decision.
-10. Use simple, natural language that a student can speak aloud. Avoid unnecessarily long answers.
-11. For university comparisons, first list the comparison headings, then compare each institution individually under those headings, then create a concise spoken answer based on the same research.
-12. Use current, verifiable sources when research tools are available. Never fabricate rankings, fees, modules, scholarships, employment rates, satisfaction rates, student-teacher ratios, NHS eligibility or career outcomes. If you cannot verify a fact, say so.
-13. Distinguish official university information from independent rankings or statistics.
-14. Do not guarantee admission, visa approval, employment or a particular salary.
-15. Keep the student in control. Do not force a mock interview or one-question-at-a-time format.
+YOUR RULES:
+1. Display the complete relevant question bank after registration.
+2. Let the student choose any question.
+3. Offer step-by-step teaching or a personalised sample answer.
+4. Assess answers with evidence, strengths and improvements.
+5. Never invent personal details, marks, finances or career plans.
+6. Use simple, natural language suitable for speaking aloud.
+7. Provide an overall preparation score out of 10 when assessing an answer.
+8. Do not guarantee admission, visa approval or employment.
+9. Keep the student in control.
 
 QUESTION BANK:
 ${Object.entries(questionBank).map(([heading, qs]) =>
-  heading + "\n" + qs.map((q,i) => `${i+1}. ${q}`).join("\n")
+heading + "\n" + qs.map((q,i) => `${i+1}. ${q}`).join("\n")
 ).join("\n\n")}
 
 ${comparisonRules}
 
-FIRST MESSAGE AFTER REGISTRATION:
-Greet the student by name. Confirm their university, campus, course and destination. Then display the complete question list, grouped under all relevant category headings. Tell them they can choose any question and ask for step-by-step teaching, a personalised sample answer, or assessment of their own answer.
+FIRST MESSAGE:
+Greet ${profile.name}, confirm their university, campus, course and destination, then show the complete question list grouped under headings. Explain that they can choose any question for teaching, a sample answer or assessment.
 `;
 }
-
-/* ---------------------------------------
-   STUDENT PROFILE AND REGISTRATION
----------------------------------------- */
 
 const form = document.getElementById("registrationForm");
 const registrationPanel = document.getElementById("registrationPanel");
 const workspace = document.getElementById("workspace");
 const hero = document.getElementById("hero");
 const formError = document.getElementById("formError");
-const connectionStatus = document.getElementById("connectionStatus");
-const botStatus = document.getElementById("botStatus");
 const chatFallback = document.getElementById("chatFallback");
 
 let studentProfile = null;
-let webchatInitialized = false;
-let webchatReady = false;
+let botpressInitialized = false;
+let botpressReady = false;
 let welcomeSent = false;
 
-function safeSaveProfile(profile) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
-  } catch (error) {
-    console.warn("Profile could not be saved in local storage.", error);
-  }
+function saveProfile(profile) {
+try {
+localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+} catch(error) {
+console.warn("Could not save profile:", error);
+}
 }
 
-function safeLoadProfile() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch (error) {
-    console.warn("Saved profile could not be read.", error);
-    return null;
-  }
+function loadProfile() {
+try {
+return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+} catch(error) {
+return null;
+}
 }
 
-function readFormProfile() {
-  return {
-    name: document.getElementById("studentName").value.trim(),
-    country: document.getElementById("country").value,
-    university: document.getElementById("university").value.trim(),
-    campus: document.getElementById("campus").value.trim(),
-    course: document.getElementById("course").value.trim()
-  };
+function readProfile() {
+return {
+name:document.getElementById("studentName").value.trim(),
+country:document.getElementById("country").value,
+university:document.getElementById("university").value.trim(),
+campus:document.getElementById("campus").value.trim(),
+course:document.getElementById("course").value.trim()
+};
 }
 
-function validProfile(profile) {
-  return Boolean(profile.name && profile.country &&
-    profile.university && profile.course);
+function validProfile(p) {
+return !!(p && p.name && p.country && p.university && p.course);
 }
 
-function renderProfile(profile) {
-  document.getElementById("welcomeTitle").textContent =
-    `Welcome, ${profile.name}!`;
+function renderProfile(p) {
+document.getElementById("welcomeTitle").textContent = `Welcome, ${p.name}!`;
 
-  document.getElementById("studentCard").innerHTML = "";
-  const details = [
-    ["Name", profile.name],
-    ["Destination", profile.country],
-    ["University", profile.university],
-    ["Campus", profile.campus || "Not provided"],
-    ["Course", profile.course]
-  ];
+const card = document.getElementById("studentCard");
+card.replaceChildren();
 
-  const card = document.getElementById("studentCard");
-  const strong = document.createElement("strong");
-  strong.textContent = profile.name;
-  card.appendChild(strong);
+const name = document.createElement("strong");
+name.textContent = p.name;
+card.appendChild(name);
 
-  const detailBox = document.createElement("div");
-  details.slice(1).forEach(([label,value]) => {
-    const line = document.createElement("div");
-    line.textContent = `${label}: ${value}`;
-    detailBox.appendChild(line);
-  });
-  card.appendChild(detailBox);
+const details = [
+["Destination",p.country],
+["University",p.university],
+["Campus",p.campus || "Not provided"],
+["Course",p.course]
+];
+
+details.forEach(([label,value]) => {
+const line = document.createElement("div");
+line.textContent = `${label}: ${value}`;
+card.appendChild(line);
+});
+}
+
+function showFallback(message) {
+chatFallback.classList.remove("hidden");
+chatFallback.textContent = message;
 }
 
 function renderCategories() {
-  const list = document.getElementById("categoryList");
-  list.innerHTML = "";
-  categories.forEach((category,index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "category-item";
-    button.innerHTML = `<span>${String(index+1).padStart(2,"0")}</span>`;
-    const label = document.createElement("span");
-    label.style.color = "inherit";
-    label.style.fontWeight = "500";
-    label.textContent = category;
-    button.appendChild(label);
-    button.addEventListener("click", () => {
-      sendStudentMessage(
-        `Please show me the complete interview questions and preparation guidance for the category: ${category}.`
-      );
-      document.getElementById("webchat-container").scrollIntoView({
-        behavior:"smooth",block:"center"
-      });
-    });
-    list.appendChild(button);
-  });
+const list = document.getElementById("categoryList");
+list.replaceChildren();
+
+categories.forEach((category,index) => {
+const button = document.createElement("button");
+button.type = "button";
+button.className = "category-item";
+
+const number = document.createElement("span");
+number.className = "number";
+number.textContent = String(index+1).padStart(2,"0");
+
+const label = document.createElement("span");
+label.textContent = category;
+
+button.append(number,label);
+button.addEventListener("click",() => {
+sendMessage(`Show me all questions and preparation guidance for ${category}.`);
+});
+list.appendChild(button);
+});
 }
 
 function showWorkspace(profile) {
-  studentProfile = profile;
-  safeSaveProfile(profile);
-  renderProfile(profile);
-  renderCategories();
-  hero.classList.add("hidden");
-  registrationPanel.classList.add("hidden");
-  workspace.classList.remove("hidden");
-  document.getElementById("webchat-container").scrollIntoView({
-    behavior:"smooth",block:"start"
-  });
-  openBotpressWhenPossible();
+studentProfile = profile;
+saveProfile(profile);
+renderProfile(profile);
+renderCategories();
+
+hero.classList.add("hidden");
+registrationPanel.classList.add("hidden");
+workspace.classList.remove("hidden");
+
+openBotpress();
 }
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  formError.textContent = "";
+form.addEventListener("submit",event => {
+event.preventDefault();
+formError.textContent = "";
 
-  const profile = readFormProfile();
-  if (!validProfile(profile)) {
-    formError.textContent = "Please complete your name, destination, university and course.";
-    return;
-  }
-  showWorkspace(profile);
+const profile = readProfile();
+
+if (!validProfile(profile)) {
+formError.textContent = "Please complete your name, destination, university and course.";
+return;
+}
+
+// IMPORTANT: open workspace independently of the chatbot connection.
+showWorkspace(profile);
 });
 
-document.getElementById("editProfileBtn").addEventListener("click", () => {
-  if (!studentProfile) return;
-  document.getElementById("studentName").value = studentProfile.name;
-  document.getElementById("country").value = studentProfile.country;
-  document.getElementById("university").value = studentProfile.university;
-  document.getElementById("campus").value = studentProfile.campus || "";
-  document.getElementById("course").value = studentProfile.course;
+document.getElementById("editProfileBtn").addEventListener("click",() => {
+if (!studentProfile) return;
 
-  workspace.classList.add("hidden");
-  hero.classList.remove("hidden");
-  registrationPanel.classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
+document.getElementById("studentName").value = studentProfile.name;
+document.getElementById("country").value = studentProfile.country;
+document.getElementById("university").value = studentProfile.university;
+document.getElementById("campus").value = studentProfile.campus || "";
+document.getElementById("course").value = studentProfile.course;
+
+workspace.classList.add("hidden");
+hero.classList.remove("hidden");
+registrationPanel.classList.remove("hidden");
+window.scrollTo({top:0,behavior:"smooth"});
 });
 
-/* ---------------------------------------
-   BOTPRESS CONNECTION
----------------------------------------- */
-
-function setBotStatus(message, connected=false) {
-  botStatus.textContent = message;
-  botStatus.style.color = connected ? "var(--green)" : "var(--muted)";
-  connectionStatus.textContent = connected ? "Assistant connected" : "Assistant loading";
+function setStatus(message,connected=false) {
+document.getElementById("botStatus").textContent = message;
+document.getElementById("botStatus").style.color =
+connected ? "var(--green)" : "var(--muted)";
+document.getElementById("connectionStatus").textContent =
+connected ? "Assistant connected" : "Assistant loading";
 }
 
-function openBotpressWhenPossible() {
-  if (!studentProfile) return;
+function openBotpress() {
+if (!studentProfile) return;
 
-  if (!window.botpress) {
-    setBotStatus("Waiting for Botpress");
-    return;
-  }
-
-  if (webchatInitialized && typeof window.botpress.open === "function") {
-    try {
-      window.botpress.open();
-      setBotStatus("Opening assistant");
-    } catch (error) {
-      console.error("Could not open Botpress.", error);
-      setBotStatus("Check Botpress deployment");
-    }
-  } else {
-    setBotStatus("Loading assistant");
-  }
+if (!window.botpress) {
+setStatus("Waiting for Botpress");
+showFallback("Your profile is saved. Waiting for the Botpress chat service to load…");
+return;
 }
 
-async function sendWelcomeToBotpress() {
-  if (!studentProfile || !webchatReady || welcomeSent) return;
-  if (!window.botpress || typeof window.botpress.sendMessage !== "function") {
-    setBotStatus("Message service unavailable");
-    return;
-  }
-
-  welcomeSent = true;
-  const instructions = buildAssistantInstructions(studentProfile);
-
-  try {
-    await window.botpress.sendMessage(instructions);
-    setBotStatus("Assistant ready", true);
-    if (chatFallback) chatFallback.classList.add("hidden");
-  } catch (error) {
-    welcomeSent = false;
-    console.error("Could not send preparation profile to Botpress.", error);
-    setBotStatus("Could not send profile");
-    showChatFallback(
-      "The assistant opened, but the preparation message could not be sent. Please check your Botpress deployment and try again."
-    );
-  }
+if (botpressInitialized && typeof window.botpress.open === "function") {
+try {
+window.botpress.open();
+setStatus("Opening assistant");
+} catch(error) {
+console.error(error);
+setStatus("Chat opening issue");
+showFallback("Your profile is saved, but the assistant could not open. Check the Botpress deployment.");
+}
+} else {
+setStatus("Loading assistant");
+}
 }
 
-function sendStudentMessage(message) {
-  if (!message || !studentProfile) return;
+async function sendWelcome() {
+if (!studentProfile || !botpressReady || welcomeSent) return;
 
-  if (!webchatReady || !window.botpress ||
-      typeof window.botpress.sendMessage !== "function") {
-    showChatFallback(
-      "The assistant is not ready yet. Please wait a moment and try again."
-    );
-    openBotpressWhenPossible();
-    return;
-  }
-
-  window.botpress.sendMessage(message).catch(error => {
-    console.error("Message could not be sent.", error);
-    showChatFallback("Your message could not be sent. Please try again.");
-  });
+if (!window.botpress || typeof window.botpress.sendMessage !== "function") {
+setStatus("Message service unavailable");
+showFallback("Your profile is saved, but the configured Botpress deployment does not expose the expected messaging method.");
+return;
 }
 
-function showChatFallback(message) {
-  if (!chatFallback) return;
-  chatFallback.classList.remove("hidden");
-  chatFallback.textContent = message;
+try {
+await window.botpress.sendMessage(buildAssistantInstructions(studentProfile));
+welcomeSent = true;
+setStatus("Assistant ready",true);
+chatFallback.classList.add("hidden");
+} catch(error) {
+console.error("Welcome message failed:",error);
+setStatus("Could not send profile");
+showFallback("The chat connected, but the preparation message could not be sent. Please check the Botpress deployment.");
+}
+}
+
+function sendMessage(message) {
+if (!studentProfile) return;
+
+if (!botpressReady || !window.botpress ||
+typeof window.botpress.sendMessage !== "function") {
+showFallback("Your profile is saved. The assistant is still connecting. Please try again shortly.");
+openBotpress();
+return;
+}
+
+Promise.resolve(window.botpress.sendMessage(message)).catch(error => {
+console.error(error);
+showFallback("Your message could not be sent. Please try again.");
+});
 }
 
 function registerBotpressEvents() {
-  if (!window.botpress || typeof window.botpress.on !== "function") {
-    setBotStatus("Botpress script not detected");
-    return false;
-  }
+if (!window.botpress || typeof window.botpress.on !== "function") return false;
 
-  try {
-    window.botpress.on("webchat:initialized", () => {
-      webchatInitialized = true;
-      setBotStatus("Assistant loaded");
-      openBotpressWhenPossible();
-    });
+try {
+window.botpress.on("webchat:initialized",() => {
+botpressInitialized = true;
+setStatus("Assistant loaded");
+openBotpress();
+});
 
-    window.botpress.on("webchat:ready", () => {
-      webchatReady = true;
-      setBotStatus("Assistant ready", true);
-      if (chatFallback) chatFallback.classList.add("hidden");
-      sendWelcomeToBotpress();
-    });
+window.botpress.on("webchat:ready",() => {
+botpressInitialized = true;
+botpressReady = true;
+setStatus("Assistant ready",true);
+sendWelcome();
+});
 
-    window.botpress.on("error", event => {
-      console.error("Botpress reported an error:", event);
-      setBotStatus("Assistant connection issue");
-    });
+window.botpress.on("error",event => {
+console.error("Botpress error:",event);
+setStatus("Connection issue");
+showFallback("Botpress reported a connection issue. Your student profile is still saved.");
+});
 
-    return true;
-  } catch (error) {
-    console.error("Botpress event setup failed.", error);
-    setBotStatus("Could not initialise assistant");
-    return false;
-  }
+return true;
+} catch(error) {
+console.error("Botpress event setup error:",error);
+return false;
+}
 }
 
-/* Wait briefly for the injected Botpress script to expose its API */
-let botpressEventSetup = false;
-let botpressCheckCount = 0;
-const botpressCheck = setInterval(() => {
-  botpressCheckCount++;
+let eventSetup = false;
+let attempts = 0;
 
-  if (!botpressEventSetup && window.botpress &&
-      typeof window.botpress.on === "function") {
-    botpressEventSetup = registerBotpressEvents();
-  }
+const botpressTimer = setInterval(() => {
+attempts++;
 
-  if (botpressEventSetup || botpressCheckCount >= 30) {
-    clearInterval(botpressCheck);
-  }
-}, 500);
+if (!eventSetup && window.botpress &&
+typeof window.botpress.on === "function") {
+eventSetup = registerBotpressEvents();
+}
 
-/* Restore an existing profile for returning students */
-(function restoreSavedProfile() {
-  const saved = safeLoadProfile();
-  if (saved && validProfile(saved)) {
-    document.getElementById("studentName").value = saved.name;
-    document.getElementById("country").value = saved.country;
-    document.getElementById("university").value = saved.university;
-    document.getElementById("campus").value = saved.campus || "";
-    document.getElementById("course").value = saved.course;
-  }
+if (eventSetup || attempts >= 40) {
+clearInterval(botpressTimer);
+
+if (!eventSetup) {
+setStatus("Botpress not detected");
+if (studentProfile) {
+showFallback("Your profile is saved, but Botpress was not detected. Check your deployment script and internet connection.");
+}
+}
+}
+},500);
+
+// Restore saved details into the form without automatically hiding registration.
+(function restoreProfile() {
+const saved = loadProfile();
+if (!validProfile(saved)) return;
+
+document.getElementById("studentName").value = saved.name;
+document.getElementById("country").value = saved.country;
+document.getElementById("university").value = saved.university;
+document.getElementById("campus").value = saved.campus || "";
+document.getElementById("course").value = saved.course;
 })();
 </script>
 </body>
 </html>
+
