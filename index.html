@@ -3,701 +3,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090909">
-<meta name="description" content="GLORY HELPER - International Interview Preparation">
-<title>GLORY HELPER | Interview Preparation</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GLORY HELPER</title>
 <style>
-:root {
-  --gold:#d6b36a;
-  --gold2:#f1d99d;
-  --bg:#090909;
-  --panel:#141414;
-  --muted:#a9a295;
-  --line:#332b1d;
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090909;color:#f1e5cd;
+ font-family:Arial,sans-serif;padding:22px;
 }
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  background:
-    radial-gradient(ellipse at top,rgba(214,179,106,.08),transparent 40%),
-    var(--bg);
-  color:#f5f0e5;
-  font-family:Georgia,serif;
-  min-height:100vh;
+main{max-width:720px;margin:auto}
+.gold{color:#d6b36a}
+h1{letter-spacing:2px}
+h2{font-size:30px;line-height:1.2}
+p{color:#aaa295;line-height:1.6}
+.panel{
+ background:#151515;border:1px solid #49391f;
+ border-radius:15px;padding:18px;margin:14px 0;
 }
-header {
-  padding:22px 7%;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
+input,select{
+ width:100%;padding:14px;margin-top:9px;
+ border:1px solid #49391f;border-radius:9px;
+ background:#101010;color:#f1e5cd;font-size:15px;
 }
-.logo {
-  font-size:22px;
-  letter-spacing:3px;
-  color:var(--gold);
+button{
+ background:#b58a45;color:#17120a;border:0;
+ border-radius:9px;padding:15px;font-weight:bold;
+ width:100%;margin-top:15px;cursor:pointer;
 }
-.status {
-  font:12px Arial,sans-serif;
-  color:#b8b8a0;
+.countries{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.country{
+ padding:15px;background:#171717;
+ border:1px solid #49391f;border-radius:10px;
+ color:#f1e5cd;cursor:pointer;text-align:left;
 }
-.status:before {
-  content:"● ";
-  color:#8ac78a;
-}
-main {
-  max-width:1050px;
-  margin:auto;
-  padding:55px 22px;
-}
-.hero {
-  text-align:center;
-  margin-bottom:42px;
-}
-.hero small {
-  color:var(--gold);
-  letter-spacing:4px;
-}
-h1 {
-  font-size:clamp(36px,7vw,65px);
-  margin:15px 0;
-  font-weight:normal;
-}
-h1 span {color:var(--gold)}
-.hero p {
-  color:var(--muted);
-  font:15px/1.7 Arial,sans-serif;
-  max-width:650px;
-  margin:auto;
-}
-.quote {
-  color:var(--gold2);
-  font-style:italic;
-  margin-top:20px;
-}
-.panel {
-  background:linear-gradient(145deg,#191714,#101010);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:28px;
-  margin:22px 0;
-}
-.panel h2 {
-  color:var(--gold);
-  font-size:23px;
-  margin-top:0;
-}
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:17px;
-}
-label {
-  display:block;
-  color:#d9cba9;
-  font:13px Arial,sans-serif;
-  margin-bottom:8px;
-}
-input,select {
-  width:100%;
-  padding:14px;
-  background:#0b0b0b;
-  color:white;
-  border:1px solid #51432b;
-  border-radius:8px;
-  font:14px Arial,sans-serif;
-  min-height:46px;
-}
-input:focus,select:focus {
-  outline:1px solid var(--gold);
-}
-select option {
-  background:#111;
-  color:white;
-}
-button {
-  background:linear-gradient(110deg,#a77b32,#efd18b);
-  color:#17120a;
-  border:0;
-  border-radius:8px;
-  padding:15px 22px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:14px;
-}
-button:hover {filter:brightness(1.08)}
-button.secondary {
-  background:#211d16;
-  color:var(--gold);
-  border:1px solid var(--line);
-}
-.actions {
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:22px;
-}
-.note {
-  color:var(--muted);
-  font:12px/1.6 Arial,sans-serif;
-  margin-top:15px;
-}
-.features {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-.feature {
-  padding:18px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#111;
-}
-.feature b {
-  display:block;
-  color:var(--gold);
-  margin-bottom:8px;
-}
-.feature p {
-  font:13px/1.6 Arial,sans-serif;
-  color:var(--muted);
-  margin:0;
-}
-
-/* GLORY HELPER CREATOR FOOTER */
-.brand-footer {
-  text-align:center;
-  padding:42px 20px;
-  border-top:1px solid #49391f;
-  background:linear-gradient(180deg,#111,#080808);
-  font-family:Arial,sans-serif;
-}
-.footer-logo {
-  color:var(--gold);
-  font-family:Georgia,serif;
-  font-size:23px;
-  letter-spacing:4px;
-  font-weight:bold;
-}
-.footer-tagline {
-  color:#a99a7c;
-  font-size:10px;
-  letter-spacing:3px;
-  margin-top:9px;
-}
-.footer-divider {
-  width:65px;
-  height:1px;
-  background:var(--gold);
-  margin:23px auto;
-}
-.creator-credit {
-  color:#e8dfcf;
-  font-size:13px;
-  margin:0 0 10px;
-}
-.creator-credit strong {color:var(--gold)}
-.creator-email {
-  color:var(--gold);
-  font-size:13px;
-  text-decoration:none;
-}
-.creator-email:hover {color:var(--gold2)}
-
-@media(max-width:700px) {
-  .features {grid-template-columns:1fr 1fr}
-  main {padding:35px 16px}
-  header {padding:18px}
-  .panel {padding:20px}
-}
-@media(max-width:520px) {
-  .grid,.features {grid-template-columns:1fr}
-  .actions {flex-direction:column}
-  .actions button {width:100%}
-  .logo {font-size:18px}
-}
+.country.selected{border-color:#d6b36a;background:#302314}
+small{color:#b58a45}
 </style>
-
-<script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
 </head>
-
 <body>
-
+<main>
 <header>
-  <div class="logo">GLORY HELPER</div>
-  <div class="status">Your preparation starts here</div>
+ <h1 class="gold">GLORY HELPER</h1>
+ <small>POWERED BY AMBITION</small>
 </header>
 
-<main>
-
-<section class="hero">
-  <small>YOUR INTERNATIONAL INTERVIEW GUIDE</small>
-  <h1>Prepare with <span>Confidence.</span></h1>
-  <p>
-    Research your destination, understand your university,
-    learn how to build strong answers and practise your interview
-    with GLORY AI.
-  </p>
-  <div class="quote">
-    “Let others chase glory. I shall become its definition.”
-  </div>
+<section class="panel">
+ <small>YOUR INTERNATIONAL EDUCATION COMPANION</small>
+ <h2>Your ambition deserves
+ <span class="gold">better preparation.</span></h2>
+ <p>Research your university, understand your course
+ and prepare for your interview.</p>
 </section>
 
 <section class="panel">
-  <h2>01 — Your Study Profile</h2>
+ <h3>01. Choose your destination</h3>
+ <div class="countries" id="countries">
+  <button class="country selected" data-country="United Kingdom">🇬🇧 United Kingdom</button>
+  <button class="country" data-country="Canada">🇨🇦 Canada</button>
+  <button class="country" data-country="United States">🇺🇸 United States</button>
+  <button class="country" data-country="Australia">🇦🇺 Australia</button>
+  <button class="country" data-country="Germany">🇩🇪 Germany</button>
+  <button class="country" data-country="Ireland">🇮🇪 Ireland</button>
+ </div>
 
-  <div class="grid">
+ <h3>02. Study level</h3>
+ <select id="level">
+  <option>Undergraduate</option>
+  <option>Postgraduate</option>
+  <option>Foundation</option>
+  <option>Diploma</option>
+  <option>Other</option>
+ </select>
 
-    <div>
-      <label for="country">Destination country *</label>
-      <select id="country">
-        <option value="">Select country</option>
-        <option>United Kingdom</option>
-        <option>United States</option>
-        <option>Canada</option>
-        <option>Australia</option>
-        <option>Germany</option>
-        <option>France</option>
-        <option>Ireland</option>
-        <option>Netherlands</option>
-        <option>Italy</option>
-        <option>Sweden</option>
-        <option>New Zealand</option>
-        <option>Japan</option>
-        <option>South Korea</option>
-        <option>Singapore</option>
-        <option>Other</option>
-      </select>
-    </div>
+ <h3>03. University name</h3>
+ <input id="university" placeholder="Enter full university name">
 
-    <div>
-      <label for="level">Study level *</label>
-      <select id="level">
-        <option value="">Select level</option>
-        <option>Foundation</option>
-        <option>Undergraduate / Bachelor's</option>
-        <option>Postgraduate / Master's</option>
-        <option>Doctorate / PhD</option>
-        <option>Diploma</option>
-      </select>
-    </div>
+ <h3>04. Full course name</h3>
+ <input id="course" placeholder="Type your complete course title">
 
-    <div>
-      <label for="university">University name *</label>
-      <input id="university" placeholder="Enter university name">
-    </div>
+ <h3>05. Interview type</h3>
+ <select id="interview">
+  <option>University credibility interview</option>
+  <option>Admission interview</option>
+  <option>Student visa interview preparation</option>
+  <option>Other</option>
+ </select>
 
-    <div>
-      <label for="course">Course name *</label>
-      <input id="course" placeholder="Enter your course">
-    </div>
-
-    <div>
-      <label for="interview">Interview type</label>
-      <select id="interview">
-        <option>University credibility interview</option>
-        <option>Student visa interview</option>
-        <option>Admission interview</option>
-        <option>General study abroad interview</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="background">Previous education / subjects</label>
-      <input id="background" placeholder="Your education and subjects">
-    </div>
-
-    <div>
-      <label for="sponsor">Who will fund your studies?</label>
-      <input id="sponsor" placeholder="e.g. Parent, self-funded">
-    </div>
-
-    <div>
-      <label for="career">Future career goal</label>
-      <input id="career" placeholder="Your career plan">
-    </div>
-
-  </div>
-
-  <div class="actions">
-    <button type="button" onclick="startGlory('prepare')">
-      START WITH GLORY AI →
-    </button>
-
-    <button type="button" class="secondary"
-      onclick="startGlory('mock')">
-      MOCK INTERVIEW
-    </button>
-  </div>
-
-  <p class="note">
-    Fields marked * are required. Enter accurate information.
-    GLORY should never invent personal details or university facts.
-  </p>
-
-  <p class="note" id="connection-note" aria-live="polite">
-    Complete your profile to begin your preparation.
-  </p>
+ <button onclick="beginPreparation()">
+  BEGIN PREPARATION →
+ </button>
 </section>
 
 <section class="panel">
-  <h2>02 — Your Learning Journey</h2>
-
-  <div class="features">
-
-    <div class="feature">
-      <b>Research & Compare</b>
-      <p>Understand countries, universities, courses, fees, rankings and student services.</p>
-    </div>
-
-    <div class="feature">
-      <b>Learn to Answer</b>
-      <p>Learn how to structure answers, use research and connect it to your background.</p>
-    </div>
-
-    <div class="feature">
-      <b>Complete Question Bank</b>
-      <p>Practise relevant questions, sample answers and difficult follow-ups.</p>
-    </div>
-
-    <div class="feature">
-      <b>Beginner Friendly</b>
-      <p>Simple explanations of every topic before preparing your answer.</p>
-    </div>
-
-    <div class="feature">
-      <b>Realistic Mock Interview</b>
-      <p>One question at a time, realistic follow-ups and feedback at the end.</p>
-    </div>
-
-    <div class="feature">
-      <b>Personal Preparation</b>
-      <p>Preparation tailored to your destination, course and genuine profile.</p>
-    </div>
-
-  </div>
+ <h3 class="gold">YOUR PREPARATION CENTRE</h3>
+ <p>University comparisons · All course modules ·
+ Career opportunities · Interview question bank ·
+ Mock interviews</p>
+ <div id="status" aria-live="polite"></div>
 </section>
 
+<footer class="panel" style="text-align:center">
+ <b>Created and managed by Manthan Bhardwaj</b>
+ <p class="gold">Manthanb745@gmail.com</p>
+ <small>GLORY HELPER · POWERED BY AMBITION</small>
+</footer>
 </main>
 
-<footer class="brand-footer">
-  <div class="footer-logo">GLORY HELPER</div>
-  <div class="footer-tagline">POWERED BY AMBITION</div>
-  <div class="footer-divider"></div>
-
-  <p class="creator-credit">
-    Created and managed by <strong>Manthan Bhardwaj</strong>
-  </p>
-
-  <a class="creator-email" href="mailto:Manthanb745@gmail.com">
-    Manthanb745@gmail.com
-  </a>
-</footer>
-
 <script>
-
-/* ==========================================
-   BOTPRESS CONNECTION
-   Replace both placeholders with your actual
-   Botpress Dashboard embed values.
-========================================== */
-
-const BOT_ID = "PASTE_YOUR_BOT_ID";
-const CLIENT_ID = "PASTE_YOUR_CLIENT_ID";
-
-let pendingPrompt = "";
-let webchatReady = false;
-let sendingProfile = false;
-
-function getValue(id) {
-  return document.getElementById(id).value.trim();
-}
-
-function buildPrompt(mode) {
-
-  const profile = {
-    destination: getValue("country"),
-    studyLevel: getValue("level"),
-    university: getValue("university"),
-    course: getValue("course"),
-    interviewType: getValue("interview"),
-    previousEducation: getValue("background"),
-    sponsor: getValue("sponsor"),
-    careerGoal: getValue("career")
-  };
-
-  if (
-    !profile.destination ||
-    !profile.studyLevel ||
-    !profile.university ||
-    !profile.course
-  ) {
-    alert("Please complete your country, study level, university and course.");
-    return null;
-  }
-
-  return `
-You are GLORY HELPER, a complete international study interview preparation teacher.
-
-STUDENT PROFILE:
-${JSON.stringify(profile, null, 2)}
-
-MODE:
-${mode === "mock" ? "MOCK INTERVIEW" : "FULL PREPARATION"}
-
-IMPORTANT RULES:
-
-1. Personalise all guidance to this student's destination,
-university, course and genuine background.
-
-2. Never invent personal experiences, academic results,
-sponsor income, funds or career plans.
-
-3. Never invent university rankings, modules, tuition fees,
-living costs, satisfaction statistics, employment rates,
-teacher-student ratios, visa rules or healthcare costs.
-
-4. Use trustworthy sources and direct links when reliable
-research tools are available. Mention the source and year.
-If live research is unavailable, tell the student to verify
-facts on official university and government websites.
-
-5. Ask for missing personal information when necessary.
-Never assume or fabricate it.
-
-FULL PREPARATION MODE:
-
-Start by welcoming the student and confirming their profile.
-
-SECTION 1 — PREPARATION ROADMAP
-Explain how to prepare from beginner level to interview readiness.
-
-SECTION 2 — RESEARCH AND COMPARISON
-
-Teach these research points:
-- Course availability and duration
-- Course modules
-- Tuition fees and living costs
-- Scholarships
-- University rankings and ranking year
-- Academic support
-- Extracurricular facilities
-- Teacher-student ratio, if published
-- Teaching approach
-- Assessment methods
-- Student satisfaction
-- Graduate employment and employability
-- Healthcare and student insurance
-- Industry links and career opportunities
-
-Explain what each point means, why it matters,
-where to research it and how to use verified facts
-in an interview answer.
-
-Compare relevant universities only when reliable,
-meaningful comparisons are available.
-
-SECTION 3 — ANSWER WRITING
-
-Teach the student to:
-1. Understand the question.
-2. Give a direct answer.
-3. Add researched facts.
-4. Explain why those facts matter.
-5. Connect the facts to genuine personal goals.
-6. Finish with a clear conclusion.
-
-Provide:
-- An answer framework.
-- A weak versus improved example.
-- A complete natural sample answer.
-- Advice on adapting answers honestly instead of memorising.
-
-SECTION 4 — COMPLETE QUESTION BANK
-
-Cover all relevant categories:
-
-- Self-introduction
-- Previous education and subjects
-- Academic gaps
-- Destination choice
-- Why not the home country
-- Why not other countries
-- University and campus choice
-- Course choice
-- Course modules
-- Difficult modules
-- Teaching and assessment
-- University comparisons
-- Tuition fees and living costs
-- Scholarships
-- Sponsor and source of funds
-- Accommodation
-- Healthcare and insurance
-- Student support
-- Facilities
-- Career plans
-- Plans after graduation
-- Challenging credibility follow-ups
-
-FOR EVERY QUESTION INCLUDE:
-
-A. Interview question.
-B. Relevant research point names only.
-C. What the interviewer wants to understand.
-D. Step-by-step answer construction.
-E. Complete natural sample answer using verified facts
-   and known profile information only.
-F. Possible follow-up questions.
-
-Do not stop after only 10 or 15 questions.
-Organise the question bank into manageable sections.
-
-MOCK INTERVIEW MODE:
-
-Act as a realistic interviewer.
-
-Ask ONE question at a time.
-Wait for the student's answer.
-Ask challenging follow-up questions when relevant.
-Do not reveal sample answers during the interview.
-Do not interrupt to correct the student.
-
-At the end, give detailed feedback on:
-- Accuracy
-- Clarity
-- Research
-- Credibility
-- Answer structure
-- Confidence
-- Improvement areas
-
-Begin now in the selected mode.
-  `.trim();
-}
-
-function showNote(message) {
-  document.getElementById("connection-note").textContent = message;
-}
-
-async function sendPendingPrompt() {
-
-  if (!pendingPrompt || !webchatReady || sendingProfile) return;
-
-  sendingProfile = true;
-  const prompt = pendingPrompt;
-
-  try {
-    await window.botpress.restartConversation();
-    await window.botpress.sendMessage(prompt);
-
-    pendingPrompt = "";
-    showNote("Your study profile has been sent to GLORY AI.");
-
-  } catch (error) {
-    console.error("GLORY session error:", error);
-    showNote("Could not send your profile. Please try again.");
-    alert("Could not send your profile to GLORY AI. Please try again.");
-
-  } finally {
-    sendingProfile = false;
-  }
-}
-
-function startGlory(mode) {
-
-  const prompt = buildPrompt(mode);
-  if (!prompt) return;
-
-  if (
-    BOT_ID === "PASTE_YOUR_BOT_ID" ||
-    CLIENT_ID === "PASTE_YOUR_CLIENT_ID"
-  ) {
-    alert("Please add your real Bot ID and Client ID from Botpress Dashboard.");
-    return;
-  }
-
-  if (!window.botpress || !window.botpress.open) {
-    alert("Botpress has not loaded. Check your internet connection and embed code.");
-    return;
-  }
-
-  pendingPrompt = prompt;
-
-  window.botpress.open();
-
-  if (webchatReady) {
-    sendPendingPrompt();
-  } else {
-    showNote("Opening GLORY AI. Your profile will be sent when chat is ready.");
-  }
-}
-
-/* Initialise Botpress after the page loads. */
-
-window.addEventListener("load", function() {
-
-  if (
-    BOT_ID === "PASTE_YOUR_BOT_ID" ||
-    CLIENT_ID === "PASTE_YOUR_CLIENT_ID"
-  ) {
-    console.warn("Add your actual Botpress IDs.");
-    return;
-  }
-
-  if (!window.botpress || !window.botpress.init) {
-    showNote("Botpress did not load. Check the Webchat script URL.");
-    return;
-  }
-
-  try {
-
-    window.botpress.init({
-      botId: BOT_ID,
-      clientId: CLIENT_ID,
-
-      configuration: {
-        botName: "GLORY HELPER",
-        botDescription: "Your international interview preparation teacher",
-        website: {},
-        email: {},
-        phone: {},
-        termsOfService: {},
-        privacyPolicy: {},
-        color: "#b58a45",
-        variant: "solid",
-        themeMode: "dark",
-        fontFamily: "inter"
-      }
-    });
-
-    window.botpress.on("webchat:ready", function() {
-      webchatReady = true;
-
-      if (pendingPrompt) {
-        sendPendingPrompt();
-      }
-    });
-
-    window.botpress.on("error", function(error) {
-      console.error("Botpress error:", error);
-      showNote("Botpress reported an error. Check your bot settings.");
-    });
-
-    showNote("GLORY AI is ready. Complete your profile to begin.");
-
-  } catch(error) {
-    console.error("Botpress initialisation failed:", error);
-    showNote("Botpress could not initialise. Check your Dashboard embed details.");
-  }
+let destination="United Kingdom";
+
+document.querySelectorAll(".country").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".country")
+   .forEach(b=>b.classList.remove("selected"));
+  btn.classList.add("selected");
+  destination=btn.dataset.country;
+ });
 });
 
-</script>
+function beginPreparation(){
+ const university=document.getElementById("university").value.trim();
+ const course=document.getElementById("course").value.trim();
 
+ if(!university || !course){
+  document.getElementById("status").textContent=
+   "Please enter your university and full course name.";
+  return;
+ }
+
+ const profile={
+  destination,
+  level:document.getElementById("level").value,
+  university,
+  course,
+  interview:document.getElementById("interview").value
+ };
+
+ document.getElementById("status").textContent=
+  "Your study profile is ready. Connect your AI assistant to begin.";
+
+ console.log("Student study profile:",profile);
+}
+</script>
 </body>
 </html>
