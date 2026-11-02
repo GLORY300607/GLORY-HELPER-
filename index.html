@@ -1,488 +1,200 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#11100e">
-<title>GLORY HELPER | Powered by Ambition</title>
+<meta name="theme-color" content="#080d1f">
+<meta name="description" content="GLORY HELPER - Your intelligent AI assistant">
+<title>GLORY HELPER AI</title>
+<style>
+:root{--background:#070b18;--panel:#10182b;--panel-light:#17223a;--text:#f4f7ff;--muted:#9ca9c9;--border:rgba(255,255,255,.12);--primary:#6c63ff;--secondary:#00d9ff;--success:#35e58a;--shadow:0 20px 60px rgba(0,0,0,.28);--bot:#17233b}
+body.light{--background:#eef3ff;--panel:#fff;--panel-light:#e8edff;--text:#16213a;--muted:#60708f;--border:rgba(20,35,70,.14);--shadow:0 20px 60px rgba(40,60,120,.12);--bot:#e8edff}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}body{min-height:100vh;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(0,217,255,.16),transparent 28%),radial-gradient(circle at 100% 100%,rgba(108,99,255,.22),transparent 34%),var(--background);transition:background .3s,color .3s}button,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;min-height:100vh;padding:22px 18px;display:flex;flex-direction:column;gap:18px;background:rgba(8,13,31,.82);border-right:1px solid var(--border);backdrop-filter:blur(20px)}body.light .sidebar{background:rgba(255,255,255,.82)}.brand{display:flex;align-items:center;gap:12px;padding:4px 6px 16px}.logo{width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;border-radius:16px;color:#fff;font-size:25px;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary));box-shadow:0 0 28px rgba(0,217,255,.4)}.brand h1{font-size:18px;letter-spacing:1px}.brand p{margin-top:4px;color:var(--muted);font-size:12px}.new-chat{width:100%;padding:14px;border:0;border-radius:13px;color:#fff;background:linear-gradient(135deg,var(--primary),#278bff);cursor:pointer;font-weight:bold;transition:.2s}.menu-title{margin-top:12px;color:var(--muted);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}.side-button{width:100%;padding:13px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:12px;background:var(--panel-light);transition:.2s}.new-chat:hover,.side-button:hover,.quick-button:hover{transform:translateY(-2px);filter:brightness(1.1)}.sidebar-bottom{display:grid;gap:10px;margin-top:auto}.creator-mini{padding:14px;color:var(--muted);font-size:12px;line-height:1.6;border:1px solid var(--border);border-radius:13px;background:var(--panel)}.creator-mini strong{color:var(--secondary)}.main{min-width:0;flex:1;display:flex;flex-direction:column;min-height:100vh}.topbar{min-height:72px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);background:rgba(8,13,31,.28);backdrop-filter:blur(15px)}body.light .topbar{background:rgba(255,255,255,.35)}.topbar h2{font-size:20px}.online{display:flex;align-items:center;gap:7px;color:var(--success);font-size:12px}.online-dot{width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success)}.content{width:min(100%,1050px);margin:0 auto;padding:34px 25px 20px;text-align:center;flex:1}.hero-logo{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border:1px solid rgba(0,217,255,.4);border-radius:25px;color:#fff;font-size:40px;font-weight:bold;background:linear-gradient(135deg,#00bde8,#6c63ff);box-shadow:0 0 42px rgba(0,217,255,.25)}.content h3{font-size:clamp(28px,5vw,45px);background:linear-gradient(90deg,var(--secondary),#a993ff);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{max-width:650px;margin:13px auto 0;color:var(--muted);line-height:1.7}.quick-grid{max-width:900px;margin:26px auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.quick-button{padding:16px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:15px;background:var(--panel);transition:.2s}.quick-button span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.5}.chat-area{width:min(100%,850px);min-height:0;margin:0 auto 20px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:left}body.light .chat-area{background:transparent}.chat-messages{display:flex;flex-direction:column;gap:12px}.message-row{display:flex;gap:9px;align-items:flex-start}.message-row.user{justify-content:flex-end}.avatar{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;color:#fff;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary))}.message-row.user .avatar{order:2;background:linear-gradient(135deg,#655cff,#168cff)}.bubble{max-width:85%;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--bot);color:var(--text);line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.message-row.user .bubble{background:linear-gradient(135deg,#655cff,#168cff);color:white;border:0}.typing{display:none;color:var(--muted);font-size:12px;padding:12px 0 0}.input-area{width:min(100%,850px);margin:0 auto 22px}.input-box{display:flex;gap:10px;padding:9px;border:1px solid var(--border);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}textarea{flex:1;min-width:0;resize:none;outline:none;border:0;padding:12px;min-height:46px;max-height:130px;color:var(--text);background:transparent;font-size:15px;line-height:1.4}textarea::placeholder{color:var(--muted)}.send{width:48px;height:46px;flex-shrink:0;border:0;border-radius:12px;color:white;background:linear-gradient(135deg,var(--primary),var(--secondary));font-size:19px}.disclaimer{text-align:center;color:var(--muted);font-size:11px;margin-top:9px}.creator{margin:10px auto 0;padding:18px 10px 8px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.8}.creator strong{color:var(--secondary);font-size:14px}.creator a{color:#9d8cff;text-decoration:none}.creator a:hover{text-decoration:underline}.empty-note{padding:12px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:760px){.app{display:block}.sidebar{width:100%;min-height:auto;padding:12px 14px;display:block;border-right:0;border-bottom:1px solid var(--border)}.brand{padding:0}.brand .logo{width:42px;height:42px}.new-chat,.menu-title,.side-button,.sidebar-bottom{display:none}.topbar{min-height:60px;padding:0 16px}.topbar h2{font-size:17px}.content{padding:25px 14px 15px}.quick-grid{grid-template-columns:1fr;margin:22px auto}.hero-logo{width:64px;height:64px;font-size:33px;border-radius:21px}.chat-area{padding:0}.input-area{padding:0 2px}.bubble{max-width:88%}.creator{padding-bottom:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 
+/* Hide the extra Botpress floating launcher; the page's own message box is used instead. */
+.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+</style>
+<!-- Existing Botpress integration preserved. Do not remove these scripts. -->
 <script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
-
-<style>
-:root {
-  --bg:#100f0d;
-  --panel:#191713;
-  --panel2:#211d17;
-  --gold:#c6a45c;
-  --gold2:#e4c982;
-  --text:#eee7d8;
-  --muted:#a79c89;
-  --border:rgba(198,164,92,.22);
-}
-* {box-sizing:border-box}
-body {
-  margin:0;
-  background:radial-gradient(ellipse at top,#292116 0%,#100f0d 55%);
-  color:var(--text);
-  font-family:Georgia,"Times New Roman",serif;
-  min-height:100vh;
-}
-button,input,select {font:inherit}
-button {cursor:pointer}
-header {
-  padding:20px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--border);
-  background:rgba(16,15,13,.88);
-}
-.brand {font-size:21px;letter-spacing:2px;color:var(--gold2)}
-.brand small {
-  display:block;font:10px Arial,sans-serif;
-  letter-spacing:3px;color:var(--muted);margin-top:5px
-}
-.status {font:12px Arial;color:#b8c99b}
-.status:before {
-  content:"";display:inline-block;width:7px;height:7px;
-  border-radius:50%;background:#9ab878;margin-right:8px
-}
-main {max-width:1100px;margin:auto;padding:35px 18px}
-.hero {text-align:center;padding:35px 10px 25px}
-.crown {font-size:35px;color:var(--gold)}
-h1 {font-size:clamp(32px,7vw,55px);margin:12px 0;color:var(--gold2)}
-.tagline {color:var(--muted);letter-spacing:3px;font:11px Arial}
-.quote {font-style:italic;color:#d4c5a4;margin:25px auto;max-width:550px;line-height:1.7}
-.panel {
-  background:linear-gradient(145deg,#211d17,#15130f);
-  border:1px solid var(--border);border-radius:15px;
-  padding:24px;margin:18px 0;
-  box-shadow:0 15px 45px #0005
-}
-h2 {color:var(--gold2);font-size:22px;margin-top:0}
-h3 {color:var(--gold2);font-size:16px}
-p {line-height:1.6}
-.muted {color:var(--muted);font:13px Arial,sans-serif;line-height:1.6}
-.fields {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px
-}
-label {display:block;color:var(--muted);font:12px Arial;margin-bottom:7px}
-input,select {
-  width:100%;padding:13px;background:#100f0d;color:var(--text);
-  border:1px solid var(--border);border-radius:8px;outline:none
-}
-input:focus,select:focus {border-color:var(--gold)}
-.primary {
-  background:linear-gradient(120deg,#a7833f,#e0c47d);
-  color:#17120a;border:0;border-radius:8px;padding:14px 22px;
-  font-weight:bold;width:100%;margin-top:18px
-}
-.secondary {
-  border:1px solid var(--border);background:#211d17;
-  color:var(--gold2);padding:11px 14px;border-radius:8px
-}
-.hidden {display:none!important}
-.category-grid {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px
-}
-.category {
-  text-align:left;padding:14px;background:#17140f;
-  border:1px solid var(--border);border-radius:9px;color:var(--text);
-  line-height:1.4
-}
-.category:hover,.category.active {
-  border-color:var(--gold);background:#302719
-}
-.category span {display:block;color:var(--muted);font:11px Arial;margin-top:5px}
-.question {
-  padding:14px;margin:9px 0;background:#17140f;
-  border:1px solid var(--border);border-radius:9px;
-  line-height:1.5
-}
-.question button {
-  display:block;text-align:left;width:100%;background:none;
-  border:0;color:var(--text);line-height:1.5
-}
-.question button:hover {color:var(--gold2)}
-#webchat-container {
-  width:100%;height:590px;min-height:450px;
-  border:1px solid var(--border);border-radius:12px;
-  overflow:hidden;background:#100f0d
-}
-#webchat-container iframe {width:100%;height:100%;border:0}
-.chat-note {font:12px Arial;color:var(--muted);margin-top:10px}
-footer {
-  text-align:center;border-top:1px solid var(--border);
-  padding:25px 12px;color:var(--muted);font:11px Arial;
-  line-height:2
-}
-@media(max-width:600px) {
-  header {padding:17px 15px}
-  .brand {font-size:17px}
-  main {padding:20px 12px}
-  .panel {padding:17px}
-  .fields,.category-grid {grid-template-columns:1fr}
-  #webchat-container {height:65vh;min-height:430px}
-}
-</style>
 </head>
-
 <body>
-<header>
-  <div class="brand">
-    GLORY HELPER
-    <small>POWERED BY AMBITION</small>
-  </div>
-  <div class="status">GLORY IS CONNECTED</div>
-</header>
-
-<main>
-  <section class="hero">
-    <div class="crown">♛</div>
-    <h1>GLORY HELPER</h1>
-    <div class="tagline">YOUR UNIVERSITY INTERVIEW COMPANION</div>
-    <p class="quote">“Let others chase glory. I shall become its definition.”</p>
-  </section>
-
-  <section class="panel" id="registration">
-    <h2>Begin Your Preparation</h2>
-    <p class="muted">Enter your study details to personalise your interview preparation.</p>
-
-    <form id="studentForm">
-      <div class="fields">
-        <div>
-          <label for="studentName">Full Name</label>
-          <input id="studentName" required placeholder="Enter your name">
-        </div>
-        <div>
-          <label for="country">Destination Country</label>
-          <select id="country" required>
-            <option value="">Choose country</option>
-            <option>United Kingdom</option>
-            <option>United States</option>
-            <option>Canada</option>
-            <option>Australia</option>
-            <option>Germany</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div>
-          <label for="university">University</label>
-          <input id="university" required placeholder="University name">
-        </div>
-        <div>
-          <label for="campus">Campus</label>
-          <input id="campus" placeholder="Campus name">
-        </div>
-        <div style="grid-column:1/-1">
-          <label for="course">Course</label>
-          <input id="course" required placeholder="Your course name">
-        </div>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">G</div><div><h1>GLORY HELPER</h1><p>Intelligent AI assistant</p></div></div>
+    <button class="new-chat" type="button" onclick="newChat()">＋ New conversation</button>
+    <div class="menu-title">Workspace</div>
+    <button class="side-button" type="button" onclick="scrollToChat()">💬 Open chat</button>
+    <button class="side-button" type="button" onclick="toggleTheme()">🌙 Change theme</button>
+    <div class="sidebar-bottom"><div class="creator-mini">Created and managed by<br><strong>Manthan Bhardwaj</strong></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><h2>GLORY HELPER</h2><div class="online"><span class="online-dot"></span><span id="status">Connecting to Botpress…</span></div></header>
+    <section class="content">
+      <div class="hero-logo" aria-hidden="true">G</div>
+      <h3>How can I help you today?</h3>
+      <p class="subtitle">Ask questions, learn English, prepare for interviews, explore ideas, or get clear explanations from GLORY HELPER.</p>
+      <div class="quick-grid">
+        <button class="quick-button" type="button" onclick="sendQuickMessage('Explain this topic in simple English')">📚 Learn something<span>Get a simple step-by-step explanation</span></button>
+        <button class="quick-button" type="button" onclick="sendQuickMessage('Help me improve my English speaking')">🗣️ Improve English<span>Practice useful English conversations</span></button>
+        <button class="quick-button" type="button" onclick="sendQuickMessage('Give me a useful business idea')">💡 Get an idea<span>Explore business and technology ideas</span></button>
       </div>
-      <button class="primary" type="submit">START PREPARATION →</button>
-    </form>
-  </section>
-
-  <section id="dashboard" class="hidden">
-    <section class="panel">
-      <h2 id="welcome">Welcome</h2>
-      <p class="muted" id="profile"></p>
-      <button class="secondary" id="editProfile">Edit student details</button>
+      <div class="chat-area" id="chat-area">
+        <div class="chat-messages" id="chat-messages"><div class="empty-note" id="empty-note">GLORY HELPER replies will appear here.</div></div>
+        <div class="typing" id="typing">GLORY HELPER is thinking…</div>
+      </div>
+      <div class="input-area">
+        <form class="input-box" id="message-form" onsubmit="sendMessage(event)">
+          <textarea id="message-input" rows="1" placeholder="Message GLORY HELPER…" aria-label="Message GLORY HELPER"></textarea>
+          <button class="send" type="submit" aria-label="Send message">➤</button>
+        </form>
+        <p class="disclaimer">AI can make mistakes. Please verify important information.</p>
+      </div>
+      <footer class="creator"><strong>GLORY HELPER</strong><br>Powered by Ambition<br>Created and managed by <strong>Manthan Bhardwaj</strong><br>Email: <a href="mailto:Manthanb745@gmail.com">Manthanb745@gmail.com</a> · 2026</footer>
     </section>
-
-    <section class="panel">
-      <h2>Interview Preparation Categories</h2>
-      <p class="muted">Choose any category to explore its questions.</p>
-      <div class="category-grid" id="categoryGrid"></div>
-    </section>
-
-    <section class="panel hidden" id="questionPanel">
-      <h2 id="categoryTitle">Questions</h2>
-      <div id="questionList"></div>
-    </section>
-
-    <section class="panel" id="chatPanel">
-      <h2>Your GLORY Interview Tutor</h2>
-      <p class="muted">Ask questions, understand comparisons, practise answers and receive feedback.</p>
-      <div id="webchat-container"></div>
-      <p class="chat-note">If the chat does not appear, check the Embedded mode settings in your Botpress dashboard.</p>
-    </section>
-  </section>
-</main>
-
-<footer>
-  GLORY HELPER · POWERED BY AMBITION<br>
-  Created and managed by Manthan Bhardwaj<br>
-  Contact: Manthanb745@gmail.com<br>
-  © 2026 GLORY HELPER. All rights reserved.
-</footer>
-
+  </main>
+</div>
 <script>
-const categories = [
-  {
-    name:"Personal Introduction",
-    questions:[
-      "Tell me about yourself.",
-      "Introduce yourself.",
-      "What are your strengths and weaknesses?",
-      "Why should we select you?"
-    ]
-  },
-  {
-    name:"Academic Background",
-    questions:[
-      "Tell me about your academic background.",
-      "Which subjects did you study?",
-      "How has your previous education prepared you for this course?",
-      "Which subject did you enjoy most and why?"
-    ]
-  },
-  {
-    name:"Study Gaps & Academic History",
-    questions:[
-      "Do you have any study gaps?",
-      "What have you been doing since completing your previous studies?",
-      "Why did you achieve these academic results?",
-      "How will you manage university-level studies?"
-    ]
-  },
-  {
-    name:"Why UK Instead of India?",
-    questions:[
-      "Why did you choose the UK instead of India?",
-      "Which Indian universities did you research?",
-      "How does UK education differ from Indian education?"
-    ]
-  },
-  {
-    name:"Why Not USA?",
-    questions:[
-      "Why didn't you choose the USA?",
-      "Which American universities did you consider?",
-      "Why is the UK a better fit for your study plans?"
-    ]
-  },
-  {
-    name:"Why Not Canada?",
-    questions:[
-      "Why didn't you choose Canada?",
-      "Which Canadian universities did you research?",
-      "Why did you prefer the UK?"
-    ]
-  },
-  {
-    name:"Why Not Australia?",
-    questions:[
-      "Why didn't you choose Australia?",
-      "Which Australian universities did you consider?",
-      "Why did you select the UK?"
-    ]
-  },
-  {
-    name:"Why Not Other European Countries?",
-    questions:[
-      "Why didn't you choose Germany?",
-      "Why didn't you choose France or Ireland?",
-      "Why did you prefer the UK over other European countries?"
-    ]
-  },
-  {
-    name:"Why This University?",
-    questions:[
-      "Why did you choose this university?",
-      "Which other universities did you consider?",
-      "Why did you choose this university over its competitors?"
-    ]
-  },
-  {
-    name:"Why This Course?",
-    questions:[
-      "Why did you choose this course?",
-      "How is this course related to your previous education?",
-      "What do you expect to learn from this course?"
-    ]
-  },
-  {
-    name:"Modules & Course Knowledge",
-    questions:[
-      "Explain two modules from your course.",
-      "Which module do you think will be difficult?",
-      "How will these modules help your future career?",
-      "What skills will you gain from this course?"
-    ]
-  },
-  {
-    name:"Teaching & Assessment",
-    questions:[
-      "How will you be taught at your university?",
-      "How will your work be assessed?",
-      "What is the difference between assignments and examinations?"
-    ]
-  },
-  {
-    name:"Financial Questions",
-    questions:[
-      "Who is sponsoring your education?",
-      "How will you pay your tuition fees?",
-      "How will you manage your living expenses?",
-      "What does your sponsor do?"
-    ]
-  },
-  {
-    name:"Accommodation & Student Life",
-    questions:[
-      "Where will you live in the UK?",
-      "How did you research your accommodation?",
-      "How will you travel to your university?",
-      "How will you manage homesickness?"
-    ]
-  },
-  {
-    name:"Career Plans & Future Goals",
-    questions:[
-      "What are your plans after graduation?",
-      "Where do you see yourself in five years?",
-      "How will this degree help your career?",
-      "Why do you plan to return to your home country?"
-    ]
-  },
-  {
-    name:"Visa & Credibility Questions",
-    questions:[
-      "Why should your student visa be granted?",
-      "What are your responsibilities as an international student?",
-      "Do you understand the conditions of your student visa?"
-    ]
-  },
-  {
-    name:"Country Culture & Lifestyle",
-    questions:[
-      "What do you know about British culture?",
-      "How will you adapt to life in the UK?",
-      "How will you manage cultural differences?"
-    ]
+const messageInput=document.getElementById('message-input');
+const messagesBox=document.getElementById('chat-messages');
+const typing=document.getElementById('typing');
+const statusEl=document.getElementById('status');
+let botpressReady=false;
+let pendingMessage='';
+let messages=[];
+try{const saved=JSON.parse(localStorage.getItem('gloryMessages')||'[]');if(Array.isArray(saved))messages=saved.filter(m=>m&&typeof m.text==='string'&&m.sender==='bot');}catch(e){messages=[];}
+function saveMessages(){try{localStorage.setItem('gloryMessages',JSON.stringify(messages.slice(-100)));}catch(e){}}
+function addMessage(text,sender,save=true){if(sender==='user'||!text||!text.trim())return;document.getElementById('empty-note')?.remove();const row=document.createElement('div');row.className='message-row '+sender;const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=sender==='user'?'You':'G';const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=text;row.appendChild(avatar);row.appendChild(bubble);messagesBox.appendChild(row);messagesBox.scrollTop=messagesBox.scrollHeight;if(save){messages.push({text,sender});saveMessages();}}
+function showSavedMessages(){messagesBox.innerHTML='';if(!messages.length){const note=document.createElement('div');note.className='empty-note';note.id='empty-note';note.textContent='GLORY HELPER replies will appear here.';messagesBox.appendChild(note);return;}messages.forEach(m=>addMessage(m.text,m.sender,false));}
+function sendToBot(text){if(!window.botpress||typeof window.botpress.sendMessage!=='function'){typing.style.display='none';statusEl.textContent='Botpress is loading';addMessage('The Botpress chat interface is not ready yet. Please wait a few seconds and try again. If this continues, check the Botpress configuration script.','bot');return;}try{if(!botpressReady){pendingMessage=text;typing.style.display='block';statusEl.textContent='Waiting for Botpress…';if(typeof window.botpress.open==='function')window.botpress.open();return;}if(typeof window.botpress.open==='function')window.botpress.open();const result=window.botpress.sendMessage(text);if(result&&typeof result.catch==='function')result.catch(()=>{typing.style.display='none';addMessage('I could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';statusEl.textContent='Botpress connection issue';addMessage('Could not send the message. Please check the Botpress Webchat setup.','bot');}}
+function sendMessage(event){event.preventDefault();const text=messageInput.value.trim();if(!text)return;messageInput.value='';messageInput.style.height='46px';typing.style.display='block';sendToBot(text);}
+function sendQuickMessage(text){messageInput.value=text;messageInput.focus();messageInput.style.height='auto';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';scrollToChat();sendMessage(new Event('submit',{cancelable:true,preventDefault(){}}));}
+function scrollToChat(){document.getElementById('chat-area').scrollIntoView({behavior:'smooth',block:'center'});messageInput.focus({preventScroll:true});}
+function newChat(){messages=[];saveMessages();showSavedMessages();typing.style.display='none';try{if(window.botpress&&typeof window.botpress.restartConversation==='function'&&botpressReady){const r=window.botpress.restartConversation();if(r&&typeof r.catch==='function')r.catch(()=>{});}}catch(e){}scrollToChat();}
+function toggleTheme(){document.body.classList.toggle('light');try{localStorage.setItem('glory-theme',document.body.classList.contains('light')?'light':'dark');}catch(e){}}
+function hideBotpressLauncher(){
+  const launcherStyle='.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}';
+  const visited=new WeakSet();
+  function scan(root){
+    if(!root||visited.has(root))return;visited.add(root);
+    try{root.querySelectorAll('.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]').forEach(el=>{el.style.setProperty('display','none','important');el.style.setProperty('visibility','hidden','important');el.style.setProperty('pointer-events','none','important');});
+      root.querySelectorAll('*').forEach(el=>{if(el.shadowRoot)scan(el.shadowRoot);});
+      if(root instanceof ShadowRoot&&!root.querySelector('style[data-glory-hide-fab]')){const style=document.createElement('style');style.setAttribute('data-glory-hide-fab','true');style.textContent=launcherStyle;root.appendChild(style);}
+    }catch(e){}
   }
-];
-
-let student = {};
-
-const form = document.getElementById("studentForm");
-const registration = document.getElementById("registration");
-const dashboard = document.getElementById("dashboard");
-
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  student = {
-    name: document.getElementById("studentName").value.trim(),
-    country: document.getElementById("country").value,
-    university: document.getElementById("university").value.trim(),
-    campus: document.getElementById("campus").value.trim(),
-    course: document.getElementById("course").value.trim()
-  };
-
-  sessionStorage.setItem("gloryStudent", JSON.stringify(student));
-  showDashboard();
-});
-
-function showDashboard() {
-  registration.classList.add("hidden");
-  dashboard.classList.remove("hidden");
-
-  document.getElementById("welcome").textContent =
-    "Welcome, " + student.name;
-
-  document.getElementById("profile").textContent =
-    student.university + " · " + student.campus + " · " +
-    student.course + " · " + student.country;
-
-  renderCategories();
-  window.scrollTo({top:0,behavior:"smooth"});
+  scan(document);
 }
+function extractText(event){const candidates=[event?.payload?.text,event?.message?.payload?.text,event?.message?.text,event?.payload?.markdown,event?.text];return candidates.find(x=>typeof x==='string'&&x.trim())||'';}
+function registerBotpress(){if(!window.botpress||typeof window.botpress.on!=='function'){statusEl.textContent='Connecting to Botpress…';return false;}try{window.botpress.on('webchat:initialized',()=>{statusEl.textContent='Botpress connected';});window.botpress.on('webchat:ready',()=>{botpressReady=true;statusEl.textContent='AI assistant ready';if(pendingMessage){const text=pendingMessage;pendingMessage='';try{const r=window.botpress.sendMessage(text);if(r&&typeof r.catch==='function')r.catch(()=>{typing.style.display='none';addMessage('Could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';}}});window.botpress.on('message',(event)=>{const text=extractText(event);if(!text)return;const direction=event?.direction||event?.message?.direction||event?.payload?.direction;const isBot=direction==='incoming'||direction==='bot'||event?.from==='bot'||event?.message?.from==='bot'||event?.user?.role==='bot';if(isBot){typing.style.display='none';addMessage(text,'bot');}});window.botpress.on('error',()=>{statusEl.textContent='Botpress error';typing.style.display='none';});return true;}catch(e){statusEl.textContent='Check Botpress setup';return false;}}
+try{if(localStorage.getItem('glory-theme')==='light')document.body.classList.add('light');}catch(e){}
+showSavedMessages();
+hideBotpressLauncher();
+const launcherObserver=new MutationObserver(()=>hideBotpressLauncher());launcherObserver.observe(document.documentElement,{childList:true,subtree:true});
+let bpAttempts=0;const bpTimer=setInterval(()=>{hideBotpressLauncher();bpAttempts++;if(registerBotpress()||bpAttempts>=30){clearInterval(bpTimer);if(bpAttempts>=30&&!botpressReady)statusEl.textContent='Check Botpress setup';}},500);
+messageInput.addEventListener('input',()=>{messageInput.style.height='46px';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';});
+messageInput.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();document.getElementById('message-form').requestSubmit();}});
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1f">
+<meta name="description" content="GLORY HELPER - Your intelligent AI assistant">
+<title>GLORY HELPER AI</title>
+<style>
+:root{--background:#070b18;--panel:#10182b;--panel-light:#17223a;--text:#f4f7ff;--muted:#9ca9c9;--border:rgba(255,255,255,.12);--primary:#6c63ff;--secondary:#00d9ff;--success:#35e58a;--shadow:0 20px 60px rgba(0,0,0,.28);--bot:#17233b}
+body.light{--background:#eef3ff;--panel:#fff;--panel-light:#e8edff;--text:#16213a;--muted:#60708f;--border:rgba(20,35,70,.14);--shadow:0 20px 60px rgba(40,60,120,.12);--bot:#e8edff}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}body{min-height:100vh;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(0,217,255,.16),transparent 28%),radial-gradient(circle at 100% 100%,rgba(108,99,255,.22),transparent 34%),var(--background);transition:background .3s,color .3s}button,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;min-height:100vh;padding:22px 18px;display:flex;flex-direction:column;gap:18px;background:rgba(8,13,31,.82);border-right:1px solid var(--border);backdrop-filter:blur(20px)}body.light .sidebar{background:rgba(255,255,255,.82)}.brand{display:flex;align-items:center;gap:12px;padding:4px 6px 16px}.logo{width:48px;height:48px;flex-shrink:0;display:grid;place-items:center;border-radius:16px;color:#fff;font-size:25px;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary));box-shadow:0 0 28px rgba(0,217,255,.4)}.brand h1{font-size:18px;letter-spacing:1px}.brand p{margin-top:4px;color:var(--muted);font-size:12px}.new-chat{width:100%;padding:14px;border:0;border-radius:13px;color:#fff;background:linear-gradient(135deg,var(--primary),#278bff);cursor:pointer;font-weight:bold;transition:.2s}.menu-title{margin-top:12px;color:var(--muted);font-size:11px;letter-spacing:1.4px;text-transform:uppercase}.side-button{width:100%;padding:13px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:12px;background:var(--panel-light);transition:.2s}.new-chat:hover,.side-button:hover,.quick-button:hover{transform:translateY(-2px);filter:brightness(1.1)}.sidebar-bottom{display:grid;gap:10px;margin-top:auto}.creator-mini{padding:14px;color:var(--muted);font-size:12px;line-height:1.6;border:1px solid var(--border);border-radius:13px;background:var(--panel)}.creator-mini strong{color:var(--secondary)}.main{min-width:0;flex:1;display:flex;flex-direction:column;min-height:100vh}.topbar{min-height:72px;padding:0 30px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--border);background:rgba(8,13,31,.28);backdrop-filter:blur(15px)}body.light .topbar{background:rgba(255,255,255,.35)}.topbar h2{font-size:20px}.online{display:flex;align-items:center;gap:7px;color:var(--success);font-size:12px}.online-dot{width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success)}.content{width:min(100%,1050px);margin:0 auto;padding:34px 25px 20px;text-align:center;flex:1}.hero-logo{width:76px;height:76px;margin:0 auto 18px;display:grid;place-items:center;border:1px solid rgba(0,217,255,.4);border-radius:25px;color:#fff;font-size:40px;font-weight:bold;background:linear-gradient(135deg,#00bde8,#6c63ff);box-shadow:0 0 42px rgba(0,217,255,.25)}.content h3{font-size:clamp(28px,5vw,45px);background:linear-gradient(90deg,var(--secondary),#a993ff);-webkit-background-clip:text;background-clip:text;color:transparent}.subtitle{max-width:650px;margin:13px auto 0;color:var(--muted);line-height:1.7}.quick-grid{max-width:900px;margin:26px auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.quick-button{padding:16px;color:var(--text);text-align:left;border:1px solid var(--border);border-radius:15px;background:var(--panel);transition:.2s}.quick-button span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.5}.chat-area{width:min(100%,850px);min-height:0;margin:0 auto 20px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:left}body.light .chat-area{background:transparent}.chat-messages{display:flex;flex-direction:column;gap:12px}.message-row{display:flex;gap:9px;align-items:flex-start}.message-row.user{justify-content:flex-end}.avatar{width:32px;height:32px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;color:#fff;font-weight:bold;background:linear-gradient(135deg,var(--secondary),var(--primary))}.message-row.user .avatar{order:2;background:linear-gradient(135deg,#655cff,#168cff)}.bubble{max-width:85%;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--bot);color:var(--text);line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.message-row.user .bubble{background:linear-gradient(135deg,#655cff,#168cff);color:white;border:0}.typing{display:none;color:var(--muted);font-size:12px;padding:12px 0 0}.input-area{width:min(100%,850px);margin:0 auto 22px}.input-box{display:flex;gap:10px;padding:9px;border:1px solid var(--border);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}textarea{flex:1;min-width:0;resize:none;outline:none;border:0;padding:12px;min-height:46px;max-height:130px;color:var(--text);background:transparent;font-size:15px;line-height:1.4}textarea::placeholder{color:var(--muted)}.send{width:48px;height:46px;flex-shrink:0;border:0;border-radius:12px;color:white;background:linear-gradient(135deg,var(--primary),var(--secondary));font-size:19px}.disclaimer{text-align:center;color:var(--muted);font-size:11px;margin-top:9px}.creator{margin:10px auto 0;padding:18px 10px 8px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.8}.creator strong{color:var(--secondary);font-size:14px}.creator a{color:#9d8cff;text-decoration:none}.creator a:hover{text-decoration:underline}.empty-note{padding:12px;text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:760px){.app{display:block}.sidebar{width:100%;min-height:auto;padding:12px 14px;display:block;border-right:0;border-bottom:1px solid var(--border)}.brand{padding:0}.brand .logo{width:42px;height:42px}.new-chat,.menu-title,.side-button,.sidebar-bottom{display:none}.topbar{min-height:60px;padding:0 16px}.topbar h2{font-size:17px}.content{padding:25px 14px 15px}.quick-grid{grid-template-columns:1fr;margin:22px auto}.hero-logo{width:64px;height:64px;font-size:33px;border-radius:21px}.chat-area{padding:0}.input-area{padding:0 2px}.bubble{max-width:88%}.creator{padding-bottom:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 
-function renderCategories() {
-  const grid = document.getElementById("categoryGrid");
-  grid.innerHTML = "";
-
-  categories.forEach((category,index) => {
-    const button = document.createElement("button");
-    button.className = "category";
-    button.innerHTML =
-      (index+1) + ". " + category.name +
-      "<span>" + category.questions.length + " questions</span>";
-
-    button.addEventListener("click", () => showQuestions(index));
-    grid.appendChild(button);
-  });
-}
-
-function showQuestions(index) {
-  const category = categories[index];
-  const panel = document.getElementById("questionPanel");
-  const list = document.getElementById("questionList");
-
-  document.getElementById("categoryTitle").textContent = category.name;
-  list.innerHTML = "";
-
-  category.questions.forEach(question => {
-    const item = document.createElement("div");
-    item.className = "question";
-    const button = document.createElement("button");
-    button.textContent = question;
-    button.addEventListener("click", () => {
-      const prompt =
-        "Help me prepare for this university interview question: " +
-        question + ". My student details: " +
-        JSON.stringify(student) +
-        ". Follow the GLORY HELPER teaching and comparison instructions. " +
-        "If comparison is needed, show comparison criteria first, then compare universities individually, and finally give a concise spoken answer.";
-
-      copyPrompt(prompt);
-    });
-    item.appendChild(button);
-    list.appendChild(item);
-  });
-
-  panel.classList.remove("hidden");
-  panel.scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-function copyPrompt(prompt) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(prompt).then(() => {
-      alert("Question and student details copied. Paste them into the GLORY chat.");
-    }).catch(() => {
-      alert("Please select and copy the question into the GLORY chat.");
-    });
-  } else {
-    alert("Please select and copy the question into the GLORY chat.");
+/* Hide the extra Botpress floating launcher; the page's own message box is used instead. */
+.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}
+</style>
+<!-- Existing Botpress integration preserved. Do not remove these scripts. -->
+<script src="https://cdn.botpress.cloud/webchat/v5.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/10/10/17/20261010170637-QPPVPPQ0.js" defer></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">G</div><div><h1>GLORY HELPER</h1><p>Intelligent AI assistant</p></div></div>
+    <button class="new-chat" type="button" onclick="newChat()">＋ New conversation</button>
+    <div class="menu-title">Workspace</div>
+    <button class="side-button" type="button" onclick="scrollToChat()">💬 Open chat</button>
+    <button class="side-button" type="button" onclick="toggleTheme()">🌙 Change theme</button>
+    <div class="sidebar-bottom"><div class="creator-mini">Created and managed by<br><strong>Manthan Bhardwaj</strong></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><h2>GLORY HELPER</h2><div class="online"><span class="online-dot"></span><span id="status">Connecting to Botpress…</span></div></header>
+    <section class="content">
+      <div class="hero-logo" aria-hidden="true">G</div>
+      <h3>How can I help you today?</h3>
+      <p class="subtitle">Ask questions, learn English, prepare for interviews, explore ideas, or get clear explanations from GLORY HELPER.</p>
+      <div class="quick-grid">
+        <button class="quick-button" type="button" onclick="sendQuickMessage('Explain this topic in simple English')">📚 Learn something<span>Get a simple step-by-step explanation</span></button>
+        <button class="quick-button" type="button" onclick="sendQuickMessage('Help me improve my English speaking')">🗣️ Improve English<span>Practice useful English conversations</span></button>
+        <button class="quick-button" type="button" onclick="sendQuickMessage('Give me a useful business idea')">💡 Get an idea<span>Explore business and technology ideas</span></button>
+      </div>
+      <div class="chat-area" id="chat-area">
+        <div class="chat-messages" id="chat-messages"><div class="empty-note" id="empty-note">GLORY HELPER replies will appear here.</div></div>
+        <div class="typing" id="typing">GLORY HELPER is thinking…</div>
+      </div>
+      <div class="input-area">
+        <form class="input-box" id="message-form" onsubmit="sendMessage(event)">
+          <textarea id="message-input" rows="1" placeholder="Message GLORY HELPER…" aria-label="Message GLORY HELPER"></textarea>
+          <button class="send" type="submit" aria-label="Send message">➤</button>
+        </form>
+        <p class="disclaimer">AI can make mistakes. Please verify important information.</p>
+      </div>
+      <footer class="creator"><strong>GLORY HELPER</strong><br>Powered by Ambition<br>Created and managed by <strong>Manthan Bhardwaj</strong><br>Email: <a href="mailto:Manthanb745@gmail.com">Manthanb745@gmail.com</a> · 2026</footer>
+    </section>
+  </main>
+</div>
+<script>
+const messageInput=document.getElementById('message-input');
+const messagesBox=document.getElementById('chat-messages');
+const typing=document.getElementById('typing');
+const statusEl=document.getElementById('status');
+let botpressReady=false;
+let pendingMessage='';
+let messages=[];
+try{const saved=JSON.parse(localStorage.getItem('gloryMessages')||'[]');if(Array.isArray(saved))messages=saved.filter(m=>m&&typeof m.text==='string'&&m.sender==='bot');}catch(e){messages=[];}
+function saveMessages(){try{localStorage.setItem('gloryMessages',JSON.stringify(messages.slice(-100)));}catch(e){}}
+function addMessage(text,sender,save=true){if(sender==='user'||!text||!text.trim())return;document.getElementById('empty-note')?.remove();const row=document.createElement('div');row.className='message-row '+sender;const avatar=document.createElement('div');avatar.className='avatar';avatar.textContent=sender==='user'?'You':'G';const bubble=document.createElement('div');bubble.className='bubble';bubble.textContent=text;row.appendChild(avatar);row.appendChild(bubble);messagesBox.appendChild(row);messagesBox.scrollTop=messagesBox.scrollHeight;if(save){messages.push({text,sender});saveMessages();}}
+function showSavedMessages(){messagesBox.innerHTML='';if(!messages.length){const note=document.createElement('div');note.className='empty-note';note.id='empty-note';note.textContent='GLORY HELPER replies will appear here.';messagesBox.appendChild(note);return;}messages.forEach(m=>addMessage(m.text,m.sender,false));}
+function sendToBot(text){if(!window.botpress||typeof window.botpress.sendMessage!=='function'){typing.style.display='none';statusEl.textContent='Botpress is loading';addMessage('The Botpress chat interface is not ready yet. Please wait a few seconds and try again. If this continues, check the Botpress configuration script.','bot');return;}try{if(!botpressReady){pendingMessage=text;typing.style.display='block';statusEl.textContent='Waiting for Botpress…';if(typeof window.botpress.open==='function')window.botpress.open();return;}if(typeof window.botpress.open==='function')window.botpress.open();const result=window.botpress.sendMessage(text);if(result&&typeof result.catch==='function')result.catch(()=>{typing.style.display='none';addMessage('I could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';statusEl.textContent='Botpress connection issue';addMessage('Could not send the message. Please check the Botpress Webchat setup.','bot');}}
+function sendMessage(event){event.preventDefault();const text=messageInput.value.trim();if(!text)return;messageInput.value='';messageInput.style.height='46px';typing.style.display='block';sendToBot(text);}
+function sendQuickMessage(text){messageInput.value=text;messageInput.focus();messageInput.style.height='auto';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';scrollToChat();sendMessage(new Event('submit',{cancelable:true,preventDefault(){}}));}
+function scrollToChat(){document.getElementById('chat-area').scrollIntoView({behavior:'smooth',block:'center'});messageInput.focus({preventScroll:true});}
+function newChat(){messages=[];saveMessages();showSavedMessages();typing.style.display='none';try{if(window.botpress&&typeof window.botpress.restartConversation==='function'&&botpressReady){const r=window.botpress.restartConversation();if(r&&typeof r.catch==='function')r.catch(()=>{});}}catch(e){}scrollToChat();}
+function toggleTheme(){document.body.classList.toggle('light');try{localStorage.setItem('glory-theme',document.body.classList.contains('light')?'light':'dark');}catch(e){}}
+function hideBotpressLauncher(){
+  const launcherStyle='.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]{display:none!important;visibility:hidden!important;pointer-events:none!important}';
+  const visited=new WeakSet();
+  function scan(root){
+    if(!root||visited.has(root))return;visited.add(root);
+    try{root.querySelectorAll('.bpFabWrapper,.bpFabContainer,.bpFab,[class*="bpFabWrapper"],[class*="bpFabContainer"]').forEach(el=>{el.style.setProperty('display','none','important');el.style.setProperty('visibility','hidden','important');el.style.setProperty('pointer-events','none','important');});
+      root.querySelectorAll('*').forEach(el=>{if(el.shadowRoot)scan(el.shadowRoot);});
+      if(root instanceof ShadowRoot&&!root.querySelector('style[data-glory-hide-fab]')){const style=document.createElement('style');style.setAttribute('data-glory-hide-fab','true');style.textContent=launcherStyle;root.appendChild(style);}
+    }catch(e){}
   }
+  scan(document);
 }
-
-document.getElementById("editProfile").addEventListener("click", () => {
-  dashboard.classList.add("hidden");
-  registration.classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-});
-
-const savedStudent = sessionStorage.getItem("gloryStudent");
-if (savedStudent) {
-  try {
-    student = JSON.parse(savedStudent);
-    document.getElementById("studentName").value = student.name || "";
-    document.getElementById("country").value = student.country || "";
-    document.getElementById("university").value = student.university || "";
-    document.getElementById("campus").value = student.campus || "";
-    document.getElementById("course").value = student.course || "";
-    showDashboard();
-  } catch(error) {
-    sessionStorage.removeItem("gloryStudent");
-  }
-}
+function extractText(event){const candidates=[event?.payload?.text,event?.message?.payload?.text,event?.message?.text,event?.payload?.markdown,event?.text];return candidates.find(x=>typeof x==='string'&&x.trim())||'';}
+function registerBotpress(){if(!window.botpress||typeof window.botpress.on!=='function'){statusEl.textContent='Connecting to Botpress…';return false;}try{window.botpress.on('webchat:initialized',()=>{statusEl.textContent='Botpress connected';});window.botpress.on('webchat:ready',()=>{botpressReady=true;statusEl.textContent='AI assistant ready';if(pendingMessage){const text=pendingMessage;pendingMessage='';try{const r=window.botpress.sendMessage(text);if(r&&typeof r.catch==='function')r.catch(()=>{typing.style.display='none';addMessage('Could not send that message to Botpress. Please try again.','bot');});}catch(e){typing.style.display='none';}}});window.botpress.on('message',(event)=>{const text=extractText(event);if(!text)return;const direction=event?.direction||event?.message?.direction||event?.payload?.direction;const isBot=direction==='incoming'||direction==='bot'||event?.from==='bot'||event?.message?.from==='bot'||event?.user?.role==='bot';if(isBot){typing.style.display='none';addMessage(text,'bot');}});window.botpress.on('error',()=>{statusEl.textContent='Botpress error';typing.style.display='none';});return true;}catch(e){statusEl.textContent='Check Botpress setup';return false;}}
+try{if(localStorage.getItem('glory-theme')==='light')document.body.classList.add('light');}catch(e){}
+showSavedMessages();
+hideBotpressLauncher();
+const launcherObserver=new MutationObserver(()=>hideBotpressLauncher());launcherObserver.observe(document.documentElement,{childList:true,subtree:true});
+let bpAttempts=0;const bpTimer=setInterval(()=>{hideBotpressLauncher();bpAttempts++;if(registerBotpress()||bpAttempts>=30){clearInterval(bpTimer);if(bpAttempts>=30&&!botpressReady)statusEl.textContent='Check Botpress setup';}},500);
+messageInput.addEventListener('input',()=>{messageInput.style.height='46px';messageInput.style.height=Math.min(messageInput.scrollHeight,130)+'px';});
+messageInput.addEventListener('keydown',event=>{if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();document.getElementById('message-form').requestSubmit();}});
 </script>
 </body>
 </html>
-
 
